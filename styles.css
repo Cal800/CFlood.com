@@ -1,0 +1,2720 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif; 
+}
+
+body {
+
+  background-image: url('BCG.jpg');
+  
+  background-repeat: no-repeat;
+  
+  background-size: cover;
+  
+  background-position: center center;
+
+  background-attachment: fixed; 
+  
+  background-color: #000;
+  
+  min-height: 100vh;
+  margin: 0;
+}
+
+
+/* Navbar */
+
+.navbar {
+  background-color: rgba(10, 10, 10, 0.7); /* Transparent black */
+  backdrop-filter: blur(15px);            /* This is the magic "frosted glass" effect */
+  -webkit-backdrop-filter: blur(15px);    /* Support for Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator line */
+  position: fixed;                        /* Keep it at the top when scrolling */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem; /* Changed padding to 0 on top/bottom to rely on height */
+  background-color: #0a0a0a;
+  color: white;
+  height: 85px;
+  flex-wrap: nowrap; /* Prevents the links from dropping to a second line */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.nav-icon {
+  width: 35px !important;
+  height: 35px !important;
+  color: #17D8DB;
+  flex-shrink: 0;
+  display: block;
+}
+
+.brand-name {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  position: relative;
+  display: inline-block;
+  padding: 8px 0;
+  color: #9ca3af;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #17D8DB;
+  opacity: 0;
+  pointer-events: none;
+  transition: width 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.nav-links a:hover {
+  color: #17D8DB;
+  text-shadow: 0 0 8px rgba(23, 216, 219, 0.3);
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav-links a.active {
+  border-bottom: none;
+}
+
+/* Card Design */
+
+
+/* Hero Section */
+
+.hero-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-left: 8%;
+  padding-top: 265px;
+  box-sizing: border-box;
+}
+
+.glass-card {
+  position: relative;
+  width: 750px;
+  max-width: 90%;
+  min-height: 258px;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px) saturate(150%);
+  -webkit-backdrop-filter: blur(25px) saturate(150%);
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: left;
+  border: 1px solid rgba(23, 216, 219, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 
+              0 0 40px rgba(23, 216, 219, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: 0.6s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 45px 90px rgba(0, 0, 0, 0.7), 
+              0 0 50px rgba(23, 216, 219, 0.35);
+  cursor: pointer;
+}
+
+.glass-card:hover::before {
+  left: 100%;
+}
+
+.hero-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.hero-tags {
+  font-family: 'Montserrat', sans-serif;
+  color: #17D8DB;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.separator {
+  margin: 0 5px;
+  opacity: 0.7;
+}
+
+/* Scrolling Effect*/
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* The "Show" state triggered by JavaScript */
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* Optional: Delaying elements in a row (like your socials) */
+.hidden:nth-child(2) { transition-delay: 200ms; }
+.hidden:nth-child(3) { transition-delay: 400ms; }
+
+
+
+.quote-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px; /* Increased to give separation from Hero */
+  text-align: center;
+  margin-bottom: 80px; /* Pushes the Intro down so it's not cramped */
+}
+
+.quote-container p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #17D8DB;
+  line-height: 1.4; /* Better spacing between the two lines */
+  text-shadow: 0 0 20px rgba(23, 216, 219, 0.4);
+}
+
+/* About Me Section - Balanced Layout Edition */
+
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 8% 120px 8%;
+  min-height: 80vh;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr; 
+  gap: 40px;
+  align-items: center; /* Centers the slim text card vertically next to the tall image */
+  max-width: 1100px;
+  position: relative;
+}
+
+.about-text-card, .about-image-container {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(23, 216, 219, 0.4); 
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 
+              0 0 40px rgba(23, 216, 219, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-text-card {
+  padding: 55px 45px; /* Perfect vertical breathing room */
+  min-height: auto; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-image-container {
+  overflow: hidden; /* Clips image neatly to the 20px rounded card corners */
+  display: flex;
+  padding: 0;
+  min-height: 480px; /* Drives the tall hero height */
+}
+
+.about-text h2 {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  font-size: 2.2rem; 
+  margin-bottom: 20px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.about-text h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #17D8DB;
+  transition: width 0.8s ease-out 0.4s;
+}
+
+.about-text-card.show .about-text h2::after {
+  width: 100%;
+}
+
+.about-text p {
+  font-family: 'Montserrat', sans-serif;
+  color: #9ca3af;
+  line-height: 1.85; /* Smooth line height for optimal readability */
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.about-image-container img {
+  width: 100%; 
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border: none;
+  border-radius: 0; /* Corner rounding handled by the container */
+}
+
+.about-text-card:hover, .about-image-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.7), 
+              0 0 60px rgba(23, 216, 219, 0.35);
+}
+
+/* Social hub */
+
+.socials-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0 40vh 0; 
+}
+
+.socials-header {
+  margin-bottom: 65px; 
+  text-align: center;
+}
+
+.socials-title {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.socials-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #17D8DB;
+  transition: width 0.8s ease-out 0.4s;
+}
+
+.socials-header.show .socials-title::after {
+  width: 100%;
+}
+
+.socials-container {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+}
+
+.social-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-icon {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 2.8rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.social-item:hover .social-icon {
+  transform: translateY(-12px);
+  border-color: #17D8DB;
+  box-shadow: 0 0 50px rgba(23, 216, 219, 0.45);
+}
+
+.social-item:hover .social-icon i {
+  color: #17D8DB;
+}
+
+.social-tag {
+  position: absolute;
+  bottom: -50px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.social-tag::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #17D8DB;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.social-item:hover .social-tag {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.social-item:hover .social-tag::after {
+  width: 100%;
+}
+
+
+html, body {
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+  display: none; 
+}
+
+/* Footer */
+
+.main-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px; /* Keeps it connected to the scroll cushion */
+}
+
+.footer-content {
+  width: 100%; /* Spans entire page width */
+  height: 140px; 
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Removed side borders and bottom radius to make it feel grounded */
+  border-top: 1px solid rgba(23, 216, 219, 0.4);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  
+  /* Glow only on the top edge */
+  box-shadow: 0 -15px 30px rgba(23, 216, 219, 0.15); 
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.4s ease;
+}
+
+.footer-content:hover {
+  box-shadow: 0 -20px 40px rgba(23, 216, 219, 0.25);
+}
+
+.footer-logo {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.fider {
+  width: 60px;
+  height: 2px;
+  background: #17D8DB;
+  border-radius: 2px;
+}
+
+.footer-tech {
+  font-family: 'Montserrat', sans-serif;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+/* About me */
+
+
+ /* --- PAGE STRUCTURE --- */
+.about-grid-section {
+  padding: 120px 0 0 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* --- TITLE STYLES --- */
+.about-header {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.grid-main-title {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 2px;
+}
+
+.grid-main-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #17D8DB;
+  transition: width 0.8s ease-out 0.4s;
+}
+
+.about-header.show .grid-main-title::after { width: 100%; }
+
+/* --- GRID SYSTEM --- */
+.about-main-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1275px;
+  width: 90%;
+  margin: 0 auto 150px auto; /* Centering fix */
+  isolation: isolate;
+}
+
+.grid-card {
+  position: relative;
+  cursor: pointer;
+  background: rgba(10, 10, 10, 0.95); 
+  border-radius: 24px;
+  border: 1px solid rgba(23, 216, 219, 0.2);
+  padding: 45px 35px; /* Increased vertical padding for better visual weight */
+  min-height: 250px; /* Slightly taller to accommodate the larger 60px icons */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Changed to start so icon/text spacing is consistent */
+  align-items: flex-start;
+  gap: 20px; /* Uniform gap between icon and title */
+  transition: transform 0.2s ease-out, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-card:hover {
+  transform: scale(1.04);
+  border-color: rgba(23, 216, 219, 0.8);
+  box-shadow: 0 0 30px rgba(23, 216, 219, 0.3);
+}
+
+.grid-icon {
+  font-size: 3rem;
+  color: #fff;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.custom-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.grid-card h3 {
+  font-family: 'Inter', sans-serif;
+  color: #17D8DB;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.about-content-area {
+    width: 100%; /* Matches your desired separator width */
+    max-width: 1300px; /* Gives it room to breathe on ultra-wide screens */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0; 
+}
+
+.section-divider {
+    width: 100%; 
+    min-width: 200px; /* Ensures it doesn't get TOO small on tiny text */
+    max-width: 100%;  /* Ensures it doesn't overflow */
+    
+    height: 4px;
+    background: #17D8DB;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.7), 0 0 40px rgba(23, 216, 219, 0.4);
+    margin: 0 auto 60px auto;
+    border-radius: 4px;
+}
+
+.section-divider2 {
+    width: 68%; 
+    min-width: 200px; /* Ensures it doesn't get TOO small on tiny text */
+    max-width: 100%;  /* Ensures it doesn't overflow */
+    
+    height: 4px;
+    background: #17D8DB;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.7), 0 0 40px rgba(23, 216, 219, 0.4);
+    margin: 0 auto 60px auto;
+    border-radius: 4px;
+}
+
+.section-divider3 {
+    width: 72%; 
+    min-width: 200px; /* Ensures it doesn't get TOO small on tiny text */
+    max-width: 100%;  /* Ensures it doesn't overflow */
+
+    height: 4px;
+    background: #17D8DB;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.7), 0 0 40px rgba(23, 216, 219, 0.4);
+    margin: 0 auto 30px auto;
+    border-radius: 4px;
+}
+
+.section-divider4 {
+    width: 100%;
+    min-width: 200px; /* Ensures it doesn't get TOO small on tiny text */
+    max-width: 100%;  /* Ensures it doesn't overflow */
+
+    height: 4px;
+    background: #17D8DB;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.7), 0 0 40px rgba(23, 216, 219, 0.4);
+    margin: 0 auto 60px auto;
+    border-radius: 4px;
+}
+
+.section-title {
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.section-body p {
+    font-family: 'Montserrat', sans-serif;
+    color: #9ca3af;
+    line-height: 2;
+    font-size: 1.1rem;
+}
+
+.info-section {
+    /* Adjust the 150px to your preference—higher numbers push the title further down the screen */
+    scroll-margin-top: 100px; 
+    
+}
+
+.info-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .about-main-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+/* --- HOBBIES STACKED LAYOUT --- */
+.hobbies-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between each rectangle */
+    width: 100%;
+    margin-top: 50px;
+}
+
+.hobby-row {
+    display: flex;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(23, 216, 219, 0.2);
+    min-height: 320px; /* Rectangular height */
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.hobby-row:hover {
+    border-color: rgba(23, 216, 219, 0.6);
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.1);
+    transform: translateX(10px); /* Subtle shift to the right on hover */
+}
+
+/* --- TEXT CONTENT SIDE --- */
+.hobby-content {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.hobby-header-alt {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hobby-header-alt i {
+    color: #17D8DB;
+    font-size: 1.5rem;
+}
+
+.hobby-header-alt span {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hobby-content p {
+    color: #9ca3af;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- IMAGE SIDE --- */
+.hobby-image-box {
+    width: 42%; /* The "end" of the rectangle is the image */
+    background: #111;
+    border-left: 1px solid rgba(23, 216, 219, 0.2);
+    overflow: hidden;
+}
+
+.hobby-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    object-position: center;
+    transition: all 0.5s ease; /* Smoother transition */
+    display: block;
+}
+
+.hobby-row:hover .hobby-image-box img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hobby-row {
+        flex-direction: column; /* Stacks image under text on mobile */
+    }
+    .hobby-image-box {
+        width: 100%;
+        height: 150px;
+    }
+  }
+  
+  /* Early Life */
+
+  .section-body p {
+    margin-bottom: 1.5rem; 
+    line-height: 1.6;      
+    color: rgba(255, 255, 255, 0.8); 
+    font-size: 19.5px;
+}
+
+/* This removes the extra "push" from the bottom of the section */
+.section-body p:last-child {
+    margin-bottom: 0;
+}
+
+.lead-text {
+    font-size: 1.15rem;    
+    color: #fff !important; 
+    font-weight: 500;
+}
+
+strong {
+    color: #17D8DB;        
+}
+
+/*Skills*/
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    position: relative;
+    padding-left: 30px; /* Space for our new custom dot */
+    margin-bottom: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 19.5px;
+    line-height: 1.4;
+}
+
+/* Create the glowing cyan dot */
+.skills-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px; /* Adjust based on your font size to center it */
+    width: 8px;
+    height: 8px;
+    background-color: #17D8DB; /* Your signature cyan */
+    border-radius: 50%; /* Makes it a circle */
+    
+    /* The Glow Effect */
+    box-shadow: 0 0 8px #17D8DB, 
+                0 0 15px rgba(23, 216, 219, 0.5);
+}
+
+/* Optional: Make the Skill Title pop */
+.skill-category {
+    color: #ffffff; /* Pure white for the main title */
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle white glow */
+}
+
+/* Hobbies */
+
+.hobby-content p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.hobby-content {
+    padding-right: 30px; /* Pushes the text away from the image */
+}
+
+.hobby-row img {
+    /* Create a grid layout inside the image box */
+    display: grid; 
+    place-items: center; /* This centers the text vertically and horizontally */
+    
+    /* Ensure the placeholder box exists, even if the image doesn't */
+    width: 100%; 
+    height: 100%; /* Or set a specific height like 400px if needed */
+    background: #111; /* Dark grey background for the box */
+    border: 2px solid #333; /* Sublte border to define the shape */
+    border-radius: 8px; /* Match your other rounded elements */
+    
+    /* The ALT text styling */
+    color: #ffffff; /* Pure white text */
+    font-size: 22px; /* Make it bigger */
+    font-weight: 600; /* Medium-bold */
+    font-family: 'Montserrat', sans-serif; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    
+    /* Ensure the text doesn't hit the border */
+    padding: 20px; 
+    text-align: center;
+}
+
+/* The future */
+
+.Cyber {
+   color: #17D8DB;
+    font-weight: 800; /* Max boldness */
+    text-shadow: 0 0 10px rgba(23, 216, 219, 0.4); /* Subtle glow to make it stand out */
+    letter-spacing: 0.5px;       
+}
+
+.end-statement {
+    color: #17D8DB;
+    font-weight: 700; 
+    font-size: 1.25rem; /* Makes it roughly 5px larger than standard 16px text */
+    text-align: center; /* This is the correct way to center text in a paragraph */
+    margin-top: 40px; /* Space it out from the paragraph above */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* The "Sheen/Glow" effect */
+    text-shadow: 0 0 15px rgba(23, 216, 219, 0.5); 
+}
+
+/* PROJECTS PAGE */
+
+/* --- PROJECT INTRO CARD --- */
+#projects-header {
+    padding-top: 210px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.project-intro-card {
+    background: rgba(23, 216, 219, 0.03);
+    border: 1px solid rgba(23, 216, 219, 0.3);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(23, 216, 219, 0.1);
+    margin-bottom: 20px;
+}
+
+.project-title-wrapper {
+    margin-bottom: 25px;
+}
+
+.animated-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #17D8DB;
+    box-shadow: 0 0 15px rgba(23, 216, 219, 0.6);
+    transition: width 0.8s ease-out 0.4s;
+}
+
+.animated-title.show::after {
+    width: 100%;
+}
+
+.project-intro-text p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.expect-text {
+    color: #17D8DB !important;
+    font-style: italic;
+}
+
+.expect-text2 {
+    color: #ffffff !important;
+    font-style: italic;
+    text-align: center;
+
+    text-shadow: 0 0 8px rgba(23, 216, 219, 0.6), 
+                 0 0 20px rgba(23, 216, 219, 0.3);
+                 
+}
+   
+
+
+#projects-header .section-divider {
+    width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    height: 2px;
+    background: #17D8DB;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.7), 0 0 40px rgba(23, 216, 219, 0.4);
+    border: none;
+}
+
+/*Project Card*/
+
+#project-showcase {
+    max-width: 1050px; 
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.project-container {
+    padding: 20px;
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 30px;
+    position: relative;
+}
+
+.project-card {
+    background: rgba(23, 216, 219, 0.03);
+    border: 1px solid rgba(23, 216, 219, 0.2);
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.1);
+    
+    /* Layout Logic */
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; 
+    gap: 40px;
+    
+    /* State Logic */
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+    visibility: visible;
+    
+    /* Unified Transition - handles both filtering AND hover */
+    transition: 
+        opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+        filter 0.6s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.project-card:not(.hidden-card):hover {
+    border-color: rgba(23, 216, 219, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 25px rgba(23, 216, 219, 0.2);
+}
+
+.project-card.hidden-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.92); /* Drift down and shrink */
+    filter: blur(8px);
+    visibility: hidden;
+    pointer-events: none;
+    /* We don't use display:none here because JS will trigger it after the fade */
+}
+
+.project-content-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card-title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.project-card-info {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 20px; 
+    max-width: 95%;
+}
+
+.project-facts-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px; 
+    flex-wrap: nowrap; /* Forces them to stay on one line */
+}
+
+.date-pill {
+    align-self: flex-start;
+    background: rgba(23, 216, 219, 0.05);
+    color: #ffffff;
+    padding: 6px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid rgba(23, 216, 219, 0.3);
+    margin-top: 35px; /* Space between date and the tags line */
+}
+
+.date-icon {
+    font-size: 0.9rem;
+    margin-right: 8px;
+    color: #ffffff;
+}
+
+.tags-pill-area {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.tag-cyan {
+    background: rgba(23, 216, 219, 0.1);
+    color: #17D8DB;
+    border-color: rgba(23, 216, 219, 0.3);
+}
+
+.tag-orange {
+    background: rgba(255, 127, 80, 0.1);
+    color: #FF7F50;
+    border-color: rgba(255, 127, 80, 0.3);
+}
+
+.tag-blue {
+    background: rgba(77, 136, 255, 0.1);
+    color: #4D88FF;
+    border-color: rgba(77, 136, 255, 0.3);
+}
+
+.tag-yellow {
+    background: rgba(255, 214, 102, 0.1);
+    color: #FFD666;
+    border-color: rgba(255, 214, 102, 0.3);
+}
+
+.tag-green {
+    background: rgba(102, 255, 153, 0.1);
+    color: #66FF99;
+    border-color: rgba(102, 255, 153, 0.3);
+}
+
+.tag-purple {
+    background: rgba(191, 64, 191, 0.1);
+    color: #BF40BF;
+    border-color: rgba(191, 64, 191, 0.3);
+}
+
+.tag-rose {
+    background: rgba(255, 0, 127, 0.1);
+    color: #FF007F;
+    border-color: rgba(255, 0, 127, 0.3);
+}
+
+.tag-lime {
+    background: rgba(173, 255, 47, 0.1);
+    color: #ADFF2F;
+    border-color: rgba(173, 255, 47, 0.3);
+}
+
+.tag-amber {
+    background: rgba(255, 191, 0, 0.1);
+    color: #FFBF00;
+    border-color: rgba(255, 191, 0, 0.3);
+}
+
+.project-content-right {
+    height: 100%;
+}
+
+.project-image-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(23, 216, 219, 0.3);
+    border-radius: 12px;
+    width: 100%;
+    min-height: 250px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/*.project-image-box img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+*/
+
+
+.project-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+    
+  
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+  
+    line-height: 250px; 
+}
+
+.project-image-box img:not([src]), 
+.project-image-box img[src=""], 
+.project-image-box img[alt] {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
+/*filter block*/
+
+.filter-block {
+    background: rgba(23, 216, 219, 0.03);
+    border: 1px solid rgba(23, 216, 219, 0.2);
+    border-radius: 18px;
+    padding: 25px 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px; /* Kept compact as per your reference image */
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.filter-icon {
+    color: #17D8DB;
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 8px rgba(23, 216, 219, 0.5));
+}
+
+.custom-dropdown {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(23, 216, 219, 0.3);
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    appearance: none; /* Removes default browser styling */
+}
+
+.custom-dropdown:hover, .custom-dropdown:focus {
+    border-color: #17D8DB;
+    box-shadow: 0 0 15px rgba(23, 216, 219, 0.2);
+    color: white;
+}
+
+/* Optional: Style the options list (limited browser support for styling select options) */
+.custom-dropdown option {
+    background: #0a0a0a;
+    color: white;
+}
+
+.no-results-title {
+    display: inline-block;
+}
+
+
+.no-results-title::after {
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+
+.Sblue {
+  color: #17D8DB;
+}
+
+/* ==========================================================================
+   ISOLATED CV INTERACTIVE BUTTONS - ENHANCED FOOTPRINT
+   ========================================================================== */
+
+/* 1. Expanded the gap to 60px to fill the screen layout better */
+.cv-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px; 
+    margin-top: 10px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+/* 2. Scaled up sizing: wider min-width, slightly taller, larger font footprint */
+.cv-btn-glass {
+    position: relative;
+    cursor: pointer;
+    background: rgba(23, 216, 219, 0.06); 
+    border: 1px solid rgba(23, 216, 219, 0.25);
+    border-radius: 50px; 
+    padding: 16px 40px;          /* Increased padding */
+    font-size: 1.05rem;          /* Slightly larger readable text */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-family: inherit;
+    color: #ffffff;
+    overflow: hidden; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 290px;            /* Pushed width out to span nicely */
+    height: 58px;                /* Taller, chunkier command-presence */
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.cv-btn-glass:hover {
+    border-color: rgba(23, 216, 219, 0.5);
+    background: rgba(23, 216, 219, 0.12);
+    transform: translateY(-3px); /* Slightly deeper responsive hover hover lift */
+    box-shadow: 0 8px 25px rgba(23, 216, 219, 0.18);
+}
+
+.cv-btn-glass:active {
+    transform: translateY(0);
+}
+
+.cv-btn-content-wrapper {
+    position: relative;
+    z-index: 3; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    pointer-events: none;
+}
+
+.cv-btn-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #17D8DB;
+    transition: transform 0.3s ease;
+}
+
+.cv-btn-glass:hover .cv-btn-icon {
+    transform: translateY(2px);
+}
+
+/* 3. FIXED: Eradicated the progress bar nip */
+.cv-btn-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%; 
+    background: linear-gradient(90deg, rgba(23, 216, 219, 0.35), rgba(0, 119, 255, 0.45));
+    border-right: 2px solid #17D8DB;
+    z-index: 1;
+    transition: width 0.1s linear, opacity 0.2s ease; 
+    pointer-events: none;
+    opacity: 0; /* Fully hidden by default so it never bleeds into view at 0% */
+}
+
+/* Make it snap into view only when the engine is running */
+.cv-btn-glass.is-loading .cv-btn-progress {
+    opacity: 1;
+}
+
+.cv-btn-glass.is-loading {
+    pointer-events: none;
+    border-color: rgba(23, 216, 219, 0.4);
+}
+
+/* ==========================================================================
+   LIQUID GLASS CV SHOWCASE CONTAINER WITH CYBER TECH CORNERS
+   ========================================================================== */
+
+#resume-document-section {
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+/* The Main Frame Base with Ambient Glow Syncing */
+.cv-frame-holder {
+    position: relative;
+    width: 100%;
+    max-width: 900px;           /* Ideal standard display width for a readable vertical CV */
+    margin: 0 auto;
+    border-radius: 24px;        /* Smooth, ultra-modern curved look */
+    padding: 24px;              /* Breathing room around the image page */
+    background: rgba(10, 25, 41, 0.35); /* Deep translucent space tint */
+    border: 1px solid rgba(23, 216, 219, 0.25);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7),
+                inset 0 0 30px rgba(23, 216, 219, 0.05);
+    overflow: hidden;
+    box-sizing: border-box;
+    
+    /* Attach the smooth synchronization pulse */
+    animation: liquidFramePulse 4s ease-in-out infinite;
+}
+
+/* Deep Fluid Glass Blurring Layer */
+.cv-fluid-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    background: radial-gradient(circle at 0% 0%, rgba(23, 216, 219, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(0, 119, 255, 0.06) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Image Wrapper Positioning Layout */
+.cv-image-wrapper {
+    position: relative;
+    z-index: 2; /* Sits securely above the blurred backdrop fluid */
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* The CV Rendered Graphic Sheet */
+.cv-render-src {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Slight interactive hover glide for deep canvas depth */
+.cv-frame-holder:hover .cv-render-src {
+    transform: scale(1.015);
+}
+
+
+/* --------------------------------------------------------------------------
+   CUSTOM ADVANCED CYBERNETIC CORNER DESIGN
+   -------------------------------------------------------------------------- */
+
+.cv-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    z-index: 5; /* Forces corners to float crisp on top of all visual frames */
+    border-color: #17D8DB;
+    border-style: solid;
+    pointer-events: none;
+    transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Distinct positioning mechanics for geometric tech brackets */
+.cv-corner.top-left {
+    top: 14px;
+    left: 14px;
+    border-width: 3px 0 0 3px;
+    border-top-left-radius: 6px;
+}
+.cv-corner.top-right {
+    top: 14px;
+    right: 14px;
+    border-width: 3px 3px 0 0;
+    border-top-right-radius: 6px;
+}
+.cv-corner.bottom-left {
+    bottom: 14px;
+    left: 14px;
+    border-width: 0 0 3px 3px;
+    border-bottom-left-radius: 6px;
+}
+.cv-corner.bottom-right {
+    bottom: 14px;
+    right: 14px;
+    border-width: 0 3px 3px 0;
+    border-bottom-right-radius: 6px;
+}
+
+/* Subtle expansion shift when a recruiter moves their cursor over the container */
+.cv-frame-holder:hover .cv-corner.top-left     { transform: translate(-3px, -3px); border-color: #0077ff; }
+.cv-frame-holder:hover .cv-corner.top-right    { transform: translate(3px, -3px);  border-color: #0077ff; }
+.cv-frame-holder:hover .cv-corner.bottom-left  { transform: translate(-3px, 3px);   border-color: #0077ff; }
+.cv-frame-holder:hover .cv-corner.bottom-right { transform: translate(3px, 3px);    border-color: #0077ff; }
+
+
+/* --------------------------------------------------------------------------
+   SOFT LIQUID SHINE GLOW ANIMATION LOOP
+   -------------------------------------------------------------------------- */
+
+@keyframes liquidFramePulse {
+    0%, 100% {
+        border-color: rgba(23, 216, 219, 0.25);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7),
+                    0 0 30px rgba(23, 216, 219, 0.05),
+                    inset 0 0 20px rgba(23, 216, 219, 0.02);
+    }
+    50% {
+        border-color: rgba(23, 216, 219, 0.55); /* High-shine peak illumination */
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75),
+                    0 0 45px rgba(23, 216, 219, 0.18),
+                    inset 0 0 35px rgba(23, 216, 219, 0.1);
+    }
+}
+
+
+/* The Invisible Canvas Sheet Stretching Over the Image */
+.cv-interactive-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Ensures it sits on top of the image sheet */
+    pointer-events: none; /* Allows pointer pass-through to parent hovers */
+}
+
+/* Individual Hot-Spot Structural Box */
+.cv-hotspot {
+    position: absolute;
+    display: block;
+    background: rgba(23, 216, 219, 0); /* Completely transparent invisible fill */
+    cursor: pointer;
+    pointer-events: auto; /* Re-activates click/touch registry on this block */
+    border-radius: 4px;   /* Smooth click boundary edge */
+    transition: background 0.2s ease;
+}
+
+/* OPTIONAL DESIGN BONUS: A very subtle blue tint reminder on hover */
+.cv-hotspot:hover {
+    background: rgba(23, 216, 219, 0.02); /* Gives a soft HUD feedback pulse when scanned */
+    outline: 1px dashed rgba(23, 216, 219, 0.3); /* Ultra-clean security grid preview wireframe */
+}
+
+/* ==========================================================================
+   ISOLATED CV INTERACTIVE ALERT PILL
+   ========================================================================== */
+
+/* Centers the alert pill nicely beneath the image frame */
+.cv-alert-pill-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -3px;
+    width: 100%;
+}
+
+.cv-alert-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;                  /* Marginally increased spacing inside the pill */
+    background: rgba(23, 216, 219, 0.04);
+    border: 1px solid rgba(23, 216, 219, 0.15);
+    border-radius: 30px;
+    padding: 10px 24px;         /* 👈 Increased padding to make the pill bigger */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    pointer-events: none; 
+}
+
+/* Scaled up Text Styling */
+.cv-alert-text {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.92rem;        /* 👈 Bumped up font size for clearer visibility */
+    font-weight: 500;
+    letter-spacing: 0.4px;
+}
+
+/* Slightly Larger Pulsing Active System Dot */
+.cv-alert-indicator-dot {
+    width: 8px;                /* Made the core dot slightly bigger to match scale */
+    height: 8px;
+    background-color: #17D8DB;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 8px #17D8DB;
+}
+
+/* Radar Pulse Ring Effect (Maintains sync) */
+.cv-alert-indicator-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 1px solid #17D8DB;
+    border-radius: 50%;
+    animation: radarPulse 2s cubic-bezier(0.25, 0, 0, 1) infinite;
+    box-sizing: border-box;
+}
+
+/* Radar Pulse Keyframe Logic */
+@keyframes radarPulse {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+    }
+    100% {
+        width: 320%;
+        height: 320%;
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   CYBERSECURITY METAPHOR FILE-FOLDER SKILLS CARDS
+   ========================================================================== */
+
+#resume-skills-section {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+/* Side-by-side flexible grid alignment with a 40px gap to avoid crowding */
+.tech-folder-grid {
+    display: flex;
+    flex-direction: column; /* 👈 Swapped from row to column to stack them vertically */
+    justify-content: center;
+    gap: 45px;             /* 👈 Pushed the gap to 45px for an excellent vertical layout breathing space */
+    width: 100%;
+    max-width: 1400px;       /* 👈 Clamps the width to line up perfectly with the CV frame */
+    margin: 0 auto;
+}
+
+/* Base Wrapper for an individual folder element */
+.tech-folder-card {
+    position: relative;
+    flex: 1;
+    min-width: 300px; /* Ensures responsiveness on smaller viewports */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1. THE FILE FOLDER TAB LAYER (From image_d45886.png) */
+.tech-folder-tab {
+    position: relative;
+    background: rgba(23, 216, 219, 0.08); /* Unified infused blue glass tint */
+    border: 1px solid rgba(23, 216, 219, 0.25);
+    border-bottom: none; /* Merges the tab seamlessly into the body below */
+    
+    /* Elegant, much rounder top corner profiles as requested */
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    
+    padding: 12px 28px;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    z-index: 2; /* Sits securely on top of the main body border line */
+    margin-left: 10px; /* Slight offset padding from the absolute edge */
+}
+
+/* Tab Text Typography */
+.tech-folder-tab-text {
+    color: #17D8DB;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase; /* Tactical readout format */
+}
+
+/* 2. THE MAIN FOLDER CONTAINER BODY BOX */
+.tech-folder-body {
+    position: relative;
+    background: rgba(10, 25, 41, 0.25); /* Deep translucent space tint */
+    border: 1px solid rgba(23, 216, 219, 0.25);
+    
+    /* Generous rounded corners matching your page's presentation boxes */
+    border-radius: 24px;
+    border-top-left-radius: 0px; /* Intentionally squared where the tab joins */
+    
+    padding: 30px;
+    min-height: 220px; /* Gives a stable baseline box structure */
+    box-sizing: border-box;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    margin-top: -1px; /* Overlaps perfectly with the tab's lower edge to remove gap anomalies */
+    
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 3. HOVER ACTIONS (Soft pulsing interactive highlights) */
+.tech-folder-card:hover .tech-folder-body,
+.tech-folder-card:hover .tech-folder-tab {
+    border-color: rgba(23, 216, 219, 0.5);
+}
+
+.tech-folder-card:hover .tech-folder-body {
+    box-shadow: 0 25px 60px rgba(23, 216, 219, 0.08);
+}
+
+/* Temporary testing placeholder alignment style */
+.tech-folder-placeholder {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.tech-system-text {
+    color: rgba(255, 255, 255, 0.4);
+    font-family: monospace;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Container holding the 5 icons distributed evenly across the card */
+.tech-icons-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 140px; 
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+
+/* Individual clickable link wrappers */
+.tech-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    width: 110px;
+    height: 100px;
+}
+
+/* 1. THE LOGO SVG ICON BASE STYLE (Soft White) */
+.tech-svg {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+    transform: translateY(0); 
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+/* 2. THE FLOATING TEXT LABEL LAYOUT (Now centered at the bottom) */
+.tech-icon-label {
+    position: absolute;
+    bottom: 2px; /* 👈 Moved to the base of the container */
+    color: #17D8DB;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    /* Initially invisible and resting slightly lower */
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* System style underline wireframe accent beneath text */
+.tech-icon-label::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0; 
+    height: 1.5px;
+    background-color: #17D8DB;
+    box-shadow: 0 0 6px rgba(23, 216, 219, 0.6);
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3. INVERTED HOVER LOGIC MECHANICS */
+
+/* A. Slide UP and change size slightly on interaction */
+.tech-icon-item:hover .tech-svg {
+    transform: translateY(-14px) scale(0.92); /* 👈 Slides up instead of down */
+}
+
+/* B. Fade in, pull label up into place at the bottom */
+.tech-icon-item:hover .tech-icon-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* C. Expand underline across text width */
+.tech-icon-item:hover .tech-icon-label::after {
+    width: 100%;
+}
+
+/* Converts local colored/black assets into a pristine uniform soft white */
+.tech-svg.white-filter {
+    filter: brightness(0) invert(1) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+/* Layout structure for the 2 column card distribution */
+.soft-skills-grid {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Glassmorphism card styling matching the folder layout */
+.soft-skill-card {
+    flex: 1;
+    background: rgba(10, 25, 47, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(23, 216, 219, 0.15);
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle card pop on hover */
+.soft-skill-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(23, 216, 219, 0.4);
+    box-shadow: 0 10px 30px -15px rgba(23, 216, 219, 0.2);
+}
+
+/* Inner skill element spacing */
+.soft-skill-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+/* Glowing terminal-style bullet pointer */
+.skill-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #17D8DB;
+    border-radius: 50%;
+    margin-top: 8px;
+    box-shadow: 0 0 8px rgba(23, 216, 219, 0.8);
+    flex-shrink: 0;
+}
+
+.skill-text-group h4 {
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.skill-text-group p {
+    margin: 0;
+    color: #8892b0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* Redirect text wrapper styling */
+.skills-redirect-wrapper {
+    width: 100%;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.terminal-redirect {
+    font-family: 'Courier New', Courier, monospace; /* Terminal font aesthetic */
+    color: #8892b0;
+    font-size: 0.88rem;
+    margin: 0;
+}
+
+/* High-visibility interactive hyperlink text */
+.terminal-link {
+    color: #17D8DB;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+}
+
+.terminal-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #17D8DB;
+    box-shadow: 0 0 4px rgba(23, 216, 219, 0.6);
+    transition: transform 0.3s ease;
+    transform: scaleX(0.8);
+    transform-origin: center;
+}
+
+/* Hover glow expanding underline effect */
+.terminal-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(23, 216, 219, 0.4);
+}
+
+.terminal-link:hover::after {
+    background-color: #ffffff;
+    box-shadow: 0 0 6px #ffffff;
+    transform: scaleX(1);
+}
+
+/* Responsive collapse for small screens/mobiles */
+@media (max-width: 768px) {
+    .soft-skills-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Make sure the container links nicely without shifting layout */
+.cv-alert-pill-link {
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Hover effects for the interactive version of your pill */
+.cv-alert-pill.interactive-pill {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-alert-pill-link:hover .cv-alert-pill.interactive-pill {
+    background: rgba(23, 216, 219, 0.1);
+    border-color: rgba(23, 216, 219, 0.4);
+    box-shadow: 0 0 15px rgba(23, 216, 219, 0.25);
+}
+
+/* Let the cyan dot gently pulse to draw the recruiter's eye */
+.cv-alert-indicator-dot.processing-dot {
+    animation: pillPulse 2s infinite ease-in-out;
+}
+
+@keyframes pillPulse {
+    0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(23, 216, 219, 0.7); }
+    70% { transform: scale(1.1); opacity: 0.8; box-shadow: 0 0 0 6px rgba(23, 216, 219, 0); }
+    100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(23, 216, 219, 0); }
+}
+
+
+
+/* Base text span layout */
+.glow-target {
+    position: relative;
+    color: inherit; 
+    display: inline-block;
+    /* Added transform to the transition property for a smooth scaling effect */
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scale(1); /* Default scale */
+}
+
+/* The Left-to-Right Animated Underline Track */
+.glow-target::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #0070f3; 
+    box-shadow: 0 0 8px rgba(0, 112, 243, 0.6);
+    transform: scaleX(0); 
+    transform-origin: left; 
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* HOVER STATE: Triggered when the user hovers anywhere on the pill link container */
+.cv-alert-pill-link:hover .glow-target {
+    color: #00d2ff !important; 
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+    /* Scales up the text slightly on hover */
+    transform: scale(1.05); 
+}
+
+/* Slide the underline in from left to right on hover */
+.cv-alert-pill-link:hover .glow-target::after {
+    background-color: #00d2ff;
+    box-shadow: 0 0 10px #00d2ff;
+    transform: scaleX(1); 
+}
+
+/* Final Card Layout Box */
+.cv-gateway-card {
+    background: rgba(10, 25, 47, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(23, 216, 219, 0.15);
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 950px;
+    margin: 40px auto 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all content inside card horizontally */
+    text-align: center;   /* Centers text lines */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-gateway-card:hover {
+    border-color: rgba(23, 216, 219, 0.3);
+    box-shadow: 0 10px 30px -15px rgba(23, 216, 219, 0.15);
+}
+
+.gateway-content {
+    margin-bottom: 25px;
+}
+
+.gateway-status-tag {
+    font-family: 'Courier New', Courier, monospace;
+    color: #17D8DB;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.gateway-content h3 {
+    margin: 0;
+    color: #17D8DB;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.gateway-content p {
+    margin: 10px 0 0 0;
+    color: #FFFFFF;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* Button Layout Structure */
+.gateway-action-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.gateway-btn-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.gateway-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 28px;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(23, 216, 219, 0.4);
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover phase: turns to signature blue glow system */
+.gateway-btn-link:hover .gateway-btn {
+    color: #0a192f;
+    background: #17D8DB;
+    border-color: #17D8DB;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(23, 216, 219, 0.35);
+}
+
+/* Smooth icon scale response on hover */
+.gateway-btn .btn-icon {
+    transition: transform 0.25s ease;
+}
+.gateway-btn-link:hover .btn-icon {
+    transform: translateX(2px) translateY(-1px) scale(1.05);
+}
+
+/* ==========================================
+   CERTIFICATE CHOSEN FILTER BLOCKS (ISOLATED)
+   ========================================== */
+
+.cert-filter-block {
+    background: rgba(23, 216, 219, 0.03);
+    border: 1px solid rgba(23, 216, 219, 0.2);
+    border-radius: 18px;
+    padding: 25px 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px; /* Kept compact as per your reference image */
+}
+
+.cert-filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cert-filter-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.cert-filter-icon {
+    color: #17D8DB;
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 8px rgba(23, 216, 219, 0.5));
+}
+
+.cert-custom-dropdown {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(23, 216, 219, 0.3);
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    appearance: none; /* Removes default browser styling */
+}
+
+.cert-custom-dropdown:hover, .cert-custom-dropdown:focus {
+    border-color: #17D8DB;
+    box-shadow: 0 0 15px rgba(23, 216, 219, 0.2);
+    color: white;
+}
+
+/* Style the internal option entries cleanly */
+.cert-custom-dropdown option {
+    background: #0a0a0a;
+    color: white;
+}
+
+/* Cert Isolated No-Results States */
+.cert-no-results-title {
+    display: inline-block;
+}
+
+.cert-no-results-title::after {
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+
+/* ==========================================
+   CERTIFICATE CARDS SHOWCASE GRID (ISOLATED)
+   ========================================== */
+
+#cert-showcase {
+    max-width: 1050px; 
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.cert-container {
+    padding: 10px 20px;
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 25px;
+    position: relative;
+}
+
+.cert-card {
+    background: rgba(23, 216, 219, 0.03);
+    border: 1px solid rgba(23, 216, 219, 0.2);
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.1);
+    
+    /* Layout Logic Matching Your Signature Theme */
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; 
+    gap: 40px;
+    
+    /* State Logic for Filtering System Transitions */
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+    visibility: visible;
+    
+    /* Unified Transition Engine */
+    transition: 
+        opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+        filter 0.6s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.cert-card:not(.cert-hidden-card):hover {
+    border-color: rgba(23, 216, 219, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 25px rgba(23, 216, 219, 0.2);
+}
+
+/* Used by JS loop to fade out filtered elements smoothly */
+.cert-card.cert-hidden-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.92);
+    filter: blur(8px);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.cert-content-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.cert-card-title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.cert-card-info {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 20px; 
+    max-width: 95%;
+}
+
+.cert-facts-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px; 
+    flex-wrap: nowrap; /* Forces tags to maintain baseline horizontal rule */
+}
+
+.cert-date-pill {
+    align-self: flex-start;
+    background: rgba(23, 216, 219, 0.05);
+    color: #ffffff;
+    padding: 6px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid rgba(23, 216, 219, 0.3);
+    margin-top: 35px; /* Creates spacing right above tags */
+}
+
+.cert-date-icon {
+    font-size: 0.9rem;
+    margin-right: 8px;
+    color: #ffffff;
+}
+
+.cert-tags-pill-area {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cert-tag-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Core Target Colors Matching Your Custom Dropdown Setup */
+/* Purple Tag (Replaces Blue) */
+.cert-tag-purple {
+    background: rgba(191, 64, 191, 0.1);
+    color: #BF40BF;
+    border-color: rgba(191, 64, 191, 0.3);
+}
+
+/* Orange Tag (Kept for Communication) */
+.cert-tag-orange {
+    background: rgba(255, 127, 80, 0.1);
+    color: #FF7F50;
+    border-color: rgba(255, 127, 80, 0.3);
+}
+
+/* Green Tag (Replaces Cyan) */
+.cert-tag-green {
+    background: rgba(102, 255, 153, 0.1);
+    color: #66FF99;
+    border-color: rgba(102, 255, 153, 0.3);
+} 
+
+/* 🛠️ Right Content Column Container */
+.cert-content-right {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+}
+
+/* 🛠️ Image Box Configuration with localized 10px widening */
+.cert-image-box {
+    background: rgba(0, 0, 0, 0.4);
+    
+    /* 1. Physically expands the container base width by 10px */
+    width: calc(100% + 10px);
+    
+    /* 2. Anchors that extra width to push out toward the left middle gap */
+    margin-left: -10px; 
+    
+    min-height: 290px; 
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+    box-sizing: border-box;
+    
+    /* Thin, elegant glowing cyan border line */
+    border: 1px solid rgba(23, 216, 219, 0.25); 
+    border-radius: 12px; 
+    box-shadow: 0 0 15px rgba(23, 216, 219, 0.08);
+    
+    /* Smooth scaling on card hover */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block; 
+    border-radius: 11px; 
+}
+
+/* Injects life into the image border glow when hovering anywhere on the card */
+.cert-card:not(.cert-hidden-card):hover .cert-image-box {
+    border-color: rgba(23, 216, 219, 0.55);
+    box-shadow: 0 0 22px rgba(23, 216, 219, 0.2);
+}
+
+.cert-image-box img:not([src]), 
+.cert-image-box img[src=""], 
+.cert-image-box img[alt] {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Issuer Organization Container (Matches Date Pill Alignment) */
+.cert-issuer-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;     /* Spaces out the date pill and the issuer pill beautifully */
+    margin-top: 35px; /* Replaces the margin-top that was on your date pill */
+}
+
+/* Override your old date pill margin so it doesn't push away from the issuer */
+.cert-date-pill {
+    margin-top: 0 !important; 
+}
+
+/* The Native Issuer Branding Pill */
+.cert-issuer-pill {
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 6px 14px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    letter-spacing: 0.5px;
+}
+
+/* Enforces strict sizing on vendor logos so they never distort */
+/* Enforces strict sizing on vendor logos and injects your signature glowing blue theme */
+.cert-vendor-logo {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    margin-right: 8px;
+    
+    /* STEP 1: Turn the entire logo into a solid silhouette 
+       STEP 2: Shift the silhouette color to match your signature Cyan (#17D8DB)
+       STEP 3: Apply the characteristic glow vector shadow
+    */
+    filter: 
+        brightness(0) 
+        saturate(100%) 
+        invert(75%) 
+        sepia(47%) 
+        saturate(939%) 
+        hue-rotate(134deg) 
+        brightness(95%) 
+        contrast(87%) 
+        drop-shadow(0 0 4px rgba(23, 216, 219, 0.6));
+        
+    transition: filter 0.3s ease;
+}
+
+/* Optional: Crank up the glow intensity slightly when hovering over the card */
+.cert-card:not(.cert-hidden-card):hover .cert-vendor-logo {
+    filter: 
+        brightness(0) 
+        saturate(100%) 
+        invert(75%) 
+        sepia(47%) 
+        saturate(939%) 
+        hue-rotate(134deg) 
+        brightness(95%) 
+        contrast(87%) 
+        drop-shadow(0 0 8px rgba(23, 216, 219, 0.9));
+}
+
+/* 🔀 Split Intro Box Distribution Layout */
+.self-split-card {
+    display: flex;
+    align-items: stretch; /* Change to stretch so right column matches left height */
+    justify-content: space-between;
+    gap: 40px; /* Slightly wider gap for breathing room */
+}
+
+.self-card-left {
+    flex: 2.5; /* Gives the text plenty of wide layouts */
+}
+
+.self-card-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px; /* Ensures the button box remains substantial on smaller displays */
+}
+
+/* 🔳 MASSIVE Rounded-Square Direct Route Button UI */
+.self-drive-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Spans the entire right-hand flex slot */
+    max-width: 200px; /* Keeps it a perfect crisp square block */
+    aspect-ratio: 1 / 1; /* Locks it to a flawless square geometry */
+    background: rgba(23, 216, 219, 0.03);
+    border: 2px solid rgba(23, 216, 219, 0.3);
+    border-radius: 20px; /* Slightly smoother curve for a larger card */
+    color: #17D8DB;
+    font-size: 4.5rem; /* Massive icon presence */
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.05);
+}
+
+.self-drive-btn:hover {
+    background: rgba(23, 216, 219, 0.12);
+    border-color: #17D8DB;
+    color: #ffffff;
+    transform: scale(1.04);
+    box-shadow: 0 0 35px rgba(23, 216, 219, 0.25);
+}
+
+/* Micro-adjustment for the icon hover response */
+.self-drive-btn i {
+    transition: transform 0.3s ease;
+}
+
+.self-drive-btn:hover i {
+    transform: scale(1.08);
+}
+
+/* 🎛️ 4-Card Matrix Layout System */
+.self-grid-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.self-matrix-node {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.self-matrix-node:not(.node-blueprint):hover {
+    background: rgba(23, 216, 219, 0.04);
+    border-color: rgba(23, 216, 219, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icons & Labels inside Node Blocks */
+.node-icon-wrapper {
+    font-size: 2rem;
+    color: #17D8DB;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.self-matrix-node:hover .node-icon-wrapper {
+    transform: scale(1.1);
+}
+
+.node-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* 🛠️ Unactivated Empty Template Blueprint State */
+.node-blueprint {
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.node-blueprint .node-icon-wrapper {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.node-blueprint .node-title {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* 📜 Bottom Animating Quote Field */
+.closing-quote-track {
+    margin-top: 80px;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.functional-quote {
+    font-size: 1.3rem !important;
+    text-transform: none !important;
+    letter-spacing: 1px !important;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.functional-quote::after {
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+
+
+/* Standalone GitHub Split Card - Explicitly wider than the cert cards */
+.github-split-card {
+    display: flex;
+    max-width: 1100px; /* Adjust this value to make it precisely as wide as you want */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #0d1117; /* Matches your dark command-center aesthetic */
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Layout Division */
+.github-card-left {
+    flex: 1;
+    padding: 30px;
+}
+
+.github-card-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-left: 1px solid #30363d; /* Vertical divider between text and button */
+}
+
+/* Standalone GitHub Anchor Button */
+.github-drive-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #21262d;
+    color: #c9d1d9;
+    font-size: 28px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Hover Glow Mechanics */
+.github-drive-btn:hover {
+    color: #ffffff;
+    background: #30363d;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); /* Custom signoff glow style */
+}
+
+/* Dedicated container wrapper for the GitHub section */
+.github-container-wrapper {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    position: relative;
+    width: 100%;
+    /* Replicates the original container's top/bottom padding, 
+       but uses 15px on the sides instead of 20px to widen the inner card by exactly 10px */
+    padding: 20px 15px; 
+    box-sizing: border-box;
+}
+
+/* Section styling to maintain comfortable breathing room before the footer */
+#project-github-showcase {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+/* Tightens the horizontal width to match the regular project cards + 10px */
+#project-github-showcase .project-intro-card.self-split-card {
+    max-width: 1030px; /* Adjust this number to perfectly dial it in */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}

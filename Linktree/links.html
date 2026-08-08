@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal Flood | Portal Gateway</title>
+     <link rel="icon" type="image/png" href="Faviconm.png">
+     <link rel="apple-touch-icon" href="Faviconm.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           🎨 SYSTEM ROOT & RESET
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #030708;
+            /* Smooth ambient abstract canvas background */
+            background-image: 
+                radial-gradient(circle at 50% -20%, rgba(23, 216, 219, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 120%, rgba(23, 216, 219, 0.05) 0%, transparent 50%);
+            color: #FFFFFF;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 24px 20px 24px;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================================
+           🖼️ LOGO / HEADER ZONE
+           ========================================================================== */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .profile-logo-wrapper {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: rgba(6, 11, 13, 0.6);
+            border: 2px solid rgba(23, 216, 219, 0.3);
+            box-shadow: 0 0 20px rgba(23, 216, 219, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .profile-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+       .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* 🚀 THE Perfect CSS CIRCLE and ZOOM CONTAINER */
+.logo-crop-circle {
+    /* Set the specific circle dimensions and position it on the canvas */
+    width: 96px;
+    height: 96px;
+    margin-bottom: 16px;
+    
+    /* 1. THE PERFECT CROP MECHANISM: Ensures anything bleeding outside the 96x96 circle is invisible */
+    overflow: hidden; 
+    border-radius: 50%;
+    
+    /* Center the container on the page */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    /* Original visual styling rules for consistency */
+    background: rgba(6, 11, 13, 0.6);
+    border: 2px solid rgba(23, 216, 219, 0.3);
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.15);
+}
+
+.profile-logo {
+    /* 2. THE Perfect CSS ZOOM MECHANISM: Tells the image to completely cover the container, 
+       even if it has to stretch slightly, which forces a lossless zoom effect inside the overflow area. */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the aspect ratio is maintained without distorting the shield or text */
+
+    /* 🎨 White theme engine rules for consistency */
+    
+    opacity: 0.9;
+}
+
+.profile-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.profile-sub {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #17D8DB;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+        /* ==========================================================================
+           ⚡ LINK TREE BUTTON MATRIX (GRID LAYOUT)
+           ========================================================================== */
+        .links-matrix {
+            width: 100%;
+            max-width: 400px; 
+            display: flex;
+            flex-direction: column;
+            /* 🚀 SPACED APART: Increased by an extra 5px (from 16px to 21px) */
+            gap: 21px;
+            margin-bottom: auto; 
+        }
+
+        .link-btn {
+            position: relative;
+            
+            /* 🚀 GRID SYMMETRIC ENGINE: Balanced 24px tracks on both flanks */
+            display: grid;
+            grid-template-columns: 24px 1fr 24px;
+            align-items: center;
+            
+            width: 100%;
+            height: 60px;
+            padding: 0 20px;
+            text-decoration: none;
+            background: rgba(6, 11, 13, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(23, 216, 219, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        /* 📝 Text Node Centering */
+        .btn-text {
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        /* 🖼️ Symmetrical Icon Layout Frames */
+        .btn-icon-left, .btn-icon-right {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 🎯 UNIFORM SOFT WHITE FILTER ENGINE */
+        .btn-filter-white {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.8; 
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+
+        /* Hover & Tap States */
+        .link-btn:hover, .link-btn:active {
+            background: rgba(23, 216, 219, 0.05);
+            border-color: #17D8DB;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(23, 216, 219, 0.15);
+        }
+
+        .link-btn:hover .btn-text {
+            color: #17D8DB;
+        }
+
+        .link-btn:hover .btn-filter-white {
+            opacity: 1;
+            filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(23, 216, 219, 0.5));
+        }
+
+        /* Clean JavaScript-driven active ripple element */
+        .ripple {
+            position: absolute;
+            background: rgba(23, 216, 219, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect 0.5s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* ==========================================================================
+           🏛️ PROFESSIONAL FOOTER CONTEXT
+           ========================================================================== */
+        .professional-footer {
+            text-align: center;
+            padding-top: 40px;
+            width: 100%;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 2px;
+            background: rgba(23, 216, 219, 0.2);
+            margin: 0 auto 16px auto;
+            border-radius: 2px;
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+        }
+
+        .footer-text span {
+            color: rgba(23, 216, 219, 0.6);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="profile-header">
+        
+        <div class="logo-crop-circle">
+            <img src="CF (1).png" alt="CF Shield Logo" class="profile-logo">
+        </div>
+
+        <h1 class="profile-name">Cal Flood</h1>
+        <p class="profile-sub">CyberSecurity</p>
+    </header>
+
+    <main class="links-matrix">
+        
+        <a href="https://yourdomain.com" class="link-btn">
+            <div class="btn-icon-left">
+                <img src="world-wide-web.png" alt="Website" class="btn-filter-white">
+            </div>
+            <span class="btn-text">My Website</span>
+            <div class="btn-icon-right">
+                <img src="world-wide-web.png" alt="Website" class="btn-filter-white">
+            </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/cal-flood-38323729a" class="link-btn">
+            <div class="btn-icon-left">
+                <img src="linkedin.png" alt="LinkedIn" class="btn-filter-white">
+            </div>
+            <span class="btn-text">My LinkedIn</span>
+            <div class="btn-icon-right">
+                <img src="linkedin.png" alt="LinkedIn" class="btn-filter-white">
+            </div>
+        </a>
+        
+        <a href="https://www.instagram.com/cal_flood2026?igsh=OHhuejBtaDQ5bWJo" target="_blank" rel="noopener noreferrer" class="link-btn">
+            <div class="btn-icon-left">
+                <img src="instagram.png" alt="Instagram" class="btn-filter-white">
+            </div>
+            <span class="btn-text">My Instagram</span>
+            <div class="btn-icon-right">
+                <img src="instagram.png" alt="Instagram" class="btn-filter-white">
+            </div>
+        </a>
+        
+        <a href="https://github.com/Cal800" target="_blank" rel="noopener noreferrer" class="link-btn">
+            <div class="btn-icon-left">
+                <img src="github.png" alt="GitHub" class="btn-filter-white">
+            </div>
+            <span class="btn-text">My GitHub</span>
+            <div class="btn-icon-right">
+                <img src="github.png" alt="GitHub" class="btn-filter-white">
+            </div>
+        </a>
+        
+        <a href="mailto:CFlood.com@gmail.com" class="link-btn">
+            <div class="btn-icon-left">
+                <img src="gmail.png" alt="Contact" class="btn-filter-white">
+            </div>
+            <span class="btn-text">Contact Me</span>
+            <div class="btn-icon-right">
+                <img src="gmail.png" alt="Contact" class="btn-filter-white">
+            </div>
+        </a>
+        
+    </main>
+
+    <footer class="professional-footer">
+        <div class="footer-divider"></div>
+        <p class="footer-text">
+            © 2026 Cal Flood<br>
+            Protected via <span>CFlood.com</span>
+        </p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.link-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let x = e.clientX - e.target.getBoundingClientRect().left;
+                let y = e.clientY - e.target.getBoundingClientRect().top;
+                
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 500);
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="../responsive.css">
+
+</body>
+</html>

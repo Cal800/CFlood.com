@@ -1,0 +1,3314 @@
+/* ========================================
+   RESPONSIVE.CSS - Phase 4: Mobile Compatibility
+   ========================================
+   Clean slate responsive design add-on for portfolio website
+   
+   Breakpoint Architecture:
+   - Mobile: @media (max-width: 480px)
+   - Tablets: @media (max-width: 768px)
+   - Laptops: @media (max-width: 1024px)
+   - Ultrawide: @media (min-width: 1200px)
+   ======================================== */
+
+/* ========================================
+   MOBILE PORTRAIT & LANDSCAPE (max-width: 480px)
+   ======================================== */
+@media (max-width: 480px) {
+    /* Global Fluid Layout - Navigation */
+    .navbar {
+        padding: 0 1rem;
+        height: auto;
+        min-height: 70px;
+        flex-wrap: wrap;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+        padding: 6px 0;
+    }
+    
+    .brand-name {
+        font-size: 1.1rem;
+    }
+    
+    /* Global Fluid Layout - Hero Section */
+    .hero-container {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 150px;
+        min-height: auto;
+        padding-bottom: 50px;
+    }
+    
+    .glass-card {
+        width: 95%;
+        max-width: 95%;
+        padding: 30px 20px;
+        min-height: auto;
+    }
+    
+    .hero-name {
+        font-size: 2.2rem;
+    }
+    
+    .hero-tags {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    /* Global Fluid Layout - About Section */
+    .about-section {
+        padding: 60px 5% 80px 5%;
+        min-height: auto;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .about-text-card {
+        padding: 35px 25px;
+        min-height: auto;
+        width: 100%;
+    }
+    
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .about-image-container {
+        min-height: 250px;
+        width: 100%;
+    }
+    
+    .about-image-container img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Global Fluid Layout - Socials Section */
+    .socials-section {
+        padding: 20px 0 30px 0;
+    }
+    
+    .socials-header {
+        margin-bottom: 40px;
+    }
+    
+    .socials-title {
+        font-size: 1.5rem;
+    }
+    
+    .socials-container {
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+    }
+    
+    .social-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    /* Global Fluid Layout - Footer */
+    .footer-content {
+        height: auto;
+        padding: 30px 20px;
+        width: 100%;
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .footer-logo {
+        font-size: 1.2rem;
+    }
+    
+    .footer-tech {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+    }
+    
+    /* Global Fluid Layout - About Me Page */
+    .about-main-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        width: 95%;
+        max-width: 100%;
+    }
+    
+    .grid-card {
+        padding: 30px 25px;
+        min-height: auto;
+        width: 100%;
+    }
+    
+    .grid-icon {
+        font-size: 2.2rem;
+    }
+    
+    .grid-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .grid-main-title {
+        font-size: 2.2rem;
+    }
+    
+    /* Global Fluid Layout - Hobbies Stack */
+    .hobby-row {
+        flex-direction: column;
+        min-height: auto;
+        width: 100%;
+    }
+    
+    .hobby-content {
+        padding: 25px;
+        width: 100%;
+    }
+    
+    .hobby-header-alt span {
+        font-size: 1.1rem;
+    }
+    
+    .hobby-content p {
+        font-size: 0.95rem;
+    }
+    
+    .hobby-image-box {
+        width: 100%;
+        height: 180px;
+    }
+    
+    /* Global Fluid Layout - Projects Page */
+    #projects-header {
+        padding-top: 120px;
+        max-width: 95%;
+        width: 95%;
+    }
+    
+    .project-intro-card {
+        padding: 25px 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .animated-title {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .project-intro-text p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    #project-showcase {
+        max-width: 95%;
+        width: 95%;
+        padding-bottom: 40px;
+    }
+    
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 25px 20px;
+        width: 100%;
+    }
+    
+    .project-card-title {
+        font-size: 1.4rem;
+    }
+    
+    .project-card-info {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .project-image-box {
+        min-height: 180px;
+        width: 100%;
+    }
+
+    /* Scale buttons for Mobile */
+    .portfolio-btn.web-project-btn.wide-btn {
+        width: 180px !important;
+        height: 180px !important;
+    }
+
+    .glass-button {
+        width: 180px !important;
+        height: 180px !important;
+        padding: 15px !important;
+    }
+    
+    .filter-block {
+        padding: 20px 25px;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .filter-title {
+        font-size: 1.4rem;
+    }
+}
+
+/* ========================================
+   TABLETS PORTRAIT (max-width: 768px)
+   ======================================== */
+@media (max-width: 768px) {
+    /* Global Fluid Layout - Navigation */
+    .navbar {
+        padding: 0 2rem;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+    
+    /* Global Fluid Layout - Hero Section */
+    .hero-container {
+        padding-left: 6%;
+        padding-right: 6%;
+        padding-top: 180px;
+    }
+    
+    .glass-card {
+        width: 90%;
+        max-width: 90%;
+        padding: 45px 35px;
+    }
+    
+    .hero-name {
+        font-size: 2.8rem;
+    }
+    
+    .hero-tags {
+        font-size: 0.75rem;
+    }
+    
+    /* Global Fluid Layout - About Section */
+    .about-grid {
+        grid-template-columns: 1fr;
+        max-width: 90%;
+        width: 90%;
+        gap: 35px;
+    }
+    
+    .about-text-card {
+        padding: 45px 35px;
+        width: 100%;
+    }
+    
+    .about-text h2 {
+        font-size: 2rem;
+    }
+    
+    .about-image-container {
+        width: 100%;
+    }
+    
+    /* Global Fluid Layout - Socials Section */
+    .socials-container {
+        gap: 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 90%;
+        max-width: 90%;
+    }
+    
+    .social-icon {
+        width: 100px;
+        height: 100px;
+        font-size: 2.4rem;
+    }
+    
+    /* Global Fluid Layout - About Me Page */
+    .about-main-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 90%;
+        width: 90%;
+    }
+    
+    .grid-card {
+        padding: 35px 30px;
+        width: 100%;
+    }
+    
+    /* Global Fluid Layout - Hobbies Stack */
+    .hobby-row {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hobby-image-box {
+        width: 100%;
+        height: 200px;
+    }
+    
+    /* Global Fluid Layout - Projects Page */
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: 100%;
+    }
+    
+    .project-intro-card {
+        padding: 35px 30px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .animated-title {
+        font-size: 2rem;
+    }
+    
+    #projects-header {
+        max-width: 90%;
+        width: 90%;
+    }
+    
+    #project-showcase {
+        max-width: 90%;
+        width: 90%;
+    }
+
+    /* Project Buttons - Tablet Adjustments */
+    .project-section-wrapper,
+    .project-links-section.left-aligned {
+        padding-top: 15px !important;
+    }
+
+    .portfolio-btn.web-project-btn.wide-btn,
+    .glass-button {
+        width: 200px !important;
+        height: 200px !important;
+        overflow: hidden !important;
+    }
+
+    .glass-button {
+        padding: 20px !important;
+    }
+    
+    /* Global Fluid Layout - Footer */
+    .main-footer {
+        margin-top: 60px;
+    }
+    
+    .footer-content {
+        width: 100%;
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* ========================================
+   LAPTOPS / SMALL DESKTOPS (max-width: 1024px)
+   ======================================== */
+@media (max-width: 1024px) {
+    /* Global Fluid Layout - Navigation */
+    .navbar {
+        padding: 0 3rem;
+    }
+    
+    .nav-links {
+        gap: 1.8rem;
+    }
+    
+    /* Global Fluid Layout - Hero Section */
+    .hero-container {
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-top: 220px;
+    }
+    
+    .glass-card {
+        width: 85%;
+        max-width: 85%;
+    }
+    
+    /* Global Fluid Layout - About Section */
+    .about-grid {
+        max-width: 900px;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 35px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .about-text-card,
+    .about-image-container {
+        width: 100%;
+    }
+    
+    /* Global Fluid Layout - Socials Section */
+    .socials-container {
+        gap: 60px;
+        max-width: 900px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    /* Global Fluid Layout - About Me Page */
+    .about-main-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Section dividers in About Me page only */
+    .section-divider4 {
+        margin-bottom: 60px;
+    }
+    
+    /* Global Fluid Layout - Projects Page */
+    #projects-header {
+        max-width: 900px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .project-intro-card {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    #project-showcase {
+        max-width: 900px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .project-card {
+        grid-template-columns: 1.3fr 1fr;
+        gap: 35px;
+        width: 100%;
+    }
+    
+    .project-content-left,
+    .project-content-right {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .project-card-info {
+        max-width: 100%;
+    }
+    
+    .project-image-box {
+        max-width: 100%;
+    }
+    
+    /* Section Dividers */
+    .section-divider,
+    .section-divider2,
+    .section-divider3 {
+        width: 85%;
+    }
+}
+
+/* ==========================================================================
+   LAPTOP SPECIFIC RESPONSIVE OVERRIDES (max-width: 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+
+  /* Target only section dividers that live inside the About section */
+  .about-main-grid .section-divider,
+  .about-section .section-divider,
+  .about-main-grid .section-divider2,
+  .about-section .section-divider2 {
+    margin-top: 30px !important;
+    margin-bottom: 35px !important; /* Adds breathing room specifically for About Me */
+    position: relative !important;
+  }
+}
+
+/* ========================================
+   ULTRAWIDE / LARGE DISPLAYS (min-width: 1200px)
+   ======================================== */
+@media (min-width: 1200px) {
+    /* Global Fluid Layout - Dynamic Scaling */
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Hero Section */
+    .glass-card {
+        max-width: 800px;
+    }
+    
+    /* About Section */
+    .about-grid {
+        max-width: 1200px;
+    }
+    
+    /* About Me Page */
+    .about-main-grid {
+        max-width: 1300px;
+    }
+    
+    /* Projects Page */
+    #projects-header {
+        max-width: 1100px;
+    }
+    
+    #project-showcase {
+        max-width: 1100px;
+    }
+    
+    /* Prevent horizontal scroll on ultrawide */
+    .main-footer,
+    .footer-content {
+        max-width: 100%;
+    }
+    
+    /* Ensure content doesn't overflow */
+    .project-card,
+    .project-intro-card,
+    .filter-block {
+        max-width: 100%;
+    }
+}
+
+/* ========================================
+   TOUCH SAFETY - Hover Degradation
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+    .glass-card:hover {
+        transform: none;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 
+                    0 0 40px rgba(23, 216, 219, 0.25);
+    }
+    
+    .social-item:hover .social-icon {
+        transform: none;
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+    
+    .social-item:hover .social-tag {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    
+    .about-text-card:hover,
+    .about-image-container:hover {
+        transform: none;
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 
+                    0 0 40px rgba(23, 216, 219, 0.25);
+    }
+    
+    .grid-card:hover {
+        transform: none;
+        border-color: rgba(23, 216, 219, 0.2);
+        box-shadow: none;
+    }
+    
+    .hobby-row:hover {
+        border-color: rgba(23, 216, 219, 0.2);
+        box-shadow: none;
+        transform: none;
+    }
+    
+    .project-card:not(.hidden-card):hover {
+        border-color: rgba(23, 216, 219, 0.2);
+        transform: none;
+        box-shadow: 0 0 20px rgba(23, 216, 219, 0.1);
+    }
+    
+    .footer-content:hover {
+        box-shadow: 0 -15px 30px rgba(23, 216, 219, 0.15);
+    }
+    
+    .social-tag {
+        opacity: 1;
+        transform: translateY(0);
+        bottom: -40px;
+    }
+    
+    .social-tag::after {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   GENERAL RESPONSIVE UTILITIES
+   ======================================== */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.project-card-title,
+.animated-title,
+.grid-card h3 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.container,
+.wrapper,
+section {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.self-split-card,
+.project-intro-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Global Button Scrollbar & Top-Clipping Protection */
+.portfolio-btn.web-project-btn.wide-btn,
+.glass-button {
+    overflow: hidden !important; /* Kills ghost scrollbars */
+    position: relative;
+    box-sizing: border-box;
+}
+
+.glass-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-links-section.left-aligned,
+.project-section-wrapper,
+.glass-link-container {
+    padding-top: 15px !important; /* Top space preventing clipped borders */
+}
+
+.glass-link-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Center alignment fixes for medium viewports */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .about-grid,
+    .about-main-grid,
+    #project-showcase,
+    .project-container {
+        margin: 0 auto;
+        width: 90%;
+        max-width: 900px;
+    }
+    
+    .project-card {
+        justify-items: center;
+        align-items: center;
+    }
+    
+    .project-content-left,
+    .project-content-right {
+        justify-self: center;
+        align-self: center;
+    }
+}
+
+/* Spacing fixes */
+.cert-filter-area-wrapper,
+.filter-area-wrapper {
+    margin-top: 25px !important;
+}
+
+/* ========================================
+   PROJECT REPOSITORY LINK FIX
+   ======================================== */
+
+.project-section-wrapper,
+.glass-link-container {
+    overflow: visible !important;
+}
+
+.glass-link-container {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 15px !important;
+}
+
+a.glass-button {
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* Hide scrollbars on container elements */
+.glass-link-container,
+.project-section-wrapper {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.glass-link-container::-webkit-scrollbar,
+.project-section-wrapper::-webkit-scrollbar {
+    display: none; /* WebKit / Chrome / Safari */
+}
+
+
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL SAFETY NET & CONTAINER CONTAINMENT (All Viewports)
+   -------------------------------------------------------------------------- */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img, svg, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Force text to wrap instead of overflowing or clipping */
+.animated-title,
+.narrative-body p,
+.narrative-body strong,
+.cert-intro-text,
+.cert-closing-text,
+.portal-card-description {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Ensure major content containers stay within viewport bounds */
+.narrative-section,
+.narrative-body,
+.narrative-body-expanded,
+.cert-hero-card,
+.tools-detailed-card {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL BRAND LOGO PURGE (Hides side logos permanently across ALL screens)
+   -------------------------------------------------------------------------- */
+.canvas-standalone-brand-block,
+.canvas-brand-png,
+.canvas-brand-png-white,
+.canvas-brand-png-white1,
+.canvas-brand-png-white2 {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: hidden !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. GLOBAL BASE BUG FIXES (Runs across all screen widths)
+   -------------------------------------------------------------------------- */
+
+/* Title Alignment & Sizing */
+.animated-title {
+    width: fit-content;
+    max-width: 100%;
+    text-align: left;
+}
+
+/* Flex-Wrap Fixes: Prevents items running off the right screen edge */
+.skills-grid-container,
+.tools-logo-display-track {
+    flex-wrap: wrap;
+}
+
+/* Hero Card: Size to content instead of hardcoded width */
+.cert-hero-card {
+    width: fit-content;
+    max-width: 90%;
+}
+
+/* Eliminate Negative Left Margins Across Key Components */
+.skills-capsule-card,
+.tools-detailed-card,
+.cert-intro-text,
+.cert-closing-text,
+.certificate-display-card,
+.cert-drive-access-card,
+.cert-drive-access-card .animated-title,
+.cert-course-portal-card {
+    margin-left: 0 !important;
+}
+
+/* Bullet Point Glow Clipping Fix (Tightened Indent) */
+.narrative-list {
+    padding-left: 12px !important;
+}
+
+.narrative-list li::before {
+    left: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. BASE COMPONENT SPECIFIC OVERRIDES
+   -------------------------------------------------------------------------- */
+
+/* Section Spacing & Anchors */
+.narrative-section.footer-anchor-section {
+    width: 100% !important;
+    max-width: 1300px !important;
+    padding: 0 20px !important;
+    margin: 105px auto 0 auto !important;
+    box-sizing: border-box !important;
+}
+
+/* Section Spacing & Anchors */
+.section-divider {
+    margin-top: 20px !important;
+    margin-bottom: 0px !important;
+}
+
+.cert-drive-access-card {
+    margin-top: 10px !important;
+}
+
+/* Course Portal Card & Button Resets */
+.cert-course-portal-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 35px 30px !important;
+    margin: 0 0 90px 0 !important;
+    overflow: hidden !important;
+}
+
+.cert-course-portal-card .portal-skinny-link-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 54px !important;
+    padding: 10px 24px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
+
+.cert-course-portal-card .portal-btn-text {
+    white-space: normal !important;
+    text-align: center !important;
+    word-break: break-word !important;
+}
+
+.cert-course-portal-card .portal-btn-icon-left,
+.cert-course-portal-card .portal-btn-icon-right {
+    flex-shrink: 0 !important;
+}
+
+
+/* ==========================================================================
+   5. MEDIA QUERIES & RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   LARGE DESKTOP (1200px and up)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1200px) {
+    .narrative-section {
+        max-width: 1050px;
+    }
+    
+    .tools-detailed-card {
+        max-width: 830px;
+    }
+    
+    .narrative-body-expanded {
+        max-width: 1010px;
+    }
+    
+    .footer-layout-row-container {
+        max-width: 1350px;
+    }
+}
+
+/* Disable title underline animation on devices under 1200px */
+@media (max-width: 1199px) {
+    .animated-title::after {
+        display: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   LAPTOP / MEDIUM (1024px - 1199px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1199px) {
+    .narrative-section {
+        max-width: 100%;
+        padding: 0 20px;
+        margin-left: 0 !important;
+        margin-right: auto;
+    }
+    
+    .animated-title {
+        font-size: 2rem;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .narrative-body p {
+        font-size: 1.2rem;
+        max-width: 100%;
+    }
+    
+    .tools-detailed-card {
+        max-width: 100%;
+        padding: 30px;
+        margin-left: 0 !important;
+    }
+    
+    .narrative-body-expanded {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .cert-intro-text,
+    .cert-closing-text {
+        margin-left: 0 !important;
+    }
+    
+    .skills-grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    
+    .skill-pill-item {
+        flex: 0 1 calc(50% - 8px);
+    }
+    
+    .tools-logo-display-track {
+        gap: 15px;
+    }
+    
+    .tool-logo-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   TABLET (768px - 1023px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+    .narrative-section {
+        max-width: 100%;
+        padding: 0 15px;
+        margin: 30px 0 60px 0 !important;
+    }
+    
+    .animated-title {
+        font-size: 1.8rem;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .narrative-body p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        max-width: 100%;
+    }
+    
+    .narrative-body strong {
+        font-size: 1.1rem;
+    }
+    
+    .hero-layout-container {
+        flex-direction: column;
+        padding: 20px 5%;
+        gap: 20px;
+    }
+    
+    .cert-hero-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        padding: 30px 20px;
+    }
+    
+    .verification-seal-link {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .verification-stamp-seal {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .seal-inner-ring {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .seal-shield-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .verification-telemetry-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0;
+        padding: 20px;
+    }
+    
+    .telemetry-data-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    .telemetry-blue-box {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+    
+    .tools-detailed-card {
+        max-width: 100%;
+        padding: 25px;
+        margin-left: 0 !important;
+    }
+    
+    .tools-logo-display-track {
+        gap: 12px;
+    }
+    
+    .tool-logo-wrapper {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .skills-capsule-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0 !important;
+        flex-direction: column;
+        border-radius: 16px;
+        padding: 20px;
+    }
+    
+    .skills-grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .skill-pill-item {
+        font-size: 0.9rem;
+    }
+    
+    .narrative-body-expanded {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .cert-intro-text,
+    .cert-closing-text {
+        font-size: 1.2rem;
+        margin-left: 0 !important;
+    }
+    
+    .certificate-display-card {
+        margin-left: 0 !important;
+    }
+    
+    .footer-layout-row-container {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+    
+    .cert-drive-access-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 20px;
+        margin: 40px auto !important;
+    }
+    
+    .cert-drive-access-card .animated-title {
+        margin-left: 0 !important;
+        text-align: center;
+    }
+    
+    .drive-link-square-card {
+        margin-left: 0;
+        width: 200px;
+        height: 200px;
+    }
+    
+    .drive-icon-frame {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   SMALL TABLET / LARGE MOBILE (600px - 767px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .narrative-section {
+        max-width: 100%;
+        padding: 0 12px;
+        margin: 25px 0 50px 0 !important;
+    }
+    
+    .animated-title {
+        font-size: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+    
+    .narrative-body p {
+        font-size: 1rem;
+        line-height: 1.4;
+        max-width: 100%;
+    }
+    
+    .narrative-body strong {
+        font-size: 1rem;
+    }
+    
+    .cert-hero-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        padding: 20px 15px;
+    }
+    
+    .verification-stamp-seal {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .seal-inner-ring {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .seal-shield-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .seal-main-text {
+        font-size: 0.7rem;
+    }
+    
+    .seal-sub-text {
+        font-size: 1rem;
+    }
+    
+    .verification-telemetry-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0 !important;
+        padding: 15px;
+    }
+    
+    .telemetry-data-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .telemetry-blue-box {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        height: auto;
+    }
+    
+    .tools-detailed-card {
+        max-width: 100%;
+        padding: 20px;
+        margin-left: 0 !important;
+    }
+    
+    .tools-logo-display-track {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .tool-logo-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .skills-capsule-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0 !important;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    
+    .skills-card-title {
+        font-size: 0.75rem;
+    }
+    
+    .skills-grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    .skill-pill-item {
+        font-size: 0.85rem;
+        padding-left: 18px;
+    }
+    
+    .skill-pill-item::before {
+        width: 6px;
+        height: 6px;
+        top: calc(50% - 3px);
+    }
+    
+    .narrative-body-expanded {
+        max-width: 100%;
+        padding: 0 12px;
+    }
+    
+    .cert-intro-text,
+    .cert-closing-text {
+        font-size: 1.05rem;
+        margin-left: 0 !important;
+    }
+    
+    .cert-drive-access-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 15px;
+        margin: 30px auto !important;
+    }
+    
+    .cert-drive-access-card .animated-title {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    
+    .drive-card-description {
+        font-size: 1rem;
+    }
+    
+    .drive-link-square-card {
+        margin-left: 0;
+        width: 160px;
+        height: 160px;
+    }
+    
+    .drive-icon-frame {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .cert-course-portal-card {
+        padding: 20px 15px;
+    }
+    
+    .portal-card-description {
+        font-size: 1rem;
+    }
+    
+    .portal-skinny-link-btn {
+        height: 48px;
+        font-size: 0.9rem;
+    }
+    
+    .portal-btn-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE (480px - 599px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 599px) {
+    .narrative-section {
+        max-width: 100%;
+        padding: 0 10px;
+        margin: 20px 0 40px 0 !important;
+    }
+    
+    .animated-title {
+        font-size: 1.3rem;
+        width: 100%;
+        max-width: 100%;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+    }
+    
+    .animated-title::after {
+        bottom: -8px;
+        height: 2px;
+    }
+    
+    .narrative-body p {
+        font-size: 0.95rem;
+        line-height: 1.35;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .narrative-body strong {
+        font-size: 0.95rem;
+    }
+    
+    .cert-hero-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        padding: 15px 12px;
+        border-radius: 16px;
+    }
+    
+    .hero-issuer-line {
+        font-size: 1rem;
+        gap: 8px;
+    }
+    
+    .issuer-logo-inline {
+        height: 28px;
+    }
+    
+    .verification-seal-link {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .verification-stamp-seal {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .seal-inner-ring {
+        width: 110px;
+        height: 110px;
+        padding: 10px;
+    }
+    
+    .seal-shield-icon {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 8px;
+    }
+    
+    .seal-main-text {
+        font-size: 0.6rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .seal-sub-text {
+        font-size: 0.9rem;
+        margin-top: 2px;
+    }
+    
+    .verification-telemetry-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0 !important;
+        padding: 12px;
+        min-height: auto;
+    }
+    
+    .telemetry-header-centered {
+        gap: 10px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+    
+    .telemetry-dual-icon {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .telemetry-label-main {
+        font-size: 0.7rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .telemetry-data-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 5px 0;
+    }
+    
+    .data-node {
+        gap: 8px;
+    }
+    
+    .telemetry-blue-box {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        min-width: 80px;
+        height: auto;
+    }
+    
+    .code-id-string {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+    
+    .teleport-action-btn {
+        font-size: 0.8rem;
+        padding: 10px 15px;
+        gap: 8px;
+    }
+    
+    .tools-detailed-card {
+        max-width: 100%;
+        padding: 15px;
+        margin-left: 0 !important;
+        gap: 25px;
+    }
+    
+    .tools-card-title {
+        font-size: 0.7rem;
+    }
+    
+    .tools-logo-display-track {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        justify-items: center;
+    }
+    
+    .tool-logo-wrapper {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .tool-active-text-tray {
+        min-height: 35px;
+    }
+    
+    .tool-hover-reminder {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+    
+    .tool-dynamic-title {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .skills-capsule-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0 !important;
+        padding: 12px;
+        border-radius: 12px;
+        gap: 15px;
+    }
+    
+    .skills-card-title {
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+    
+    .skills-grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .skill-pill-item {
+        font-size: 0.8rem;
+        padding-left: 15px;
+    }
+    
+    .skill-pill-item::before {
+        width: 5px;
+        height: 5px;
+        top: calc(50% - 2.5px);
+    }
+    
+    .tech-sub-label {
+        font-size: 0.9rem;
+        margin: 20px 0 8px 0;
+    }
+    
+    .narrative-body-expanded {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .cert-intro-text,
+    .cert-closing-text {
+        font-size: 0.95rem;
+        margin-left: 0 !important;
+    }
+    
+    .certificate-display-card {
+        margin-left: 0 !important;
+        padding: 12px;
+    }
+    
+    .cert-corner {
+        display: none;
+    }
+    
+    .footer-layout-row-container {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+    
+    .cert-drive-access-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px 12px;
+        margin: 25px auto !important;
+    }
+    
+    .cert-drive-access-card .animated-title {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-left: 0 !important;
+    }
+    
+    .drive-card-description {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+    
+    .drive-link-square-card {
+        margin-left: 0;
+        width: 140px;
+        height: 140px;
+    }
+    
+    .drive-icon-frame {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .cert-course-portal-card {
+        padding: 15px 12px;
+        margin: 0 auto 60px auto;
+    }
+    
+    .portal-card-description {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+    
+    .portal-skinny-link-btn {
+        height: 45px;
+        padding: 0 20px;
+        font-size: 0.85rem;
+    }
+    
+    .portal-btn-text {
+        font-size: 0.85rem;
+    }
+    
+    .portal-btn-icon-left,
+    .portal-btn-icon-right {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .portal-btn-icon-left {
+        margin-right: 10px;
+    }
+    
+    .portal-btn-icon-right {
+        margin-left: 10px;
+    }
+    
+    .main-footer {
+        margin-top: 50px;
+    }
+    
+    .footer-content {
+        height: 120px;
+        gap: 8px;
+    }
+    
+    .footer-logo {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+    
+    .footer-tech {
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   TINY MOBILE (Under 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 479px) {
+    .animated-title {
+        font-size: 1.2rem;
+    }
+    
+    .narrative-body p {
+        font-size: 0.9rem;
+    }
+    
+    .cert-intro-text,
+    .cert-closing-text {
+        font-size: 0.9rem;
+    }
+    
+    .tools-logo-display-track {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tool-logo-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .drive-link-square-card {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* ==========================================================================
+   DESKTOP RESTORATION (1200px and up)
+   Reverts all responsive overrides on cert pages back to cert-styles.css
+   ========================================================================== */
+@media (min-width: 1200px) {
+
+   /* Expand hero card width and keep breathing room */
+    .cert-detail-body .cert-hero-card {
+        width: 1000px;
+        max-width: 85%;
+        padding: 55px 90px 55px 60px;
+    }
+
+    /* Restore font size and add the left indent to align with "Issuer:" */
+    .cert-detail-body .cert-hero-card .animated-title,
+    .cert-detail-body .hero-layout-container .animated-title {
+        font-size: 2.4rem;
+        white-space: nowrap;
+        margin-right: 50px; /* Indents title & line to align with content below */
+    }
+
+    .cert-detail-body .animated-title::after {
+        max-width: none;
+    }
+
+    /* Force left alignment, overriding the leftover align-self/text-align:
+       center from the original cert-styles.css definition, so the title
+       lines up flush with "Issuer:" beneath it */
+    .cert-detail-body .cert-hero-card .animated-title,
+    .cert-detail-body .hero-layout-container .animated-title {
+        text-align: left !important;
+        align-self: flex-start !important;
+        width: fit-content !important;
+        max-width: 100% !important;
+    }
+
+    /* --- STEP 2: ELEVATED TELEMETRY CARD --- */
+    .cert-detail-body .verification-telemetry-card {
+        width: 1200px;          /* Matches the 1000px width of the hero card above */
+        max-width: 85%;
+        margin-left: 5%;        /* Aligns flush with the hero card's left boundary */
+        padding: 36px 45px;     /* Gives slightly more internal height & breathing room */
+    }
+
+    .cert-detail-body .telemetry-data-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;              /* Expands node spacing to fill out the broader width */
+    }
+
+    /* --- STEP 2: TELEMETRY TEXT UPSCALING (+10-15%) --- */
+    
+    /* Section Headers & Labels */
+    .cert-detail-body .telemetry-label-main,
+    .cert-detail-body .telemetry-label {
+        font-size: 0.9rem; /* Up from 0.8rem */
+    }
+
+    .cert-detail-body .meta-tag-title {
+        font-size: 0.9rem; /* Up from 0.8rem */
+    }
+
+    /* Code Strings, Hash Boxes & Values */
+    .cert-detail-body .telemetry-blue-box {
+        font-size: 1.05rem; /* Up from 0.95rem */
+        height: 42px;       /* Adds 4px height to comfortably frame the larger font */
+    }
+
+    .cert-detail-body .code-id-string {
+        font-size: 1rem;    /* Up from 0.9rem */
+    }
+
+    .cert-detail-body .cert-id-code {
+        font-size: 1.1rem;  /* Up from 1rem */
+    }
+
+    /* Express Lane Action Button */
+    .cert-detail-body .teleport-action-btn {
+        font-size: 0.95rem; /* Up from 0.85rem */
+        padding: 14px 24px;  /* Slight bump in button padding to balance the text */
+    }
+
+    .cert-detail-body .teleport-btn-icon {
+        font-size: 0.95rem; /* Matches button font size */
+    }
+
+    /* --- STEP 3: DYNAMIC AUTO-SIZING CAPSULE --- */
+
+    /* Ensure parent section doesn't clip children */
+    .narrative-section {
+        overflow: visible;
+    }
+
+    .cert-detail-body .skills-capsule-card {
+        /* 1. Force the container to hug its contents exactly */
+        width: max-content !important;
+        max-width: none !important;
+        
+        display: inline-flex !important;
+        align-items: center;
+        flex-direction: row;
+        gap: 32px;
+        
+        /* 2. Left and Right breathing room around the title and last item */
+        padding: 16px 36px 16px 36px !important;
+        margin-left: -10px;
+        box-sizing: border-box;
+    }
+
+    .cert-detail-body .skills-grid-container {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        grid-template-columns: none !important;
+        align-items: center;
+        gap: 28px;
+        width: auto !important;
+    }
+
+    .cert-detail-body .skill-pill-item {
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* --- STEP 1: LEFT-ALIGN FOOTER CONTAINERS & CARDS --- */
+
+    /* Align the main footer sections to the left axis */
+    .narrative-section.footer-anchor-section {
+        justify-content: flex-start !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        padding-left: 0 !important;
+    }
+
+    .footer-layout-row-container {
+        justify-content: flex-start !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+    /* Push the Coursework Archive card flush to the left */
+    .cert-drive-access-card {
+        width: 750px !important;            /* Reduced ~10% from base 820px */
+        max-width: 80% !important;
+        margin-left: 110px !important;
+        margin-right: auto !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .cert-course-portal-card {
+        margin-left: 110px !important;
+        margin-right: auto !important;
+        margin-top: -35px !important; /* Adjust this value (e.g., -20px to -50px) to dial in the exact spacing */
+    }
+
+    /* --- RESTORE & POSITION BRAND LOGOS --- */
+
+    /* Undo the width/margin/padding zeroing from the global logo purge,
+       since restoring display/visibility alone isn't enough to render it */
+    .canvas-brand-png,
+    .canvas-brand-png-white,
+    .canvas-brand-png-white1,
+    .canvas-brand-png-white2 {
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* canvas-brand-png has an explicit width in cert-styles.css (not just max-width) */
+    .canvas-brand-png {
+        width: 440px !important;
+    }
+
+    /* These two carry a left margin in cert-styles.css to offset them from the card */
+
+    .canvas-brand-png-white {
+        margin-left: 320px !important;
+    }
+
+    .canvas-brand-png-white1 {
+        margin-left: 320px !important;
+    }
+
+    .canvas-brand-png-white2 {
+        margin-left: 320px !important;
+    }
+
+    /* Ensure parent block displays inline next to the card */
+    .canvas-standalone-brand-block {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: auto !important;
+        padding-left: 0 !important;       /* Resets legacy 275px push */
+        margin-top: 0 !important;
+    }
+
+    /* Target all logo variants, restore visibility, and scale appropriately */
+    .canvas-brand-png,
+    .canvas-brand-png-white,
+    .canvas-brand-png-white1,
+    .canvas-brand-png-white2 {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 0.85 !important;
+        height: auto !important;
+        filter: brightness(0) invert(1) !important;
+    }
+    
+}
+
+/* ==========================================================================
+   ULTRAWIDE ENHANCEMENT LAYER (1921px and up)
+   Scales assets, text, and spacing ~15-25% larger for wide/ultrawide
+   displays (tested at 2560px). styles.css itself is untouched — every
+   value below is an explicit override living only in this query.
+   ========================================================================== */
+@media (min-width: 1921px) {
+
+    /* ---------------- HOME PAGE ---------------- */
+
+    .glass-card {
+        width: 1000px !important;
+        max-width: 95% !important;
+        padding: 74px !important;
+    }
+
+    .hero-name {
+        font-size: 4.85rem;
+        font-weight: 600;
+    }
+
+    /* Widened glass-card above is the real fix (gives the tags row enough
+       room to fit on one line); white-space: nowrap here is a safety net
+       so it can never wrap again even at in-between ultrawide sizes */
+    .hero-tags {
+        font-size: 0.97rem;
+        gap: 9px;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+    }
+
+    .quote-container p {
+        font-size: 2.42rem;
+    }
+
+    .about-section {
+        padding: 105px 8% 147px 8%;
+    }
+
+    .about-grid {
+        max-width: 1370px;
+        gap: 48px;
+    }
+
+    .about-text-card {
+        padding: 68px 58px;
+    }
+
+    .about-text h2 {
+        font-size: 2.63rem;
+    }
+
+    .about-text p {
+        font-size: 1.26rem;
+    }
+
+    .about-image-container {
+        min-height: 590px;
+    }
+
+    .socials-title {
+        font-size: 2.63rem;
+    }
+
+    .socials-container {
+        gap: 90px;
+    }
+
+    .social-icon {
+        width: 148px;
+        height: 148px;
+        font-size: 3.36rem;
+    }
+
+    .social-tag {
+        font-size: 1.31rem;
+    }
+
+    .footer-content {
+        height: 168px;
+    }
+
+    .footer-logo {
+        font-size: 1.79rem;
+    }
+
+    .footer-tech {
+        font-size: 1.05rem;
+    }
+
+    /* ---------------- ABOUT ME PAGE ---------------- */
+
+    .grid-main-title {
+        font-size: 4.2rem;
+    }
+
+    .about-main-grid {
+        max-width: 1575px;
+        gap: 48px;
+    }
+
+    .grid-card {
+        padding: 55px 42px;
+        min-height: 305px;
+    }
+
+    .grid-icon {
+        font-size: 3.57rem;
+    }
+
+    .grid-card h3 {
+        font-size: 1.68rem;
+    }
+
+    .about-content-area {
+        max-width: 1575px;
+    }
+
+    .section-title {
+        font-size: 2.63rem;
+    }
+
+    .section-body p {
+        font-size: 23px;
+    }
+
+    .lead-text {
+        font-size: 1.37rem;
+    }
+
+    .skills-list li {
+        font-size: 23px;
+    }
+
+    .hobby-row {
+        min-height: 390px;
+    }
+
+    .hobby-content {
+        padding: 37px;
+    }
+
+    .hobby-header-alt span {
+        font-size: 1.58rem;
+    }
+
+    .hobby-header-alt i {
+        font-size: 1.79rem;
+    }
+
+    .hobby-content p {
+        font-size: 19px;
+    }
+
+    /* ---------------- RESUME PAGE ---------------- */
+
+    #projects-header {
+        max-width: 1210px;
+    }
+
+    .project-intro-card {
+        padding: 50px;
+    }
+
+    .animated-title {
+        font-size: 3rem;
+    }
+
+    .project-intro-text p {
+        font-size: 1.31rem;
+    }
+
+    .cv-btn-container {
+        gap: 95px;
+    }
+
+    .cv-btn-glass {
+        min-width: 348px;
+        height: 69px;
+        padding: 19px 48px;
+        font-size: 1.26rem;
+    }
+
+    .cv-btn-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .cv-frame-holder {
+        max-width: 1100px;
+        padding: 29px;
+    }
+
+    .cv-corner {
+        width: 34px;
+        height: 34px;
+    }
+
+    .cv-alert-text {
+        font-size: 1.07rem;
+    }
+
+    .cv-alert-indicator-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .tech-folder-grid {
+        max-width: 1730px;
+        gap: 55px;
+    }
+
+    .tech-folder-tab {
+        padding: 15px 34px;
+    }
+
+    .tech-folder-tab-text {
+        font-size: 1.1rem;
+    }
+
+    .tech-folder-body {
+        padding: 37px;
+        min-height: 270px;
+    }
+
+    .tech-icons-container {
+        min-height: 168px;
+    }
+
+    .tech-icon-item {
+        width: 131px;
+        height: 121px;
+    }
+
+    .tech-svg {
+        width: 53px;
+        height: 53px;
+    }
+
+    .tech-icon-label {
+        font-size: 0.97rem;
+    }
+
+    .soft-skills-grid {
+        max-width: 1175px;
+        gap: 32px;
+    }
+
+    .soft-skill-card {
+        padding: 37px;
+        gap: 32px;
+    }
+
+    .skill-text-group h4 {
+        font-size: 1.24rem;
+    }
+
+    .skill-text-group p {
+        font-size: 1.03rem;
+    }
+
+    .skill-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .cv-gateway-card {
+        max-width: 1175px;
+        padding: 50px;
+    }
+
+    .gateway-content h3 {
+        font-size: 1.58rem;
+    }
+
+    .gateway-content p {
+        font-size: 1.07rem;
+    }
+
+    .gateway-btn {
+        font-size: 1.07rem;
+        padding: 17px 34px;
+    }
+
+    /* ---------------- PROJECTS & CERTIFICATIONS: INTRO CARD (+6%) ---------------- */
+    /* Scoped to #projects-header so this doesn't also bump the resume page's
+       shared .animated-title / .project-intro-card */
+
+    #projects-header {
+        max-width: 1280px;
+    }
+
+    #projects-header .project-intro-card {
+        padding: 53px;
+    }
+
+    #projects-header .animated-title {
+        font-size: 3.18rem;
+    }
+
+    #projects-header .project-intro-text p {
+        font-size: 1.39rem;
+    }
+
+    /* ---------------- PROJECT CARDS (+22%) ---------------- */
+
+    #project-showcase {
+        max-width: 1280px;
+        padding-bottom: 98px;
+    }
+
+    .project-container {
+        gap: 37px;
+    }
+
+    .project-card {
+        padding: 49px;
+        gap: 49px;
+        border-radius: 20px;
+    }
+
+    .project-card-title {
+        font-size: 2.2rem;
+    }
+
+    .project-card-info {
+        font-size: 1.28rem;
+    }
+
+    .date-pill {
+        padding: 7px 18px;
+        font-size: 1.04rem;
+        margin-top: 43px;
+    }
+
+    .date-icon {
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
+
+    .tag-pill {
+        font-size: 0.92rem;
+        padding: 7px 17px;
+    }
+
+    .project-image-box {
+        min-height: 305px;
+        border-radius: 14px;
+    }
+
+    .filter-block {
+        padding: 30px 48px;
+        max-width: 480px;
+        gap: 18px;
+    }
+
+    .filter-title {
+        font-size: 2.16rem;
+    }
+
+    .filter-icon {
+        font-size: 1.8rem;
+    }
+
+    .custom-dropdown {
+        padding: 14px 18px;
+        font-size: 1.2rem;
+        border-radius: 14px;
+    }
+
+    .cert-filter-header,
+    .filter-header {
+        min-height: 92px;
+        align-items: flex-start;
+    }
+
+    .section-divider:has(+ .filter-area-wrapper),
+    .section-divider:has(+ .cert-filter-area-wrapper) {
+        margin-bottom: 65px !important;
+    }
+
+    /* ---------------- CERTIFICATION CARDS (+22%) ---------------- */
+
+    #cert-showcase {
+        max-width: 1280px;
+    }
+
+    .cert-container {
+        gap: 37px;
+        padding: 12px 24px;
+    }
+
+    .cert-card {
+        padding: 49px;
+        gap: 49px;
+        border-radius: 20px;
+    }
+
+    .cert-card-title {
+        font-size: 2.2rem;
+    }
+
+    .cert-card-info {
+        font-size: 1.28rem;
+    }
+
+    .cert-issuer-area {
+        margin-top: 43px;
+    }
+
+    .cert-date-pill {
+        padding: 7px 18px;
+        font-size: 1.04rem;
+    }
+
+    .cert-date-icon {
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
+
+    .cert-issuer-pill {
+        padding: 7px 17px;
+        font-size: 1.04rem;
+    }
+
+    .cert-vendor-logo {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .cert-tag-pill {
+        font-size: 0.92rem;
+        padding: 7px 17px;
+    }
+
+    .cert-image-box {
+        min-height: 354px;
+        border-radius: 14px;
+    }
+
+    .cert-filter-block {
+        padding: 30px 48px;
+        max-width: 480px;
+        gap: 18px;
+    }
+
+    .cert-filter-title {
+        font-size: 2.16rem;
+    }
+
+    .cert-filter-icon {
+        font-size: 1.8rem;
+    }
+
+    .cert-custom-dropdown {
+        padding: 14px 18px;
+        font-size: 1.2rem;
+        border-radius: 14px;
+    }
+
+    /* ---------------- GITHUB / DRIVE / SELF-LEARNING CARDS (+10%) ---------------- */
+    /* Shared between projects.html (Source Code / Drive Access) and
+       certifications.html (Self-Paced Learning) — both use .self-split-card */
+
+    .self-split-card {
+        gap: 44px;
+    }
+
+    .self-card-right {
+        min-width: 198px;
+    }
+
+    .self-drive-btn {
+        max-width: 220px;
+        font-size: 4.95rem;
+        border-radius: 22px;
+    }
+
+    .self-grid-matrix {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 22px;
+        margin-top: 28px;
+    }
+
+    .self-matrix-node {
+        padding: 33px 22px;
+        border-radius: 13px;
+    }
+
+    .node-icon-wrapper {
+        font-size: 2.2rem;
+        margin-bottom: 17px;
+    }
+
+    .node-title {
+        font-size: 1.32rem;
+    }
+
+    .closing-quote-track {
+        margin-top: 88px;
+        margin-bottom: 44px;
+    }
+
+    .functional-quote {
+        font-size: 1.43rem;
+    }
+}
+
+
+/* Base state for the mobile-only notice card — hidden everywhere except
+   inside the 480px mobile block below. Lives outside any media query so
+   desktop/tablet never see it. */
+.mobile-notice-toggle {
+    display: none;
+}
+
+.mobile-notice-overlay {
+    display: none;
+}
+
+
+
+/* ==========================================================================
+   MOBILE LAYER — iPhone 16 Pro Max & similar (max-width: 480px)
+   Scoped to Home, About Me, and Resume. Projects/Certifications intentionally
+   excluded — those pages get a "mobile version coming soon" notice instead.
+   This block is intentionally placed last in the file so it wins over any
+   earlier overlapping mobile rules at this width.
+   ========================================================================== */
+@media (max-width: 480px) {
+
+    /* ---------------- NAVBAR ---------------- */
+    /* No hamburger toggle exists in the HTML/JS, so nav-links becomes a
+       horizontally-scrollable strip instead of wrapping/clipping */
+
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        padding: 12px 0 8px 0;
+        gap: 8px;
+    }
+
+    .logo {
+        justify-content: center;
+        padding: 0 12px;
+    }
+
+    .nav-icon {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    .brand-name {
+        font-size: 1.05rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: flex-start;
+        gap: 1.3rem;
+        padding: 0 18px 4px 18px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        font-size: 0.78rem;
+        padding: 6px 2px;
+        flex-shrink: 0;
+    }
+
+    /* ---------------- HOME: HERO ---------------- */
+
+    .hero-container {
+        min-height: 100dvh;
+        align-items: center;
+        justify-content: center;
+        padding: 130px 5% 40px 5%;
+    }
+
+    .glass-card {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        padding: 28px 22px;
+        border-radius: 16px;
+    }
+
+    .hero-name {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-tags {
+        font-size: 0.62rem;
+        letter-spacing: 1px;
+        flex-wrap: wrap;
+        row-gap: 8px;
+        gap: 6px;
+    }
+
+    .separator {
+        margin: 0 3px;
+    }
+
+    /* ---------------- HOME: QUOTE ---------------- */
+
+    .quote-section {
+        padding-top: 70px;
+        margin-bottom: 50px;
+    }
+
+    .quote-container p {
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    /* ---------------- HOME: ABOUT SECTION ---------------- */
+
+    .about-section {
+        padding: 50px 6% 70px 6%;
+        min-height: auto;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 100%;
+    }
+
+    .about-text-card {
+        padding: 30px 22px;
+    }
+
+    .about-image-container {
+        min-height: 220px;
+    }
+
+    .about-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    /* ---------------- HOME/RESUME: SOCIALS ---------------- */
+
+    .socials-section {
+        padding: 10px 0 15vh 0;
+    }
+
+    .socials-header {
+        margin-bottom: 35px;
+    }
+
+    .socials-title {
+        font-size: 1.4rem;
+    }
+
+    .socials-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .social-item {
+        gap: 6px;
+    }
+
+    .social-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 1.6rem;
+    }
+
+    .social-tag {
+        position: static;
+        opacity: 1;
+        transform: none;
+        font-size: 0.85rem;
+        margin-top: 2px;
+    }
+
+    .social-tag::after {
+        display: none;
+    }
+
+    /* ---------------- SHARED: FOOTER ---------------- */
+
+    .footer-content {
+        height: auto;
+        padding: 24px 16px;
+        gap: 8px;
+    }
+
+    .footer-logo {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+    }
+
+    .footer-tech {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+    }
+
+    /* ---------------- ABOUT ME: HEADER & NAV GRID ---------------- */
+
+    .about-grid-section {
+        padding: 110px 0 0 0;
+    }
+
+    .about-header {
+        margin-bottom: 40px;
+    }
+
+    .grid-main-title {
+        font-size: 1.9rem;
+    }
+
+    .about-main-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: 92%;
+        margin: 0 auto 60px auto;
+    }
+
+    .grid-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 18px;
+        padding: 22px 20px;
+        min-height: auto;
+    }
+
+    .grid-icon {
+        font-size: 1.8rem;
+    }
+
+    .grid-card h3 {
+        font-size: 1rem;
+    }
+
+    /* ---------------- ABOUT ME: SECTION CONTENT ---------------- */
+    /* Side padding so text isn't flush against the screen edge */
+
+    .about-content-area {
+        max-width: 100%;
+        padding: 0 22px;
+    }
+
+    /* Overrides a rule in styles.css (@media max-width:768px) that sets
+       gap: 200px on this flex container — that flat 200px gap between
+       every section was the real cause of the huge spacing on About Me.
+       Set to 0 because the dividers below already carry their own
+       margin for spacing; a gap on top would double it up again. */
+    .about-content-area {
+        gap: 0 !important;
+    }
+
+    .about-content-area .section-divider4 {
+        width: 78% !important;
+        max-width: 78% !important;
+        margin: 26px auto 24px auto !important;
+        height: 2px !important;
+        box-shadow: 0 0 8px rgba(23, 216, 219, 0.5),
+                    0 0 14px rgba(23, 216, 219, 0.25) !important;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+    }
+
+    .section-body p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.1rem;
+    }
+
+    .lead-text {
+        font-size: 1rem;
+    }
+
+    .skills-list li {
+        font-size: 0.95rem;
+        padding-left: 24px;
+    }
+
+    .skills-list li::before {
+        width: 6px;
+        height: 6px;
+        top: 8px;
+    }
+
+    .end-statement {
+        font-size: 1rem;
+    }
+
+    /* ---------------- ABOUT ME: HOBBIES ---------------- */
+
+    .hobbies-stack {
+        gap: 24px;
+        margin-top: 30px;
+    }
+
+    .hobby-row {
+        flex-direction: column;
+        min-height: auto;
+        border-radius: 14px;
+    }
+
+    .hobby-image-box {
+        display: none;
+    }
+
+    .hobby-content {
+        padding: 22px;
+        padding-top: 20px;
+        gap: 10px;
+        border-top: 2px solid rgba(23, 216, 219, 0.4);
+        box-shadow: 0 -6px 18px rgba(23, 216, 219, 0.08);
+    }
+
+    .hobby-header-alt span {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .hobby-header-alt i {
+        font-size: 1.1rem;
+    }
+
+    .hobby-content p {
+        font-size: 0.9rem;
+        line-height: 1.55;
+        margin-bottom: 1rem;
+    }
+
+    /* ---------------- RESUME: INTRO CARD ---------------- */
+
+    #projects-header {
+        padding-top: 110px;
+        max-width: 100%;
+    }
+
+    .project-intro-card {
+        padding: 24px 20px;
+    }
+
+    /* Re-enables the underline (disabled site-wide under 1200px elsewhere
+       in this file) and, critically, sets width: fit-content — earlier
+       breakpoints (599px/768px/etc.) set .animated-title to width: 100%,
+       which this block never overrode, so the underline (100% of its own
+       parent) was stretching to the full card width instead of the text */
+    .animated-title::after {
+        display: block !important;
+    }
+
+    .animated-title {
+        width: fit-content;
+        max-width: 100%;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+    }
+
+    /* Centers the title+underline as one unit now that the title box
+       correctly hugs its own text instead of stretching full-width */
+    .project-title-wrapper {
+        text-align: center;
+    }
+
+    .project-intro-text p {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 14px;
+    }
+
+    .expect-text2 {
+        font-size: 0.92rem;
+    }
+
+    .section-divider2 {
+        margin-top: 36px !important;
+        margin-bottom: 14px !important;
+    }
+
+    /* ---------------- RESUME: CV ACTION BUTTONS ---------------- */
+
+    .cv-btn-container {
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 6px;
+        margin-bottom: 20px;
+    }
+
+    .cv-btn-glass {
+        width: 100%;
+        min-width: auto;
+        height: 52px;
+        padding: 12px 20px;
+        font-size: 0.92rem;
+    }
+
+    /* ---------------- RESUME: CV FRAME & OVERLAY ---------------- */
+
+    #resume-document-section {
+        margin-top: 24px;
+        margin-bottom: 50px;
+    }
+
+    .cv-frame-holder {
+        padding: 14px;
+        border-radius: 18px;
+    }
+
+    .cv-corner {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cv-corner.top-left,
+    .cv-corner.top-right {
+        top: 8px;
+    }
+
+    .cv-corner.bottom-left,
+    .cv-corner.bottom-right {
+        bottom: 8px;
+    }
+
+    .cv-corner.top-left,
+    .cv-corner.bottom-left {
+        left: 8px;
+    }
+
+    .cv-corner.top-right,
+    .cv-corner.bottom-right {
+        right: 8px;
+    }
+
+    .cv-hotspot {
+        pointer-events: none !important;
+    }
+
+    .cv-alert-pill-wrapper {
+        display: none !important;
+    }
+
+    /* ---------------- RESUME: TECH FOLDER GRID ---------------- */
+
+    .tech-folder-grid {
+        gap: 28px;
+    }
+
+    .tech-folder-tab {
+        padding: 10px 20px;
+    }
+
+    .tech-folder-tab-text {
+        font-size: 0.8rem;
+    }
+
+    .tech-folder-body {
+        padding: 20px 14px;
+        min-height: auto;
+    }
+
+    .tech-icons-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+        min-height: auto;
+        padding: 6px 0;
+    }
+
+    .tech-icon-item {
+        width: 72px;
+        height: auto;
+    }
+
+    .tech-svg {
+        width: 34px;
+        height: 34px;
+    }
+
+    .tech-icon-label {
+        position: static;
+        opacity: 1;
+        transform: none;
+        margin-top: 6px;
+        font-size: 0.62rem;
+        white-space: nowrap;
+    }
+
+    .tech-icon-label::after {
+        display: none;
+    }
+
+    /* ---------------- RESUME: SOFT SKILLS GRID ---------------- */
+
+    .soft-skills-grid {
+        flex-direction: column;
+        gap: 16px;
+        max-width: 100%;
+    }
+
+    .soft-skill-card {
+        padding: 22px;
+        gap: 18px;
+    }
+
+    .soft-skill-item {
+        gap: 10px;
+    }
+
+    .skill-text-group h4 {
+        font-size: 0.95rem;
+    }
+
+    .skill-text-group p {
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    /* ---------------- RESUME: CONTACT GATEWAY CARD ---------------- */
+
+    .cv-gateway-card {
+        padding: 26px 20px;
+        max-width: 100%;
+    }
+
+    .gateway-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .gateway-content p {
+        font-size: 0.85rem;
+    }
+
+    .gateway-action-wrapper,
+    .gateway-btn-link {
+        width: 100%;
+    }
+
+    .gateway-btn {
+        width: 100%;
+        font-size: 0.85rem;
+        padding: 12px 20px;
+    }
+
+    #cv-request-gateway-section .animated-title {
+        margin-top: 40px !important;
+    }
+
+    /* Adds 5px to the existing 25px margin-bottom on .project-title-wrapper
+       (from styles.css, applies everywhere) — scoped to just this section
+       so the other resume titles keep their original spacing */
+    #cv-request-gateway-section .project-title-wrapper {
+        margin-bottom: 30px !important;
+    }
+
+    /* ---------------- TOUCH DEGRADATION (additions) ---------------- */
+
+    .cv-btn-glass:hover {
+        transform: none;
+        background: rgba(23, 216, 219, 0.06);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .tech-icon-item:hover .tech-svg {
+        transform: none;
+    }
+
+    .soft-skill-card:hover {
+        transform: none;
+        border-color: rgba(23, 216, 219, 0.15);
+        box-shadow: none;
+    }
+
+    .cv-frame-holder:hover .cv-render-src {
+        transform: none;
+    }
+
+    .cv-frame-holder:hover .cv-corner.top-left,
+    .cv-frame-holder:hover .cv-corner.top-right,
+    .cv-frame-holder:hover .cv-corner.bottom-left,
+    .cv-frame-holder:hover .cv-corner.bottom-right {
+        transform: none;
+        border-color: #17D8DB;
+    }
+
+    /* ================================================================
+       PROJECTS & CERTIFICATIONS: MOBILE PREVIEW MODE
+       ================================================================ */
+
+    /* ---------------- FIRST-VISIT NOTICE CARD ---------------- */
+
+    .mobile-notice-overlay {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        z-index: 5000;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
+
+    .mobile-notice-toggle:checked ~ .mobile-notice-overlay {
+        display: none;
+    }
+
+    .mobile-notice-card {
+        width: 100%;
+        max-width: 320px;
+        background: rgba(23, 216, 219, 0.03);
+        border: 1px solid rgba(23, 216, 219, 0.3);
+        border-radius: 15px;
+        padding: 28px 22px;
+        box-shadow: 0 0 30px rgba(23, 216, 219, 0.15);
+        text-align: center;
+    }
+
+    .mobile-notice-heading {
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+    }
+
+    .mobile-notice-body {
+        color: rgba(255, 255, 255, 0.85);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.87rem;
+        line-height: 1.6;
+        margin-bottom: 22px;
+    }
+
+    .mobile-notice-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 12px 20px;
+        background: transparent;
+        color: #ffffff;
+        border: 1px solid rgba(23, 216, 219, 0.4);
+        border-radius: 8px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .mobile-notice-btn:hover,
+    .mobile-notice-btn:active {
+        background: #17D8DB;
+        color: #0a192f;
+        border-color: #17D8DB;
+    }
+
+    /* ---------------- INTRO CARD TITLE (shared with Projects/Certs) ---------------- */
+
+    #projects-header .project-title-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        text-align: center;
+    }
+
+    #projects-header .project-intro-card {
+        padding: 24px 20px;
+    }
+
+    /* ---------------- FILTER ROW ---------------- */
+    /* align-items overridden from the inline flex-start — with
+       flex-direction now column, flex-start controls the horizontal
+       axis and was hugging both boxes to the left at shrunk widths.
+       stretch makes them equal-width and centered as a pair. */
+
+    .filter-area-wrapper,
+    .cert-filter-area-wrapper {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        gap: 14px !important;
+    }
+
+    .filter-block,
+    .cert-filter-block {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 18px 20px;
+    }
+
+    .filter-title,
+    .cert-filter-title {
+        font-size: 1.15rem;
+    }
+
+    .custom-dropdown,
+    .cert-custom-dropdown {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+    }
+
+    /* ---------------- PROJECT & CERT CARDS: PREVIEW MODE ---------------- */
+
+   /* Scoped to #project-showcase / #cert-showcase specifically - .project-container
+       is reused on resume.html (CV buttons, tech folder grid, skills grid, contact
+       card), and an earlier unscoped version of this rule was stripping their
+       left/right padding by accident. This version can only ever reach the
+       project/cert card containers. */
+    #project-showcase .project-container,
+    #cert-showcase .cert-container {
+        gap: 18px;
+        padding: 10px 0;
+    }
+
+    .project-card,
+    .cert-card {
+        grid-template-columns: 1fr;
+        padding: 22px 18px;
+        gap: 14px;
+        cursor: default !important;
+        pointer-events: none;
+    }
+
+    .project-content-right,
+    .cert-content-right {
+        display: none;
+    }
+
+    .project-card-title,
+    .cert-card-title {
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+    }
+
+    .project-card-info,
+    .cert-card-info {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        max-width: 100%;
+    }
+
+    .date-pill,
+    .cert-date-pill {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+        margin-top: 16px;
+    }
+
+    .cert-issuer-area {
+        margin-top: 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .cert-issuer-pill {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+
+    /* Root cause of the cutoff: base styles.css forces flex-wrap: nowrap
+       on this row so tag pills always sit on one line. Fine on desktop,
+       but cards with 2 tags (e.g. "Cybersecurity" + "Web Development")
+       forced the row wider than the viewport, pushing the whole card
+       past the screen edge — silently clipped by the site-wide
+       overflow-x: hidden rule. Cert cards mostly carry one tag, which
+       is why only project cards showed the issue. */
+    .project-facts-area,
+    .cert-facts-area {
+        flex-wrap: wrap;
+    }
+
+    .tag-pill,
+    .cert-tag-pill {
+        font-size: 0.68rem;
+        padding: 5px 11px;
+    }
+
+    /* ---------------- SECTION DIVIDERS ---------------- */
+
+    #project-showcase .section-divider,
+    .section-divider3 {
+        margin-top: 30px !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* ---------------- GITHUB / DRIVE CARDS (self-split-card) ---------------- */
+
+    .self-split-card {
+        flex-direction: column;
+        gap: 20px;
+        padding: 22px 18px;
+    }
+
+    .self-card-left .project-title-wrapper {
+        margin-bottom: 12px;
+    }
+
+    .self-card-left .animated-title {
+        font-size: 1.3rem;
+    }
+
+    .self-card-left .project-intro-text p {
+        font-size: 0.87rem;
+        line-height: 1.6;
+    }
+
+    .self-card-right {
+        min-width: auto;
+    }
+
+    .self-drive-btn {
+        max-width: 100px;
+        font-size: 2.2rem;
+    }
+
+    /* ---------------- SELF-LEARNING GRID (Certifications page) ---------------- */
+
+    .self-grid-matrix {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 20px;
+    }
+
+    .self-matrix-node {
+        padding: 20px 12px;
+    }
+
+    .node-icon-wrapper {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .node-title {
+        font-size: 0.95rem;
+    }
+
+    .closing-quote-track {
+        margin-top: 60px;
+        margin-bottom: 30px;
+    }
+
+    /* text-align: center scoped here to override the global
+       .animated-title { text-align: left; } rule added earlier for a
+       different page — set directly on an element, text-align always
+       wins over whatever the parent's alignment says */
+    .functional-quote {
+        font-size: 1.05rem !important;
+        text-align: center !important;
+    }
+
+    /* ---------------- TOUCH DEGRADATION (additions) ---------------- */
+
+    .cert-card:not(.cert-hidden-card):hover {
+        border-color: rgba(23, 216, 219, 0.2);
+        transform: none;
+        box-shadow: 0 0 20px rgba(23, 216, 219, 0.1);
+    }
+
+    .self-drive-btn:hover {
+        transform: none;
+        background: rgba(23, 216, 219, 0.03);
+        border-color: rgba(23, 216, 219, 0.3);
+    }
+
+    .self-matrix-node:not(.node-blueprint):hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.02);
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal Flood | Certifications</title>
+    <link rel="icon" type="image/png" href="Faviconm.png">
+    <link rel="apple-touch-icon" href="Faviconm.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <input type="checkbox" id="mobile-notice-dismiss" class="mobile-notice-toggle">
+<div class="mobile-notice-overlay">
+    <div class="mobile-notice-card">
+        <h3 class="mobile-notice-heading">Desktop Recommended</h3>
+        <p class="mobile-notice-body">
+            To view and interact with projects and certifications, please continue on the desktop version. This page is a preview only on mobile.
+        </p>
+        <label for="mobile-notice-dismiss" class="mobile-notice-btn">I Understand</label>
+    </div>
+</div>
+
+ <header>
+   <nav class="navbar">
+ <div class="logo">
+  <svg class="nav-icon" width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 5L15 18V45C15 67.5 30 88 50 95C70 88 85 67.5 85 45V18L50 5Z" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="38" y="48" width="24" height="18" rx="2" fill="currentColor"/>
+    <path d="M43 48V42C43 38.134 46.134 35 50 35C53.866 35 57 38.134 57 42V48" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+  <span class="brand-name">Cal Flood</span>
+</div>
+
+  <ul class="nav-links">
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="aboutMe.html">About Me</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="certifications.html" class="active">Certifications</a></li>
+    <li><a href="resume.html">Resume</a></li>
+  </ul>
+</nav> 
+ </header>
+
+
+ <section id="projects-header" class="info-section">
+   <div class="project-intro-card">
+        <div class="project-title-wrapper" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+            
+           
+            <h2 class="animated-title hidden" style="margin: 0; display: inline-block;">
+                My Certifications
+            </h2>
+            
+        </div>
+        
+        <div class="project-intro-text" style="margin-top: 20px;">
+            <p>
+                Certifications bridge the gap between theory and practice and allow me to both create and design projects, while also
+                gaining <strong>valuable knowledge and core concepts</strong> of a field or particular sector. They provide a way to 
+                upskill and stay on top of the everchanging world of computer science while also being an <strong>official credential</strong>
+                for employers and recruiters. Certifications are an extremely important method of gaining knowledge and upskilling within
+                both <strong>Cybersecurity and Computer Science.</strong>
+            </p>
+
+            <p class="expect-text">
+                <i class="fas fa-shield-alt"></i> <strong>Theory explains the principles, while credentials prove their power in practice.</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="project-showcase" class="info-section">
+    <div class="section-divider" style="margin-top: 60px; margin-bottom: 60px;"></div>
+
+ <div class="cert-filter-area-wrapper" style="display: flex; align-items: flex-start; justify-content: center; gap: 30px; margin-bottom: 40px;">
+        
+    <div class="cert-filter-block" style="margin-bottom: 0; flex: 1; max-width: 400px;">
+        <div class="cert-filter-header">
+            <h2 class="cert-filter-title">Filter by:</h2>
+            <i class="fas fa-filter cert-filter-icon"></i>
+        </div>
+        <div class="cert-filter-selection-area">
+    <select id="cert-tag-filter" class="cert-custom-dropdown">
+        <option value="all">All Categories</option>
+        <option value="tag-green">Cybersecurity</option>
+        <option value="tag-orange">Communication</option> 
+        <option value="tag-purple">AI</option>            
+    </select>
+     </div>
+    </div>
+
+    <div class="cert-filter-block" style="margin-bottom: 0; flex: 1; max-width: 400px;">
+        <div class="cert-filter-header">
+            <h2 class="cert-filter-title">Date Completed:</h2>
+            <i class="far fa-calendar-alt cert-filter-icon"></i>
+        </div>
+        <div class="date-selector-container" style="display: flex; gap: 10px;">
+            <select id="cert-month-filter" class="cert-custom-dropdown" style="flex: 1.5;">
+                <option value="all">Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <select id="cert-year-filter" class="cert-custom-dropdown" style="flex: 1;">
+                <option value="all">Year</option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+    
+
+<section id="cert-showcase">
+    <div class="cert-container">
+        
+        <section class="cert-card" onclick="location.href='Certificates/Cert-Pages/INIR.html';" style="cursor: pointer;" data-tags="tag-green" data-month="03" data-year="2026">
+            <div class="cert-content-left">
+                <h3 class="cert-card-title">Introduction To Incident Response</h3>
+                <p class="cert-card-info">
+                    A practical cyber simulation focused on creating industry standard dashboards to monitor activity and producing high qualtity incident reports.
+                </p>
+                <div class="cert-issuer-area">
+                    <div class="cert-date-pill">
+                        <i class="far fa-clock cert-date-icon"></i> 21/03/2026
+                    </div>
+                    <div class="cert-issuer-pill">
+                        <img src="Certificates/Project-Icons/CWB.png" alt="Issuer Logo" class="cert-vendor-logo">
+                        Commonwealth Bank
+                    </div>
+                </div>
+                <footer class="cert-facts-area">
+                    <span class="cert-tag-pill cert-tag-green">Cybersecurity</span>
+                </footer>
+            </div>
+            <div class="cert-content-right">
+                <div class="cert-image-box">
+                    <img src="Certificates/Project-Card-imgs/IR.png" alt="An SOC lab monitoring threats">
+                </div>
+            </div>
+        </section>
+
+        <section class="cert-card" onclick="location.href='Certificates/Cert-Pages/AIAgts.html';" style="cursor: pointer;" data-tags="tag-purple" data-month="05" data-year="2026">
+            <div class="cert-content-left">
+                <h3 class="cert-card-title">Introduction To AI Agents</h3>
+                <p class="cert-card-info">
+                    An introductory course that focused on key concepts in theory and code surrounding agentic AI and frameworks. Such as LLM's, RAGs and multi agent frameworks.
+                </p>
+                <div class="cert-issuer-area">
+                    <div class="cert-date-pill">
+                        <i class="far fa-clock cert-date-icon"></i> 3/05/2026
+                    </div>
+                    <div class="cert-issuer-pill">
+                        <img src="Certificates/Project-Icons/microsoft.png" alt="Issuer Logo" class="cert-vendor-logo">
+                        Microsoft
+                    </div>
+                </div>
+                <footer class="cert-facts-area">
+                    <span class="cert-tag-pill cert-tag-purple">AI</span>
+                </footer>
+            </div>
+            <div class="cert-content-right">
+                <div class="cert-image-box">
+                    <img src="Certificates/Project-Card-imgs/AgenticAI.png" alt="A server room dedicated to Agentic AI research">
+                </div>
+            </div>
+        </section>
+
+        <section class="cert-card" onclick="location.href='Certificates/Cert-Pages/INCYS.html';" style="cursor: pointer;" data-tags="tag-green" data-month="03" data-year="2026">
+            <div class="cert-content-left">
+                <h3 class="cert-card-title">Introduction To Cybersecurity</h3>
+                <p class="cert-card-info">
+                    A course focused on highlighting the different domains of cybersecurity and how each role operates and interconnects in the world of cybersecurity.
+                </p>
+                <div class="cert-issuer-area">
+                    <div class="cert-date-pill">
+                        <i class="far fa-clock cert-date-icon"></i> 09/03/2026
+                    </div>
+                    <div class="cert-issuer-pill">
+                         <img src="Certificates/Cert-Pages/Mastercard/Cybersecurity Girl.png" alt="Issuer Logo" class="cert-vendor-logo">
+                        Cybersecurity Girl
+                    </div>
+                </div>
+                <footer class="cert-facts-area">
+                    <span class="cert-tag-pill cert-tag-green">Cybersecurity</span>
+                </footer>
+            </div>
+            <div class="cert-content-right">
+                <div class="cert-image-box">
+                    <img src="Certificates/Project-Card-imgs/CyberSecurity Girl.png" alt="Interconnected CyberSecurity Domains">
+                </div>
+            </div>
+        </section>
+
+        <section class="cert-card" onclick="location.href='Certificates/Cert-Pages/SecC.html';" style="cursor: pointer;" data-tags="tag-green" data-month="05" data-year="2026">
+            <div class="cert-content-left">
+                <h3 class="cert-card-title">Security Consulting</h3>
+                <p class="cert-card-info">
+                    A course focused on industry standard auditing and consulting in relation to guidelines such as NIST & SOX with incident reports and an interview style approach.
+                </p>
+                <div class="cert-issuer-area">
+                    <div class="cert-date-pill">
+                        <i class="far fa-clock cert-date-icon"></i> 06/05/2026
+                    </div>
+                    <div class="cert-issuer-pill">
+                        <img src="Certificates/Project-Icons/pwc.png" alt="Issuer Logo" class="cert-vendor-logo">
+                        Pwc
+                    </div>
+                </div>
+                <footer class="cert-facts-area">
+                    <span class="cert-tag-pill cert-tag-green">Cybersecurity</span>
+                </footer>
+            </div>
+            <div class="cert-content-right">
+                <div class="cert-image-box">
+                    <img src="Certificates/Project-Card-imgs/SecurityConsulting.png" alt="Audits and Official Incident Reports">
+                </div>
+            </div>
+        </section>
+
+        <section class="cert-card" onclick="location.href='Certificates/Cert-Pages/ComG.html';" style="cursor: pointer;" data-tags="tag-orange" data-month="06" data-year="2026">
+            <div class="cert-content-left">
+                <h3 class="cert-card-title">Communicate your Ideas through Storytelling</h3>
+                <p class="cert-card-info">
+                   A course focused on clear and consise communication in a way that engages and captivates an audience while conveying the main points.
+                </p>
+                <div class="cert-issuer-area">
+                    <div class="cert-date-pill">
+                        <i class="far fa-clock cert-date-icon"></i> 03/06/2026
+                    </div>
+                    <div class="cert-issuer-pill">
+                        <img src="Certificates/Project-Icons/google.png" alt="Issuer Logo" class="cert-vendor-logo">
+                        Google
+                    </div>
+                </div>
+                <footer class="cert-facts-area">
+                    <span class="cert-tag-pill cert-tag-orange">Communication</span>
+                </footer>
+            </div>
+            <div class="cert-content-right">
+                <div class="cert-image-box">
+                    <img src="Certificates/Project-Card-imgs/Communication - Google.png" alt="Audits and Official Incident Reports">
+                </div>
+            </div>
+        </section>
+
+        <section class="cert-card" onclick="location.href='Certificates/Cert-Pages/CJS.html';" style="cursor: pointer;" data-tags="tag-green" data-month="03" data-year="2026">
+            <div class="cert-content-left">
+                <h3 class="cert-card-title">Cybersecurity Job Simulation</h3>
+                <p class="cert-card-info">
+                    A practical cyber simulation focusing on the dangers of phishing and teaching cyber awareness and education skills.
+                </p>
+                <div class="cert-issuer-area">
+                    <div class="cert-date-pill">
+                        <i class="far fa-clock cert-date-icon"></i> 18/03/2026
+                    </div>
+                    <div class="cert-issuer-pill">
+                        <img src="Certificates/Project-Icons/card.png" alt="Issuer Logo" class="cert-vendor-logo">
+                        Mastercard
+                    </div>
+                </div>
+                <footer class="cert-facts-area">
+                    <span class="cert-tag-pill cert-tag-green">Cybersecurity</span>
+                </footer>
+            </div>
+            <div class="cert-content-right">
+                <div class="cert-image-box">
+                    <img src="Certificates/Project-Card-imgs/Card-sim.png" alt="CyberLab Threat Assessment">
+                </div>
+            </div>
+        </section>
+
+        <section class="cert-card" onclick="location.href='Certificates/Cert-Pages/SecCons.html';" style="cursor: pointer;" data-tags="tag-green" data-month="07" data-year="2026">
+            <div class="cert-content-left">
+                <h3 class="cert-card-title">Cybersecurity Operations</h3>
+                <p class="cert-card-info">
+                    A cybersecurity simulation designed to showcase the work done by Security Consulting Firms, such as IT auditing & Incident Reports.
+                </p>
+                <div class="cert-issuer-area">
+                    <div class="cert-date-pill">
+                        <i class="far fa-clock cert-date-icon"></i> 01/07/2026
+                    </div>
+                    <div class="cert-issuer-pill">
+                        <img src="Certificates/Project-Icons/Datacom.png" alt="Issuer Logo" class="cert-vendor-logo">
+                        DataCom
+                    </div>
+                </div>
+                <footer class="cert-facts-area">
+                    <span class="cert-tag-pill cert-tag-green">Cybersecurity</span>
+                </footer>
+            </div>
+            <div class="cert-content-right">
+                <div class="cert-image-box">
+                    <img src="Certificates/Project-Card-imgs/Security Consulting.png" alt="CyberLab Threat Assessment">
+                </div>
+            </div>
+        </section>
+
+    </div>
+</section>
+
+        <div class="section-divider" style="margin-top: 60px; margin-bottom: 60px;"></div>
+
+<section id="self-learning-showcase" style="margin-top: 60px; margin-bottom: 60px;">
+    
+    <div class="project-intro-card self-split-card">
+        <div class="self-card-left">
+            <div class="project-title-wrapper">
+                <h2 class="animated-title hidden" style="margin: 0; display: inline-block;">
+                    Self-Paced Learning
+                </h2>
+            </div>
+            <div class="project-intro-text" style="margin-top: 20px;">
+                <p>
+                   Between structured courses/certificates and projects, I often deep-dive into engaging concepts, emerging technologies, and 
+                   hot topics within Cybersecurity and Computer Science. Through self-paced learning,watching videos, taking notes, 
+                   completing labs, and creating custom infographics & quizzes to actively cement and showcase my knowledge. I don't do this 
+                   for a certificate; I do it to stay ahead in an ever-changing industry. 
+                </p>
+                <p class="expect-text" style="margin: 0;">
+                    <i class="fas fa-folder-open"></i> <strong>Explore the complete raw repository of notes, deep-dives, and technical milestones.</strong>
+                </p>
+            </div>
+        </div>
+        
+        <div class="self-card-right">
+            <a href="https://drive.google.com/drive/folders/1JC8ECDwvQVOE5dFJJAteX427VoFl_pw8?usp=sharing" target="_blank" class="self-drive-btn" title="Explore Full Knowledge Base">
+                <i class="fab fa-google-drive"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="self-grid-matrix">
+        <!-- Module 1: Viruses -->
+        <a href="https://drive.google.com/drive/folders/13ZOKzHMiXuTLWRnCKnsizOwsT_XqHEjk?usp=sharing" target="_blank" class="self-matrix-node">
+            <div class="node-icon-wrapper">
+                <i class="fas fa-biohazard"></i>
+            </div>
+            <h4 class="node-title">Viruses</h4>
+        </a>
+
+        <!-- Module 2: SQLi Attacks -->
+        <a href="https://drive.google.com/drive/folders/1O6t1kNHCwXplgjfX6slNyfOMhS-OUbi9?usp=sharing" target="_blank" class="self-matrix-node">
+            <div class="node-icon-wrapper">
+                <i class="fas fa-database"></i>
+            </div>
+            <h4 class="node-title">SQLi Attacks</h4>
+        </a>
+
+        <!-- Module 3: Cloudflare AI Agents -->
+        <a href="https://drive.google.com/drive/folders/1a9M7s6J1vXQ5OQ90yJBc5giXgXnsmZLz?usp=sharing" target="_blank" class="self-matrix-node">
+            <div class="node-icon-wrapper">
+                <i class="fab fa-cloudflare"></i>
+            </div>
+            <h4 class="node-title">Cloudflare AI Agents</h4>
+        </a>
+
+        <!-- Module 4: Expansion Slate B (Blank Blueprint) -->
+       <div class="self-matrix-node node-blueprint">
+            <div class="node-icon-wrapper">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+            <h4 class="node-title">Next Deep Dive</h4>
+        </div>
+    </div>
+
+    <div class="closing-quote-track">
+        <p class="animated-title hidden functional-quote">
+            "Good organisation makes today effortless so that the future is already taken care of."
+        </p>
+    </div>
+
+</section> 
+
+</section> <footer class="main-footer" style="width: 100%; background: #07090e; border-top: 1px solid rgba(23, 216, 219, 0.4); box-shadow: 0 -15px 30px rgba(23, 216, 219, 0.15); margin-top: 100px; margin-bottom: 0; padding: 40px 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; box-sizing: border-box; clear: both;">
+    <div class="footer-logo" style="font-family: 'Inter', sans-serif; color: #fff; font-size: 1.5rem; font-weight: 800; letter-spacing: 4px;">CF 2026</div>
+    <div class="fider" style="width: 60px; height: 2px; background: #17D8DB; border-radius: 2px;"></div>
+    <div class="footer-tech" style="font-family: 'Montserrat', sans-serif; color: #9ca3af; font-size: 0.9rem; letter-spacing: 5px; text-transform: uppercase;">HTML | CSS | JS</div>
+</footer>
+
+</body>
+</html>

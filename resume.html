@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal Flood | Resume</title>
+    <link rel="icon" type="image/png" href="Faviconm.png">
+    <link rel="apple-touch-icon" href="Faviconm.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+ <header>
+   <nav class="navbar">
+ <div class="logo">
+  <svg class="nav-icon" width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 5L15 18V45C15 67.5 30 88 50 95C70 88 85 67.5 85 45V18L50 5Z" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="38" y="48" width="24" height="18" rx="2" fill="currentColor"/>
+    <path d="M43 48V42C43 38.134 46.134 35 50 35C53.866 35 57 38.134 57 42V48" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+  <span class="brand-name">Cal Flood</span>
+</div>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="aboutMe.html">About Me</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+  </ul>
+</nav> 
+ </header>
+
+ <section id="projects-header" class="info-section">
+    <div class="project-intro-card">
+        <div class="project-title-wrapper">
+        <h2 class="animated-title hidden">My Resume</h2>
+        </div>
+        
+        
+        <div class="project-intro-text">
+            <p>
+              A resume is not just a list of skills and qualities; it is a chance to show an employer what you 
+              bring to the table, what you offer, and the type of person you are. My resume is crafted with a 
+             <strong class ="Sblue">technically oriented approach</strong> designed to highlight the various projects and certifications I have acquired 
+             in the fields of <strong class ="Sblue">Cybersecurity & Computer Science</strong>. This resume maps out what I have to offer.
+            </p>
+
+            <p class="expect-text2">
+               <strong>"You never get a second chance to make a first impression"</strong>
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<div class="section-divider2" style="margin-top: 60px; margin-bottom: 20px; "></div>
+
+<section id="resume-actions-section" class="info-section">
+    <div class="project-container">
+        
+        <div class="cv-btn-container">
+            
+            <button class="cv-btn-glass cv-btn-view" onclick="viewResumeFullscreen()">
+                <span class="cv-btn-text">Click to view in full screen</span>
+            </button>
+            
+            <button class="cv-btn-glass cv-btn-download" id="downloadBtn" onclick="triggerResumeDownload()">
+                <div class="cv-btn-progress" id="downloadProgress"></div>
+                
+                <span class="cv-btn-content-wrapper">
+                    <svg class="cv-btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span class="cv-btn-text" id="downloadBtnText">Download</span>
+                </span>
+            </button>
+            
+        </div>
+
+    </div>
+</section>
+
+<section id="resume-document-section" class="info-section">
+    <div class="project-container">
+        
+        
+        <div class="cv-frame-holder">
+            
+            <div class="cv-corner top-left"></div>
+            <div class="cv-corner top-right"></div>
+            <div class="cv-corner bottom-left"></div>
+            <div class="cv-corner bottom-right"></div>
+            
+            <div class="cv-fluid-backdrop"></div>
+            
+            <div class="cv-image-wrapper">
+                <img src="RESUME/Cal Flood - Resume - Without Details.png" alt="Cal Flood Resume Curriculum Vitae" class="cv-render-src">
+                
+                <div class="cv-interactive-overlay">
+                    <a href="https://www.linkedin.com/in/cal-flood-38323729a/" target="_blank" class="cv-hotspot" style="top: 9%; left: 21.8%; width: 13%; height: 2.5%;"></a>
+                    <a href="https://www.linkedin.com/in/cal-flood-38323729a/" target="_blank" class="cv-hotspot" style="top: 83%; left: 85%; width: 7.6%; height: 2%;"></a>
+                    <a href="https://github.com/cal800" target="_blank" class="cv-hotspot" style="top: 70%; left: 45.2%; width: 6.9%; height: 1.5%;"></a>
+                    <a href="index.html" target="_blank" class="cv-hotspot" style="top: 37.9%; left: 1.8%; width: 31%; height: 1.7%;"></a>
+                    <a href="CinemaZ.html" target="_blank" class="cv-hotspot" style="top: 48.5%; left: 1.8%; width: 40.5%; height: 1.5%;"></a>
+                    <a href="PaswrdTSys.html" target="_blank" class="cv-hotspot" style="top: 58.6%; left: 1.8%; width: 49%; height: 1.7%;"></a>
+                    
+                    
+                    <a href="Certificates/Cert-Pages/INIR.html" target="_blank" class="cv-hotspot" style="top: 43.7%; left: 71%; width: 25%; height: 3.5%;"></a>
+                    <a href="Certificates/Cert-Pages/CJS.html" target="_blank" class="cv-hotspot" style="top: 50.6%; left: 71%; width: 25%; height: 3.5%;"></a>
+                    <a href="Certificates/Cert-Pages/AIAgts.html" target="_blank" class="cv-hotspot" style="top: 58.5%; left: 71%; width: 26.5%; height: 3.7%;"></a>
+                    <a href="Certificates/Cert-Pages/SecC.html" target="_blank" class="cv-hotspot" style="top: 65.2%; left: 71%; width: 26%; height: 3.7%;"></a>
+                     <a href="Certificates/Cert-Pages/INCYS.html" target="_blank" class="cv-hotspot" style="top: 71.9%; left: 71%; width: 26%; height: 3.7%;"></a>
+                    
+                </div>
+            </div>
+            
+        </div> 
+
+       
+        <div class="cv-alert-pill-wrapper">
+            <div class="cv-alert-pill">
+                <span class="cv-alert-indicator-dot"></span>
+                <span class="cv-alert-text">Interactive Canvas: Click links to explore</span>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<section id="resume-skills-section" class="info-section">
+    <div class="project-container">
+        
+        <div class="tech-folder-grid">
+            
+            <div class="project-title-wrapper" style="width: 100%; display: block; text-align: center;">
+                <h2 class="animated-title hidden" style="display: inline-block; margin-bottom: 35px; margin-top: 10px;">Frameworks</h2>
+            </div>
+            
+            <div class="tech-folder-card">
+                <div class="tech-folder-tab">
+                    <span class="tech-folder-tab-text">Programming Languages</span>
+                </div>
+                <div class="tech-folder-body">
+                    <div class="tech-icons-container">
+                        
+                        <a href="https://www.java.com" target="_blank" class="tech-icon-item">
+                            <img src="RESUME/ICONS/java (1).png" alt="Java Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">Java</span>
+                        </a>
+                        
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="tech-icon-item">
+                            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/html5.svg" alt="HTML5 Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">HTML5</span>
+                        </a>
+                        
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="tech-icon-item">
+                            <img src="RESUME/ICONS/css-3 (1).png" alt="CSS3 Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">CSS3</span>
+                        </a>
+                        
+                        <a href="https://www.postgresql.org" target="_blank" class="tech-icon-item">
+                            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/postgresql.svg" alt="SQL Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">SQL</span>
+                        </a>
+                        
+                        <a href="https://www.kernel.org" target="_blank" class="tech-icon-item">
+                            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/linux.svg" alt="Linux Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">Linux C</span>
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-folder-card">
+                <div class="tech-folder-tab">
+                    <span class="tech-folder-tab-text">Tools Used</span>
+                </div>
+                <div class="tech-folder-body">
+                    <div class="tech-icons-container">
+                        
+                        <a href="https://www.canva.com" target="_blank" class="tech-icon-item">
+                            <img src="RESUME/ICONS/Canva_Logo.svg" alt="Canva Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">Canva</span>
+                        </a>
+                        
+                        <a href="https://www.lucidchart.com" target="_blank" class="tech-icon-item">
+                            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/lucid.svg" alt="Lucidchart Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">Lucidchart</span>
+                        </a>
+                        
+                        <a href="https://www.figma.com" target="_blank" class="tech-icon-item">
+                            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/figma.svg" alt="Figma Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">Figma</span>
+                        </a>
+                        
+                        <a href="https://gemini.google.com" target="_blank" class="tech-icon-item">
+                            <img src="RESUME/ICONS/Google_Gemini_icon_2025.svg" alt="Gemini Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">Gemini</span>
+                        </a>
+                        
+                        <a href="https://code.visualstudio.com" target="_blank" class="tech-icon-item">
+                            <img src="RESUME/ICONS/Visual_Studio_Code_1.35_icon.svg" alt="VS Code Icon" class="tech-svg white-filter">
+                            <span class="tech-icon-label">VS Code</span>
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+<section id="soft-skills-summary-section" class="info-section">
+    <div class="project-container">
+        
+         <div class="project-title-wrapper" style="width: 100%; display: block; text-align: center;">
+                <h2 class="animated-title hidden" style="display: inline-block; margin-bottom: 35px; margin-top: 10px;">Soft Skills</h2>
+            </div>
+
+        <div class="soft-skills-grid">
+            
+            <div class="soft-skill-card">
+                <div class="soft-skill-item">
+                    <span class="skill-dot"></span>
+                    <div class="skill-text-group">
+                        <h4>Adaptability</h4>
+                        <p>Having the ability to acclimate to environments and think quickly in emerging situations.</p>
+                    </div>
+                </div>
+                <div class="soft-skill-item">
+                    <span class="skill-dot"></span>
+                    <div class="skill-text-group">
+                        <h4>Communication</h4>
+                        <p>Articulating complex technical concepts and speaking in a clear and concise manner.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="soft-skill-card">
+                <div class="soft-skill-item">
+                    <span class="skill-dot"></span>
+                    <div class="skill-text-group">
+                        <h4>Creativity</h4>
+                        <p>Ability to generate valuable, original ideas that solve problems. </p>
+                    </div>
+                </div>
+                <div class="soft-skill-item">
+                    <span class="skill-dot"></span>
+                    <div class="skill-text-group">
+                        <h4>Future Driven</h4>
+                        <p>Awareness and forward thinking to stay ahead of evolving technology.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+       <div class="cv-alert-pill-wrapper" style="margin-top: 35px;">
+    <a href="aboutMe.html" class="cv-alert-pill-link" style="text-decoration: none;">
+        <div class="cv-alert-pill interactive-pill">
+            <span class="cv-alert-indicator-dot processing-dot"></span>
+            <span class="cv-alert-text">
+                Want a deeper look? Click to view all Skills in <span class="glow-target">about me</span>
+            </span>
+        </div>
+    </a>
+</div>
+
+    </div>
+</section>
+
+<section id="cv-request-gateway-section" class="info-section">
+    <div class="project-container">
+
+        
+         <div class="project-title-wrapper" style="width: 100%; display: block; text-align: center;">
+         <h2 class="animated-title hidden" style="display: inline-block; margin-bottom: 15px; margin-top: 150px;">Contact me</h2>
+         </div>
+        
+        <div class="cv-gateway-card">
+            <div class="gateway-content">
+                <h3 class="gateway-blue">Interested in a CV with my personal details?</h3>
+                <p class="gateway-white">Click below to automatically draft a direct secure enquiry via your native email client.</p>
+            </div>
+            
+            <div class="gateway-action-wrapper">
+                <a href="#" id="emailRequestBtn" class="gateway-btn-link" onclick="generateSecureMail(event)">
+                    <div id="emailBtnContainer" class="gateway-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <span id="emailBtnText">Contact Me Here</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<section class="socials-section" style="margin-top: 300px;">
+  <div class="socials-header hidden">
+    <h2 class="socials-title">Connect with me:</h2>
+  </div>
+  
+  <div class="socials-container">
+    <div class="social-item hidden">
+      <a href="https://www.linkedin.com/in/cal-flood-38323729a/" target="_blank" class="social-icon">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+      <span class="social-tag">LinkedIn</span>
+    </div>
+
+    <div class="social-item hidden">
+      <a href="https://github.com/cal800" target="_blank" class="social-icon">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <span class="social-tag">GitHub</span>
+    </div>
+
+    <div class="social-item hidden">
+      <a href="https://www.instagram.com/cal_flood2026/?hl=en" target="_blank" class="social-icon">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <span class="social-tag">Instagram</span>
+    </div>
+
+    <div class="social-item hidden">
+      <a href="https://leetcode.com/u/xxCalF/" target="_blank" class="social-icon">
+        <i class="fa-solid fa-code"></i>
+      </a>
+      <span class="social-tag">LeetCode</span>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer" style="margin-top: -20px;">
+  <div class="footer-content">
+    <div class="footer-logo">CF 2026</div>
+    <div class="footer-divider"></div>
+    <div class="footer-tech">HTML | CSS | JS</div>
+  </div>
+</footer>
+
+</body>
+
+
