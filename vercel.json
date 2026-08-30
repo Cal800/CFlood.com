@@ -1,3 +1,6 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/links", "destination": "/Linktree/links.html" }
+  ]
 }
