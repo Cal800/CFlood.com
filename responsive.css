@@ -543,6 +543,8 @@
   }
 }
 
+
+
 /* ========================================
    ULTRAWIDE / LARGE DISPLAYS (min-width: 1200px)
    ======================================== */
@@ -3310,5 +3312,28 @@ img, svg, video {
         background: rgba(255, 255, 255, 0.02);
         border-color: rgba(255, 255, 255, 0.08);
         box-shadow: none;
+    }
+}
+
+/* Laptop-specific fix (1200px-1600px, covers your 1536px screen):
+   - Switches from space-between (uncontrollable leftover gap) to an
+     explicit gap value.
+   - Narrows the card so there's room for that gap to exist.
+   - Zeroes out the badge's old 150px right margin, since the gap
+     above now does that job — leaving both would double the space. */
+@media (min-width: 1200px) and (max-width: 1600px) {
+    .cert-detail-body .hero-layout-container {
+        justify-content: flex-start !important;
+        gap: 90px !important; /* your current value */
+    }
+
+    .cert-detail-body .cert-hero-card {
+        width: fit-content !important;   /* NEW: hugs whatever content is inside */
+        min-width: 820px !important;     /* the narrow size you liked for short titles */
+        max-width: 920px !important;     /* safety ceiling so it can never crowd the badge */
+    }
+
+    .cert-detail-body .verification-seal-link {
+        margin-right: 0 !important;
     }
 }
