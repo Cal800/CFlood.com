@@ -2558,7 +2558,7 @@ strong {
 /* 🎛️ 4-Card Matrix Layout System */
 .self-grid-matrix {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr);   /* fixed 4 columns -> 8 items = 4x2 */
     gap: 20px;
     margin-top: 25px;
 }

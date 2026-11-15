@@ -1,0 +1,1816 @@
+/* ==========================================================================
+   COLOR ARCHITECTURE & VARIABLES (FIXED SIGNATURE THEME)
+   ========================================================================== */
+:root {
+    --bg-dark-terminal: #060b0d;
+    --accent-cyan: #17D8DB;                      /* 🌟 Your exact signature color */
+    --glow-cyan: rgba(23, 216, 219, 0.4);         /* Matching glow alpha */
+    --btn-bg-glow: rgba(23, 216, 219, 0.05);      /* Muted idle button fill */
+    --glass-border: rgba(23, 216, 219, 0.15);     /* Structural lines */
+    --text-pure: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================================
+   GLOBAL CANVAS INITIALIZATION
+   ========================================================================== */
+.cert-detail-body {
+    background: linear-gradient(to bottom, rgba(6, 11, 13, 0.35), rgba(6, 11, 13, 0.75)),
+                url('BCG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-pure);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   NAVIGATION ENGINE
+   ========================================================================== */
+.cert-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 3%; 
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Back Button Interface Element */
+.back-btn {
+    text-decoration: none;
+    color: var(--accent-cyan);
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    border: 1px solid var(--accent-cyan);
+    padding: 10px 24px;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--btn-bg-glow);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.back-btn:hover {
+    background: var(--accent-cyan);
+    color: #000000;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.6);   /* Unified crisp signature glow */
+    transform: translateY(-2px);
+}
+
+/* Brand Identity Layout Group */
+.brand-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-right: calc(5% - 12px); 
+    margin: 0;
+    height: 100%;
+}
+
+.animated-brand {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: max-content;
+    margin-left: auto;
+    padding-right: 0; 
+}
+
+.brand-text {
+    font-weight: 700;
+    letter-spacing: 5px;
+    font-size: 1.2rem;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 15px var(--glow-cyan);
+    line-height: 1;
+    display: inline-block;
+    cursor: default;
+}
+
+/* Dynamic Trace Line Generation */
+.animated-brand::after {
+    content: '';
+    position: absolute;
+    top: 2.29rem; 
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px var(--glow-cyan);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+
+.animated-brand.show::after {
+    width: calc(100% - 15%); 
+}
+
+.nav-icon {
+    filter: drop-shadow(0 0 8px rgba(23, 216, 219, 0.6));
+    transition: transform 0.3s ease;
+}
+
+/* Force elements inside the SVG path to inherit your exact signature color */
+.nav-icon path, 
+.nav-icon rect {
+    stroke: var(--accent-cyan) !important;
+}
+.nav-icon rect[fill] {
+    fill: var(--accent-cyan) !important;
+}
+
+.brand-group:hover .nav-icon {
+    transform: scale(1.1);
+    cursor: default;
+}
+
+/* ==========================================================================
+   ANIMATED HEADING KEYSTONES
+   ========================================================================== */
+.animated-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600; 
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 0 35px 0; 
+    line-height: 1.2;
+    width: max-content;
+    
+    align-self: center; 
+    text-align: center;
+}
+
+.animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-cyan);
+    box-shadow: 0 0 15px var(--glow-cyan);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+
+.animated-title.show::after {
+    width: 100%;
+}
+
+
+/* ==========================================================================
+   HORIZONTAL DISPLAY WRAPPER
+   ========================================================================== */
+.hero-layout-container {
+    display: flex;
+    justify-content: space-between;
+    
+    /* 🌟 CRITICAL FIX: Ensures absolute pixel-perfect vertical centering between card and seal */
+    align-items: center; 
+    
+    width: 100%;
+    padding: 20px 6% 20px 0; 
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   THE SINGLE-COLUMN HERO CENTERPIECE
+   ========================================================================== */
+.cert-hero-card {
+    background: rgba(6, 11, 13, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(23, 216, 219, 0.22); 
+    border-radius: 24px;
+    padding: 50px 60px; 
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                inset 0 0 30px rgba(23, 216, 219, 0.02);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    width: 820px; 
+    max-width: 90%;
+    margin-left: 5%; 
+    margin-top: 20px;
+}
+
+/* DEDICATED ISSUER TRACK (Independent Line Architecture) */
+.hero-issuer-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px; 
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+.issuer-label {
+    color: rgba(255, 255, 255, 0.65); 
+    font-weight: 500;
+}
+
+.issuer-name-text {
+    font-weight: 700;
+    color: var(--text-pure);
+}
+
+.issuer-logo-inline {
+    height: 34px; 
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    margin-left: 6px;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+}
+
+/* Timeline & Pill Horizontal Layout Track */
+.hero-timeline-row {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    width: 100%;
+}
+
+/* PREMIUM RECONFIGURED PILL BADGE OBJECTS */
+.cert-hero-card .cert-date-pill {
+    margin-top: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(23, 216, 219, 0.06);
+    border: 1px solid rgba(23, 216, 219, 0.2);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    letter-spacing: 0.5px;
+}
+
+.cert-hero-card .cert-date-icon {
+    color: var(--accent-cyan);
+}
+
+.cert-hero-card .cert-tags-pill-area {
+    margin-bottom: 0 !important;
+    display: inline-block;
+}
+
+.cert-hero-card .cert-tag-pill {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cert-hero-card .cert-tag-purple {
+     background: rgba(102, 255, 153, 0.1);
+     border: 1px solid rgba(102, 255, 153, 0.3);
+     color: #66FF99;
+     text-shadow: 0 0 10px rgba(102, 255, 153, 0.2);
+}
+
+.cert-hero-card .cert-tag-orange {
+    background: rgba(247, 127, 0, 0.1);
+    border: 1px solid rgba(247, 127, 0, 0.3);
+    color: #ff9f43;
+    text-shadow: 0 0 10px rgba(255, 159, 67, 0.2);
+}
+
+.cert-hero-card .cert-tag-blue {
+    background: rgba(191, 64, 191, 0.1);
+    border: 1px solid rgba(191, 64, 191, 0.3);
+    color: #BF40BF;
+    text-shadow: 0 0 10px rgba(191, 64, 191, 0.2);
+}
+
+/* ==========================================================================
+   🛡️ EXPANDED HOLOGRAPHIC VERIFICATION STAMP SEAL
+   ========================================================================== */
+.verification-seal-link {
+    text-decoration: none;
+    outline: none;
+    display: block;
+    margin-top: 5px;
+    margin-right: 150px;
+    animation: sealFloat 4s ease-in-out infinite; 
+}
+
+.verification-stamp-seal {
+    /* 🌟 Scaled up size parameters to 240px for a more balanced displayPresence */
+    width: 240px;
+    height: 240px;
+    background: rgba(6, 11, 13, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(23, 216, 219, 0.25); 
+    border-radius: 50%; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4),
+                inset 0 0 20px rgba(23, 216, 219, 0.03);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.seal-inner-ring {
+    /* 🌟 Adjusted internal matching alignment scaling boundaries */
+    width: 212px;
+    height: 212px;
+    border: 1px dashed rgba(23, 216, 219, 0.15); 
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.seal-shield-icon {
+    /* 🌟 Adjusted icon sizing layout balance */
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    opacity: 0.85;
+    
+    filter: invert(72%) sepia(85%) saturate(1478%) hue-rotate(134deg) brightness(96%) contrast(89%) drop-shadow(0 0 8px rgba(23, 216, 219, 0.5));
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.seal-text-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.seal-main-text {
+    /* 🌟 Slightly optimized textual sizes to look great inside the larger circle */
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.3;
+}
+
+.seal-sub-text {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    transition: color 0.4s ease;
+}
+
+/* INTERACTIVE INTERFACE HOVER ENGINE */
+.verification-seal-link:hover .verification-stamp-seal {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 15px 45px rgba(23, 216, 219, 0.25),
+                inset 0 0 25px rgba(23, 216, 219, 0.05);
+}
+
+.verification-seal-link:hover .seal-shield-icon {
+    transform: scale(1.1);
+    filter: invert(72%) sepia(85%) saturate(1478%) hue-rotate(134deg) brightness(110%) contrast(100%) drop-shadow(0 0 14px rgba(23, 216, 219, 0.8));
+}
+
+.verification-seal-link:hover .seal-sub-text {
+    color: var(--accent-cyan);
+}
+
+/* Gentle operational hover system loops */
+@keyframes sealFloat {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* ==========================================================================
+   🎯 VERTICAL TELEMETRY CARD & TELEPORT ENGINE
+   ========================================================================== */
+.verification-telemetry-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    /* 🌟 THE ADJUSTED DIMENSIONS */
+    width: 1100px;          /* Expanded to roughly double the width to fill out the grid nicely */
+    max-width: 90%;         /* RESPONSIVE FIX: without this, 1100px never shrinks and overflows any viewport under ~1150px */
+    min-height: 250px;     /* Added extra breathing room vertically */
+    
+    /* Perfect alignment with your header assets */
+    margin: 30px 0 40px 4.8%; 
+    padding: 30px;         /* Slightly bumped padding to match the broader footprint */
+    box-sizing: border-box;
+    
+    /* Rest of your glassmorphism styles remain completely untouched */
+    background: rgba(6, 11, 13, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(23, 216, 219, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Header Node featuring the Dynamic Image Filter */
+.telemetry-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(23, 216, 219, 0.08);
+    padding-bottom: 10px;
+}
+
+.telemetry-signature-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    
+    /* 🚀 THE FILTER MATRIX: Forces any injected icon asset to adapt to crisp signature white */
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+.telemetry-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Data Readout Stage */
+.telemetry-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.meta-tag-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.5px;
+}
+
+.cert-id-code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    color: var(--accent-cyan);
+    background: rgba(23, 216, 219, 0.04);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(23, 216, 219, 0.12);
+    font-weight: 700;
+    width: max-content;
+}
+
+/* THE INTERACTIVE VERTICAL EXPRESS LANE PILL */
+.teleport-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(23, 216, 219, 0.06);
+    border: 1px solid rgba(23, 216, 219, 0.25);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+
+.teleport-btn-icon {
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+}
+
+/* Interactive Hover States */
+.teleport-action-btn:hover {
+    background: var(--accent-cyan);
+    color: #060b0d;
+    box-shadow: 0 0 15px rgba(23, 216, 219, 0.35);
+    border-color: var(--accent-cyan);
+}
+
+.teleport-action-btn:hover .teleport-btn-icon {
+    color: #060b0d;
+    transform: translateY(3px); /* Animated directional cue */
+}
+
+/* ==========================================================================
+   INTERNAL CARD CONTENT ENGINES
+   ========================================================================== */
+
+/* Centered Header with Icons on Both Sides */
+.telemetry-header-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(23, 216, 219, 0.08);
+    padding-bottom: 14px;
+}
+
+/* Forces whatever PNG asset you choose to be crisp signature white */
+.telemetry-dual-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.telemetry-label-main {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   REFOCUSED DATA GRID & PILL ENGINE
+   ========================================================================== */
+
+/* Back to a clean, uniform layout track since we're capping pill widths */
+.telemetry-data-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px; /* Increases spacing between the interactive nodes */
+    margin: auto 0;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.data-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* The Restructured Code Box: Form-fitted instead of bloated */
+.telemetry-blue-box {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    color: var(--accent-cyan);
+    background: rgba(23, 216, 219, 0.04);
+    
+    /* 🎯 Dials back the squashed look: tight vertical, comfortable horizontal padding */
+    padding: 8px 24px; 
+    
+    border-radius: 6px;
+    border: 1px solid rgba(23, 216, 219, 0.12);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    
+    /* Removes width: 100% so it wraps beautifully around the text context instead of expanding */
+    width: auto; 
+    min-width: 110px; /* Gives smaller entries like N/A a base standard size */
+    height: 38px;
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Specific micro-padding tweak just for the long string node if needed */
+.code-id-string {
+    font-size: 0.9rem;
+    letter-spacing: -0.1px;
+    padding: 8px 16px; /* Slightly tighter horizontal squeeze just for the hash */
+}
+
+.narrative-section {
+    max-width: 850px;
+    margin: 30px 0 75px 5%; /* Generous 80px bottom margin pushes the next section down cleanly */
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   NARRATIVE TYPOGRAPHY COMPARISON: MONTSERRAT EDITION
+   ========================================================================== */
+
+/* ⚡ Authoritative Section Title (Locked at 2.3rem) */
+.animated-title {
+    font-family: 'Montserrat', sans-serif; /* 👈 Swapped to Montserrat */
+    font-size: 2.3rem; 
+    font-weight: 700;                      /* Full robust headline weight */
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+}
+
+/* Scroll-triggered underline behavior remains completely untouched */
+.animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #17D8DB;
+    box-shadow: 0 0 15px rgba(23, 216, 219, 0.6);
+    transition: width 0.8s ease-out 0.2s;
+}
+
+.animated-title.show::after {
+    width: 100%;
+}
+
+/* 📖 Clean, Solid Paragraph Bodies */
+.narrative-body p {
+    font-family: 'Montserrat', sans-serif; /* 👈 Swapped to Montserrat */
+    font-size: 1.35rem;                    /* Matches your upscaled view size */
+    line-height: 1.3;                     /* Comfortable layout reading rhythm */
+    font-weight: 450;                      /* Crisp baseline weight to eliminate thin text */
+    color: #ffffff;
+    max-width: 780px;
+    margin-bottom: 22px;
+    letter-spacing: 0.2px;
+}
+
+.narrative-body p:last-child {
+    margin-bottom: 0;
+}
+
+.narrative-section:first-of-type {
+    margin-top: 80px; /* Pushes the entire first title node down cleanly */
+}
+
+/* ⚡ Sharp Inline Cyan Emphasis (Matches the bright cyan look) */
+.narrative-body strong {
+    font-family: 'Montserrat', sans-serif; /* 👈 Swapped to Montserrat */
+    font-size: 1.38rem;  
+    color: #17D8DB;
+    font-weight: 540;                      /* Pop out keywords instantly */
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   NARRATIVE LIST EXTRACTION ENGINE (ZERO-INDENT GLOW SYSTEM)
+   ========================================================================== */
+
+/* The Core List Wrapper */
+.narrative-list {
+    list-style: none;             /* Obliterates the default browser bullet points */
+    padding: 0;                   /* Crucial: Destroys the annoying default indent */
+    margin: 24px 0 0 0;           /* Clean separation from any paragraph text above it */
+    display: flex;
+    flex-direction: column;
+    gap: 18px;                    /* Generous, breathing layout gap between each point */
+}
+
+/* Individual Bullet Items */
+.narrative-list li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    font-weight: 400;
+    color: #ffffff;
+    max-width: 780px;
+    position: relative;
+    padding-left: 35px;           /* Expanded slightly to account for the larger circle diameter */
+    box-sizing: border-box;
+}
+
+/* 🌀 The Precision Engengineered Custom Bullet Circle */
+.narrative-list li::before {
+    content: '';                  /* Obliterates the text character method */
+    position: absolute;
+    left: 0;
+    
+    /* 📐 Dimensional Control: Scale up to a clear, punchy size */
+    width: 12px;                  
+    height: 12px;
+    
+    /* 🎯 Perfect Vertical Centering Matrix */
+    /* This calculates the exact center point of your first line of text, regardless of browser size */
+    top: calc((1.15rem * 1.75 / 2) - 6px); 
+    
+    /* 🎨 Styling the Open Cyber Circle */
+    border: 2px solid #17D8DB;    /* Gives the stroke an authoritative, clear definition */
+    border-radius: 50%;           /* Forces a flawless, geometric circle */
+    background: transparent;      /* Keeps the center completely open and hollow */
+    box-sizing: border-box;
+    
+    /* ⚡ Optimized Laser Glow Aura */
+    box-shadow: 0 0 10px rgba(23, 216, 219, 0.8),
+                0 0 20px rgba(23, 216, 219, 0.4);
+    
+    user-select: none;
+}
+
+/* ==========================================================================
+   SECTION 3 MICRO-TYPOGRAPHY LABELS
+   ========================================================================== */
+
+.tech-sub-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #17D8DB;                 /* Signature cyan text accent */
+    letter-spacing: 2px;
+    margin: 35px 0 12px 0;          /* Generous top gap to separate blocks, tight bottom gap to paragraph */
+    opacity: 0.85;
+    user-select: none;
+}
+
+/* ==========================================================================
+   SKILLS DEMONSTRATED CAPSULE ENGINE (UNCONSTRAINED FLOATING SYSTEM)
+   ========================================================================== */
+
+.skills-capsule-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 100px;         /* Locked back into the premium long-pill design */
+    
+    padding: 16px 36px;
+    margin: 45px 0 45px -10px;               /* Balanced spacing between the text blocks */
+    width: fit-content;           /* Expands naturally to handle single line items */
+    box-sizing: border-box;
+    
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05),
+                0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.skills-card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #17D8DB;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+/* Clear, single line track container */
+.skills-grid-container {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* 💊 Individual Interactive Skill Text Nodes */
+.skill-pill-item {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;           /* Restored back to normal text proportions */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;          /* 🛑 Strictly bans text wrapping inside the pill */
+    position: relative;
+    padding-left: 20px;
+    
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+                color 0.25s ease,
+                text-shadow 0.25s ease;
+    cursor: default;
+}
+
+/* 🌀 Perfect Open Circle Micro-Bullet Alignment */
+.skill-pill-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    top: calc(50% - 4px);         /* Locks vector to the absolute center line */
+    
+    border: 1.5px solid rgba(23, 216, 219, 0.6);
+    border-radius: 50%;
+    background: transparent;
+    box-sizing: border-box;
+    
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ==========================================================================
+   ⚡ INTERACTIVE HOVER ACTIONS
+   ========================================================================== */
+
+.skill-pill-item:hover {
+    color: #17D8DB;
+    transform: scale(1.05);       /* Subtle uniform scaling looks elegant on a wide line */
+    text-shadow: 0 0 8px rgba(23, 216, 219, 0.3);
+}
+
+.skill-pill-item:hover::before {
+    border-color: #17D8DB;
+    box-shadow: 0 0 8px rgba(23, 216, 219, 0.8),
+                0 0 15px rgba(23, 216, 219, 0.4);
+}
+
+/* 📱 Responsive Adaptive State for Tablet/Mobile viewports */
+@media (max-width: 900px) {
+    .skills-capsule-card {
+        border-radius: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        width: 100%;
+        max-width: 780px;
+    }
+    .skills-grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   SECTION 4: TOOLS DETAILED CARD ENGINE (ASSET FOCUS)
+   ========================================================================== */
+
+.tools-detailed-card {
+    background: rgba(10, 25, 41, 0.25); /* Slightly deeper backing to pull attention */
+    
+    /* 📐 Pronounced Border Profile */
+    border: 2px solid rgba(23, 216, 219, 0.2); /* Bolder, more radiant cyan base border */
+    border-radius: 24px;          /* Clean, authoritative rounded corners */
+    
+    padding: 40px;
+    margin: 35px 0 45px -10px;    /* Matches the precise left-grid alignment of Section 3 */
+    max-width: 780px;
+    width: 100%;
+    box-sizing: border-box;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 40px;                    /* Separation between logos and the text tray */
+    
+    box-shadow: 0 0 25px rgba(23, 216, 219, 0.03),
+                inset 0 1px 2px rgba(255, 255, 255, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle glow enhancement when interacting with the card itself */
+.tools-detailed-card:hover {
+    border-color: rgba(23, 216, 219, 0.35);
+    box-shadow: 0 0 35px rgba(23, 216, 219, 0.06),
+                inset 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+/* Horizontal Track for Logos (Holds 4-5 Items Perfectly) */
+.tools-logo-display-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Individual Interactive Asset Frames */
+.tool-logo-wrapper {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 🖼️ The Uniform White Matrix Engine */
+.tool-png-asset {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.90;                /* Clean, understated resting state */
+    
+    
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* ==========================================================================
+   ⚡ LOGO HOVER TRANSFORMATIONS
+   ========================================================================== */
+
+.tool-logo-wrapper:hover {
+    transform: scale(1.15) translateY(-5px); /* Fluid pop up */
+}
+
+.tool-logo-wrapper:hover .tool-png-asset {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   📝 INTERACTIVE TEXT TRAY SYSTEM
+   ========================================================================== */
+
+.tool-active-text-tray {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;             /* Prevents layout jumping when text loads */
+    position: relative;
+    width: 100%;
+}
+
+/* Resting Hint State */
+.tool-hover-reminder {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.25);
+    letter-spacing: 1.5px;
+    transition: opacity 0.2s ease;
+}
+
+/* Dynamic Text Inject Target */
+.tool-dynamic-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* 🌀 The Signature Cyan Underline Aura */
+.tool-animated-underline {
+    width: 0;
+    height: 2px;
+    background: #17D8DB;
+    margin-top: 8px;
+    box-shadow: 0 0 10px rgba(23, 216, 219, 0.8),
+                0 0 20px rgba(23, 216, 219, 0.4);
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Active State Hooks (Triggered via JavaScript below) */
+.tools-detailed-card.item-is-active .tool-hover-reminder {
+    display: none;
+}
+
+.tools-detailed-card.item-is-active .tool-dynamic-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tools-detailed-card.item-is-active .tool-animated-underline {
+    width: 140px;                  /* Expands out gracefully under the title text */
+}
+
+/* Responsive safety valve for smaller screens */
+@media (max-width: 680px) {
+    .tools-logo-display-track {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        gap: 30px;
+    }
+    .tools-detailed-card {
+        padding: 30px 20px;
+    }
+}
+
+.section-divider {
+    width: 100%; 
+    min-width: 200px; /* Ensures it doesn't get TOO small on tiny text */
+    max-width: 100%;  /* Ensures it doesn't overflow */
+    
+    height: 4px;
+    background: #17D8DB;
+    box-shadow: 0 0 20px rgba(23, 216, 219, 0.7), 0 0 40px rgba(23, 216, 219, 0.4);
+    margin: 0 auto 60px auto;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   SECTION 6: EXPANDED NARRATIVE ENGINE & CERTIFICATE PRESENTATION
+   ========================================================================== */
+
+/* 🌐 The Custom Expanded Layout Track */
+.narrative-body-expanded {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 960px;             /* Stretches longer than the original 780px to maximize image layout */
+    box-sizing: border-box;
+}
+
+.cert-intro-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 570;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 30px;
+    margin-left: -10px;           /* Snaps perfectly to your left alignment line */
+}
+
+.cert-closing-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #17D8DB;
+    
+    /* 📐 Tighten the relationship with the card above */
+    margin-top: 20px;             /* Pulls it neatly up toward the card */
+    margin-bottom: 40px;          /* Clean breathing room to anchor the page end */
+    margin-left: -10px;           /* Snaps perfectly to your left alignment line */
+}
+
+/* 🏆 The Certificate Bounding Card */
+.certificate-display-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(23, 216, 219, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    
+    /* 🎯 THE FIX: Changed bottom margin from 60px down to 0 */
+    margin: 20px 0 0 -10px; 
+    
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
+                inset 0 1px 1px rgba(255, 255, 255, 0.05);
+                
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+/* 🖼️ The Asset Container Frame */
+.cert-image-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;             /* Keeps the shimmer overlay locked within boundaries */
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.certificate-png-asset {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    
+    /* Subtle resting style layer keeping image colors cohesive with dark background */
+    filter: brightness(0.95) contrast(1.02);
+    transition: filter 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 🌀 Interactive Light Shimmer Overlay */
+.cert-hologram-shimmer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(105deg, 
+                    rgba(255,255,255,0) 30%, 
+                    rgba(23, 216, 219, 0.08) 45%, 
+                    rgba(23, 216, 219, 0.15) 50%, 
+                    rgba(23, 216, 219, 0.08) 55%, 
+                    rgba(255,255,255,0) 70%);
+    background-size: 200% 100%;
+    background-position: 150% 0;
+    pointer-events: none;         /* Lets clicks pass right through to image layer if needed */
+    mix-blend-mode: screen;
+    transition: background-position 0.6s ease;
+}
+
+/* ==========================================================================
+   ⚡ CERTIFICATE CARD INTERACTIVE HOVER ACTIONS
+   ========================================================================== */
+
+.certificate-display-card:hover {
+    border-color: rgba(23, 216, 219, 0.4); /* Illuminates border outline */
+    transform: translateY(-8px) scale(1.005); /* Smooth elevation lift */
+    
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
+                0 0 40px rgba(23, 216, 219, 0.08),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.certificate-display-card:hover .certificate-png-asset {
+    filter: brightness(1) contrast(1.05); /* Crisp, full display pop */
+}
+
+/* Drags the shining laser beam across the face of the document on hover */
+.certificate-display-card:hover .cert-hologram-shimmer {
+    background-position: -50% 0;
+}
+
+/* ==========================================================================
+   📐 CYBERPUNK FRAME CORNER DECALS
+   ========================================================================== */
+
+.cert-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #17D8DB;
+    opacity: 0.3;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Absolute Corner Placements */
+.cert-corner.tl { top: -1px; left: -1px; border-right: none; border-bottom: none; border-radius: 16px 0 0 0; }
+.cert-corner.tr { top: -1px; right: -1px; border-left: none; border-bottom: none; border-radius: 0 16px 0 0; }
+.cert-corner.bl { bottom: -1px; left: -1px; border-right: none; border-top: none; border-radius: 0 0 0 16px; }
+.cert-corner.br { bottom: -1px; right: -1px; border-left: none; border-top: none; border-radius: 0 0 16px 0; }
+
+/* Energize corner brackets on card component interactions */
+.certificate-display-card:hover .cert-corner {
+    opacity: 0.9;
+}
+.certificate-display-card:hover .cert-corner.tl { transform: translate(-3px, -3px); }
+.certificate-display-card:hover .cert-corner.tr { transform: translate(3px, -3px); }
+.certificate-display-card:hover .cert-corner.bl { transform: translate(-3px, 3px); }
+.certificate-display-card:hover .cert-corner.br { transform: translate(3px, 3px); }
+
+/* 📱 Responsive Engineering: Maintain layout safety bounds across device sizes */
+@media (max-width: 980px) {
+    .narrative-body-expanded {
+        padding: 0 20px;
+    }
+    .certificate-display-card {
+        margin-left: 0;
+    }
+    .cert-intro-text {
+        margin-left: 0;
+    }
+}
+
+/* ==========================================================================
+   SECTION 7: REPOSITORY ARCHIVE VAULT TERMINAL
+   ========================================================================== */
+
+/* ==========================================================================
+   🚀 CANVAS FOOTER LAYOUT ROW
+   ========================================================================== */
+
+.footer-layout-row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    
+    /* Matches the breakout parameters of your bottom wide card for perfect symmetry */
+    width: 100%;            /* RESPONSIVE FIX: was 100vw, which is measured against the whole viewport including the scrollbar and is always wider than the visible page — that's what was clipping content on the right edge */
+    max-width: 1300px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Restored to your original clean, single-column internal card specifications */
+.cert-drive-access-card {
+    background: rgba(6, 11, 13, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(23, 216, 219, 0.22); 
+    border-radius: 24px;
+    padding: 50px 60px; 
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                inset 0 0 30px rgba(23, 216, 219, 0.02);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;      
+    
+    width: 820px; 
+    max-width: 90%;
+    margin: 120px 0 10px -15px;    
+    flex-shrink: 0;                /* Keeps the card dimensions stable */
+}
+
+/* 📐 Original Breathing Room Below Title Element */
+.cert-drive-access-card .animated-title {
+    margin-top: 0;
+    margin-bottom: 55px;          
+    margin-left: -120px;            
+}
+
+.drive-card-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 0 0 50px 0;           
+    max-width: 100%;
+}
+
+
+/* ==========================================================================
+   🎯 FLOATING STANDALONE BRAND CANVAS DECORATION
+   ========================================================================== */
+
+.canvas-standalone-brand-block {
+    display: flex;
+    align-items: center;
+    /* Pushes and centers the logo smoothly inside that empty right-hand space */
+    justify-content: center;
+    width: 100%;
+    padding-left: 275px;
+    box-sizing: border-box;
+}
+
+.canvas-brand-png {
+    width: 440px; 
+     margin-left: 150px;                 /* Clean, commanding decorative presence */
+    max-width: 100%;                /* RESPONSIVE FIX: this variant was missing the max-width safety its sibling classes below already have, so it couldn't shrink */
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;          
+    user-select: none;
+}
+
+.canvas-brand-png-white {
+        max-width: 440px;    
+        margin-left: 150px;
+        height: auto;
+        object-fit: contain;
+        pointer-events: none;
+        user-select: none;
+        filter: brightness(0) invert(1);        
+    }
+
+.canvas-brand-png-white1 {
+        max-width: 280px;    
+        height: auto;
+        object-fit: contain;
+        pointer-events: none;
+        user-select: none;
+        margin-left: 100px;
+        filter: brightness(0) invert(1);        
+    }
+
+.canvas-brand-png-white2 {
+        max-width: 220px;    
+        height: auto;
+        object-fit: contain;
+        pointer-events: none;
+        user-select: none;
+        margin-left: 120px;
+        filter: brightness(0) invert(1);        
+    }
+
+    
+
+/* 📱 Responsive Boundaries for Mobile Screen Widths */
+@media (max-width: 1150px) {
+    .footer-layout-row-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cert-drive-access-card {
+        margin: 60px auto;         /* Centers the standalone card on small viewports */
+    }
+    /* RESPONSIVE FIX: the -120px offset below is only meant to nudge the
+       title within the wide desktop card layout. Nothing ever reset it, so
+       on narrower screens it was shoving the title 120px past the card's
+       left edge and clipping it. */
+    .cert-drive-access-card .animated-title {
+        margin-left: 0;
+    }
+    /* RESPONSIVE FIX: this block was previously set to display:none here,
+       which made the logo invisible on every tablet/mobile screen. It's
+       reflowed below the card instead, with the 275px offset and oversized
+       PNG widths (built for the empty desktop side-space) scaled down so
+       they fit in a stacked, centered layout. */
+    .canvas-standalone-brand-block {
+        padding-left: 0;
+        margin-top: 40px;
+    }
+    .canvas-brand-png,
+    .canvas-brand-png-white,
+    .canvas-brand-png-white1,
+    .canvas-brand-png-white2 {
+        max-width: 220px;
+        margin-left: 0;
+    }
+}
+
+/* ==========================================================================
+   ⚡ THE 250px x 250px PREMIUM TERMINAL CORE
+   ========================================================================== */
+
+.drive-link-square-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    
+    /* 📐 Calibrated Heavy Terminal Dimensions */
+    width: 250px;
+    height: 250px;
+    margin-left: 185px;
+    border-radius: 24px;          /* Adjusted radius curves to hold the increased scale cleanly */
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid rgba(23, 216, 219, 0.15); /* Slightly bolder base edge to balance card footprint */
+    box-sizing: border-box;
+    cursor: pointer;
+    
+    transition: background 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Expanded Core Icon Framing Slot */
+.drive-icon-frame {
+    width: 90px;                  /* Scaled up heavily to assert dominance in the larger layout frame */
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 🖼️ Pristine Vector Masking Engine */
+.drive-white-png {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* ==========================================================================
+   ⚡ TERMINAL CORE HOVER MATRIX EFFECTS
+   ========================================================================== */
+
+.drive-link-square-card:hover {
+    background: rgba(23, 216, 219, 0.03);
+    border-color: #17D8DB;
+    transform: translateY(-6px);  /* Smooth kinetic floating lift */
+    
+    box-shadow: 0 20px 40px rgba(23, 216, 219, 0.12),
+                inset 0 0 20px rgba(23, 216, 219, 0.04);
+}
+
+.drive-link-square-card:hover .drive-white-png {
+    opacity: 1;
+    /* Rich cyan light blooming effect behind the white vector asset */
+    filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(23, 216, 219, 0.8));
+}
+
+/* Dynamic kinetic swell behavior on the central graphic logo */
+.drive-link-square-card:hover .drive-icon-frame {
+    transform: scale(1.08);
+}
+
+/* Responsive UI Safety Bounds */
+@media (max-width: 768px) {
+    .cert-drive-access-card {
+        padding: 40px 30px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+    }
+    .cert-drive-access-card .animated-title {
+        text-align: center;
+    }
+    /* RESPONSIVE FIX: .drive-link-square-card had a fixed 250x250 size plus a
+       185px left margin with no reset anywhere — on any phone-width screen
+       that margin alone pushes the whole square off the right edge of the
+       card. Center it and let it shrink instead. */
+    .drive-link-square-card {
+        margin-left: 0;
+        width: 100%;
+        max-width: 250px;
+        aspect-ratio: 1 / 1;
+        height: auto;
+    }
+}
+
+/* ==========================================================================
+   SECTION 8: EXTERNAL PORTAL SLIM EMBED CARD
+   ========================================================================== */
+
+.cert-course-portal-card {
+    background: rgba(6, 11, 13, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(23, 216, 219, 0.22); 
+    border-radius: 24px;
+    
+    padding: 35px 30px; /* Reduced side padding slightly for breathing room */
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                inset 0 0 30px rgba(23, 216, 219, 0.02);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures content stays strictly centered inside the box */
+    
+    width: 100%;                  
+    max-width: 100%; 
+    
+    margin: 0 auto 90px auto;   
+}
+
+.portal-card-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;           /* Centers the text lines inside the block */
+    align-self: center;
+    margin: 0 0 25px 0;           
+    max-width: 100%;
+}
+
+/* ==========================================================================
+   ⚡ THE LONG & SKINNY ACTION BUTTON (1300px WIDESCREEN & CENTERED)
+   ========================================================================== */
+
+.portal-skinny-link-btn {
+    display: flex;
+    align-items: center;
+    /* 🚀 CHANGED: Centers the text and icons horizontally inside the button */
+    justify-content: center; 
+    text-decoration: none;
+    
+    /* 📐 Expanded to cleanly scale with your new 1300px outer card width */
+    width: 100%;                  
+    max-width: 100%;              
+    height: 54px;                 
+    padding: 0 32px;              /* Slightly more generous horizontal padding */
+    
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(23, 216, 219, 0.2);
+    border-radius: 12px;
+    box-sizing: border-box;
+    cursor: pointer;
+    
+    /* Centering the button container itself if its parent doesn't already */
+    margin: 0 auto;
+
+    transition: background 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 📂 DUAL ICON WRAPPERS (Left & Right) */
+.portal-btn-icon-left,
+.portal-btn-icon-right {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Spacing constraints to frame the text nicely */
+.portal-btn-icon-left {
+    margin-right: 16px;
+}
+
+.portal-btn-icon-right {
+    margin-left: 16px;
+}
+
+/* 🤍 SOFT WHITE MONOCHROME FILTER ENGINE */
+.portal-white-png {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    
+    /* 🎨 Soft White Filter: Flattens to pure white, then knocks down opacity for that soft look */
+    filter: brightness(0) invert(1);
+    opacity: 0.75; 
+    
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* 📝 CENTERED TEXT NODE */
+.portal-btn-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+    white-space: nowrap;          
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   ⚡ HOVER EFFECTS
+   ========================================================================== */
+
+.portal-skinny-link-btn:hover {
+    background: rgba(23, 216, 219, 0.04);
+    border-color: #17D8DB;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(23, 216, 219, 0.1),
+                inset 0 0 10px rgba(23, 216, 219, 0.05);
+}
+
+/* Make both icons illuminate with neon cyan on hover */
+.portal-skinny-link-btn:hover .portal-white-png {
+    opacity: 1;
+    filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(23, 216, 219, 0.6));
+}
+
+.portal-skinny-link-btn:hover .portal-btn-text {
+    color: #17D8DB;
+}
+
+/* UI Safety Bounds */
+@media (max-width: 768px) {
+    .cert-course-portal-card {
+        padding: 30px 24px;
+    }
+    .portal-skinny-link-btn {
+        max-width: 100%;
+    }
+}
+
+/* ==========================================================================
+   🔗 CYBER LINK COMPONENT (Targeted via Narrative Body)
+   ========================================================================== */
+
+/* Target the anchor link inside the narrative body paragraph */
+.narrative-body p a {
+    position: relative;
+    display: inline-block;    /* Crucial for scaling/transform mechanics */
+    color: #ffffff;           /* Distinct, deep tech-blue link color */
+    text-decoration: none;
+    font-weight: 520;
+    
+    /* Fluid transitions for color matching and scaling */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* 🚀 THE ANIMATED UNDERLINE ENGINE */
+.narrative-body p a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1.5px;            /* Sleek micro-accent line */
+    bottom: -2px;             /* Sits cleanly below text baseline */
+    left: 0;
+    background-color: #17D8DB;    /* Your signature neon cyan */
+    
+    /* Start line completely collapsed at the center axis */
+    transform: scaleX(0);
+    transform-origin: center;
+    
+    /* Smooth timing for the expansion track */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   ⚡ HOVER MICRO-INTERACTIONS
+   ========================================================================== */
+
+.narrative-body p a:hover {
+    color: #17D8DB;           /* Snaps instantly to signature cyan */
+    transform: scale(1.03);    /* Precise, clean structural growth */
+}
+
+.narrative-body p a:hover::after {
+    transform: scaleX(1);     /* Smoothly expands underline outward to 100% */
+}
+
+/* ==========================================================================
+   SECTION WRAPPER (FOOTER ANCHOR)
+   ========================================================================== */
+
+.narrative-section.footer-anchor-section {
+    width: 100%;
+    max-width: 1300px; /* Matches your top section width */
+    margin: 60px auto 0 auto;
+    padding: 0 20px;   /* Creates room so borders never hit screen edges */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+
+.main-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px; /* Keeps it connected to the scroll cushion */
+}
+
+.footer-content {
+  width: 100%; /* Spans entire page width */
+  height: 140px; 
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Removed side borders and bottom radius to make it feel grounded */
+  border-top: 1px solid rgba(23, 216, 219, 0.4);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  
+  /* Glow only on the top edge */
+  box-shadow: 0 -15px 30px rgba(23, 216, 219, 0.15); 
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.4s ease;
+}
+
+.footer-content:hover {
+  box-shadow: 0 -20px 40px rgba(23, 216, 219, 0.25);
+}
+
+.footer-logo {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.fider {
+  width: 60px;
+  height: 2px;
+  background: #17D8DB;
+  border-radius: 2px;
+}
+
+.footer-tech {
+  font-family: 'Montserrat', sans-serif;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+/* Nmap Gateway Page Layout Styles */
+
+.nmap-hub-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0 50px 0; /* Pushed down for true central visual weight */
+}
+
+.nmap-dual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    width: 100%;
+    max-width: 1150px;
+}
+
+.nmap-portal-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.nmap-mega-btn {
+    width: 100%;
+    height: 360px; /* ~12% bigger than previous 320px */
+    background: rgba(15, 22, 28, 0.85);
+    border: 2px solid rgba(23, 216, 219, 0.35);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+.nmap-mega-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(23, 216, 219, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.nmap-mega-btn:hover {
+    transform: translateY(-6px);
+    border-color: #17D8DB;
+    box-shadow: 0 18px 45px rgba(23, 216, 219, 0.25);
+}
+
+.nmap-mega-btn:hover::before {
+    opacity: 1;
+}
+
+.nmap-mega-icon {
+    font-size: 4.5rem; /* Scaled up */
+    color: #17D8DB;
+    transition: transform 0.35s ease;
+    z-index: 1;
+}
+
+.nmap-mega-btn:hover .nmap-mega-icon {
+    transform: scale(1.1);
+}
+
+.nmap-mega-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.7rem; /* Scaled up */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 1;
+    padding: 0 20px;
+}
+
+.nmap-btn-caption {
+    margin-top: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: #b8c7d1;
+    max-width: 90%;
+}
+
+@media (max-width: 850px) {
+    .nmap-dual-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .nmap-mega-btn {
+        height: 240px;
+    }
+}

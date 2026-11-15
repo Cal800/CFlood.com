@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-7nXe5GneWylH//IUJNhD5uOdCP1zq1Htr9gUt2dWMG4='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Blueprint /24</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: swiss poster. Home = giant headline left, 16x16 address-space grid right, raw rules between.
+   Game = terminal left, docked sheets right, taskbar with 3 buttons along the bottom. Single dark look by design. */
+:root{
+  --ink:#02050F; --navy:#041038; --cobalt:#0A36E0; --ice:#E3ECFF; --dim:#8FA4DA;
+  --amber:#FFC21A; --cyan:#62E6FF; --red:#FF5C73;
+  --line:rgba(150,180,255,.20); --line2:rgba(150,180,255,.42); --panel:rgba(2,5,15,.78);
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background-color:var(--ink);
+  background-image:linear-gradient(165deg,#02050F 0%,#041038 48%,#0A36E0 145%);
+  background-attachment:fixed;color:var(--ice);
+  font-family:var(--display);font-size:17px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.nocopy,.nocopy *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input.cell,#cmd{-webkit-user-select:text;user-select:text}
+.screen{height:100%;display:flex;flex-direction:column;min-height:0}
+
+/* ---------- home ---------- */
+#home{overflow-y:auto}
+.home-grid{flex:1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);width:100%;max-width:1400px;margin:0 auto}
+.home-l{display:flex;flex-direction:column;justify-content:space-between;gap:36px;padding:26px 44px 28px 0;border-right:1px solid var(--line2)}
+.brand{font-family:var(--mono);font-size:13px;color:var(--dim);margin:0}
+h1{margin:0;font-weight:900;font-size:clamp(3rem,8vw,8rem);line-height:.9;letter-spacing:-.035em;font-variation-settings:'opsz' 144;text-wrap:balance}
+.lede{max-width:30em;margin:22px 0 0;font-size:1.2rem;color:var(--ice)}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px}
+.btn{background:var(--amber);color:var(--ink);border:0;border-radius:0;padding:16px 30px;font-weight:700;font-size:1.15rem;transition:background .15s}
+.btn:hover{background:var(--ice)}
+.btn.ghost{background:transparent;color:var(--ice);border:1px solid var(--line2);padding:12px 20px;font-size:1rem}
+.btn.ghost:hover{background:var(--ice);color:var(--ink)}
+.textlink{color:var(--ice);text-decoration-thickness:2px;text-underline-offset:5px;font-weight:700}
+.textlink:hover{color:var(--amber)}
+.fine{margin:0;font-size:.95rem;color:var(--dim);max-width:34em}
+.home-r{padding:26px 0 28px 44px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0}
+.cap b{font-weight:900;font-size:1.7rem;letter-spacing:-.02em}
+.cap span{font-family:var(--mono);font-size:12px;color:var(--dim)}
+#space{display:grid;grid-template-columns:repeat(16,1fr);gap:3px;width:100%;max-width:560px;aspect-ratio:1}
+#space i{background:rgba(150,180,255,.13);transition:background .25s}
+#space i.scan{background:var(--cyan)}
+#space i.on{background:var(--amber)}
+@media (max-width:860px){
+  .home-grid{grid-template-columns:minmax(0,1fr)}
+  .home-l{border-right:0;padding:20px 0;border-bottom:1px solid var(--line2)}
+  .home-r{padding:22px 0}
+}
+
+/* ---------- game ---------- */
+.topbar{display:flex;justify-content:space-between;align-items:baseline;gap:8px 18px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line2)}
+.topbar b{font-weight:900;font-size:1.3rem;letter-spacing:-.015em}
+.topbar span{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stage{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr)}
+.stage.docked{grid-template-columns:minmax(0,1fr) minmax(340px,var(--dockw,44%))}
+.stage.docked.wide{--dockw:60%}
+#term{display:flex;flex-direction:column;min-height:0;min-width:0;background:var(--panel);border:1px solid var(--line2);border-top:0}
+.term-head{display:flex;justify-content:space-between;gap:12px;padding:8px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--dim)}
+.term-head button{background:none;border:0;padding:0;color:var(--dim);font-family:var(--mono);font-size:12px;text-decoration:underline;text-underline-offset:3px}
+.term-head button:hover{color:var(--amber)}
+#screen{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:14px 16px 20px;font-family:var(--mono);font-size:13.5px;line-height:1.55;overscroll-behavior:contain}
+#out>div{white-space:pre-wrap;overflow-wrap:anywhere;min-height:1.55em}
+.c-dim{color:var(--dim)} .c-open{color:var(--cyan)} .c-warn{color:var(--amber)} .c-err{color:var(--red)} .c-hi{color:#fff;font-weight:700}
+.promptline{display:flex;gap:8px;align-items:center}
+.ps1{color:var(--amber);white-space:nowrap}
+#cmd{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--ice);font:inherit;caret-color:var(--amber);padding:0}
+.busy #cmd{opacity:.4}
+.dock{min-width:0;min-height:0;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(4,16,56,.96),rgba(2,5,15,.96));border:1px solid var(--line2);border-top:0;border-left:0}
+.dock-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 20px 10px;border-bottom:1px solid var(--line2)}
+.dock-head h2{margin:0;font-weight:900;font-size:1.7rem;letter-spacing:-.02em}
+.dock-head button{background:none;border:1px solid var(--line2);padding:4px 12px;font-size:.9rem}
+.dock-head button:hover{background:var(--ice);color:var(--ink)}
+.dock-body{flex:1;min-height:0;overflow:auto;padding:6px 20px 26px;overscroll-behavior:contain}
+.dock-body h3{margin:26px 0 6px;padding-top:12px;border-top:1px solid var(--line2);font-size:1.15rem;font-weight:700}
+.dock-body h3:first-child{margin-top:12px;border-top:0}
+.dock-body p{margin:6px 0;color:var(--dim);font-size:.98rem;max-width:44em}
+.cmdrow{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:4px 16px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:9px 0}
+.cmdrow code{font-family:var(--mono);font-size:13px;color:var(--amber);overflow-wrap:anywhere}
+.cmdrow span{font-size:.96rem}
+.cmdrow:hover code{color:var(--ice)}
+.cmdrow:hover{background:rgba(150,180,255,.07)}
+.tag{font-family:var(--mono);font-size:11.5px;color:var(--cyan)}
+.lbl{display:grid;grid-template-columns:5.2rem minmax(0,1fr);gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line)}
+.oct{font-weight:900;font-size:2.6rem;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px var(--amber)}
+.lbl b{display:block;font-size:1.05rem}
+.lbl span{color:var(--dim);font-size:.95rem}
+.tablewrap{overflow-x:auto;margin-top:10px}
+table.bp{border-collapse:collapse;min-width:740px;width:100%}
+.bp th{font-weight:700;color:var(--amber);text-align:left;padding:8px 8px;border:1px solid var(--line2);font-size:.95rem}
+.bp td{border:1px solid var(--line2);padding:0}
+input.cell{width:100%;background:transparent;border:0;outline:0;color:var(--ice);font-family:var(--mono);font-size:12.5px;padding:11px 8px}
+input.cell:focus{background:rgba(98,230,255,.09);box-shadow:inset 0 0 0 1px var(--cyan)}
+td.ok input.cell{box-shadow:inset 0 -2px 0 var(--cyan)}
+td.bad input.cell{box-shadow:inset 0 -2px 0 var(--red);background:rgba(255,92,115,.10)}
+.bpbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:16px}
+#bpmsg{margin:0;font-size:1rem;max-width:36em}
+.taskbar{display:flex;align-items:stretch;height:56px;border-top:1px solid var(--line2)}
+.tb{flex:0 1 210px;min-width:0;background:none;border:0;border-right:1px solid var(--line2);padding:0 14px;font-weight:700;font-size:1rem;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb:hover{background:rgba(150,180,255,.1)}
+.tb[aria-pressed="true"]{background:var(--amber);color:var(--ink)}
+.tb small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;opacity:.75}
+.tb-end{margin-left:auto;display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;color:var(--dim);padding-left:12px}
+.tb-end button{background:none;border:0;color:var(--dim);font-family:var(--mono);font-size:12px;text-decoration:underline;text-underline-offset:3px;padding:0}
+.tb-end button:hover{color:var(--amber)}
+@media (max-width:900px){
+  .stage.docked{grid-template-columns:minmax(0,1fr)}
+  .dock{position:fixed;z-index:20;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));background:var(--ink);border:0;padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+  .cmdrow{grid-template-columns:minmax(0,1fr)}
+  .tb{flex:1 1 0;font-size:.85rem}
+  .tb small,.tb-end span{display:none}
+}
+
+/* ---------- victory ---------- */
+#win{position:fixed;inset:0;z-index:60;overflow:auto;background:linear-gradient(165deg,#02050F 0%,#041038 50%,#0A36E0 150%);padding:0 max(16px,env(safe-area-inset-left,0px)) 40px}
+#winGrid{position:fixed;inset:0;display:grid;grid-template-columns:repeat(16,1fr);grid-auto-rows:1fr;gap:3px;opacity:.5;pointer-events:none}
+#winGrid i{background:rgba(150,180,255,.08);animation:wave .9s ease-out both}
+@keyframes wave{0%{background:rgba(150,180,255,.08)}35%{background:var(--amber)}100%{background:rgba(255,194,26,.13)}}
+.win-in{position:relative;max-width:1100px;margin:0 auto;padding:max(40px,env(safe-area-inset-top,0px)) 0 20px}
+#win h2{margin:0;font-weight:900;font-size:clamp(3.2rem,11vw,9.5rem);line-height:.88;letter-spacing:-.04em;animation:slam .9s cubic-bezier(.2,.8,.2,1) .5s both}
+@keyframes slam{from{clip-path:inset(0 0 100% 0);transform:translateY(40px)}to{clip-path:inset(0 0 0 0);transform:none}}
+#win .sub{max-width:34em;font-size:1.25rem;margin:18px 0 0;animation:fadein .6s ease-out 1.3s both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+#topo{width:100%;max-width:640px;margin:26px 0 10px;display:block}
+#topo line{stroke:var(--cyan);stroke-width:2;stroke-dasharray:400;animation:draw .7s ease-out both}
+@keyframes draw{from{stroke-dashoffset:400}to{stroke-dashoffset:0}}
+#topo g{animation:fadein .4s ease-out both}
+#topo circle{fill:var(--amber)}
+#topo text{font-family:var(--mono);font-size:13px;fill:var(--ice)}
+.defend{margin-top:26px;animation:fadein .6s ease-out 2.4s both}
+.defend h3{font-size:1.5rem;margin:0 0 6px;font-weight:900}
+.win-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;animation:fadein .6s ease-out 2.6s both}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+</head>
+<body>
+<main id="home" class="screen">
+  <div class="home-grid">
+    <section class="home-l">
+      <p class="brand">Blueprint /24 &middot; an nmap simulator</p>
+      <div>
+        <h1>Find every device on the network.</h1>
+        <p class="lede">A fictional office network, one nmap terminal, and an empty blueprint. Sweep the subnet, scan each host, then fill in the table from what you found.</p>
+      </div>
+      <div class="actions">
+        <button class="btn" id="startBtn" type="button">Start simulation</button>
+        <a class="textlink" href="https://www.youtube.com/watch?v=HCdmCHCH_Fc" target="_blank" rel="noopener noreferrer">Watch the video behind it</a>
+      </div>
+      <p class="fine">Everything here is simulated. Hosts, addresses and vendors are made up, and no packets leave your browser.</p>
+    </section>
+    <section class="home-r" aria-label="Address space">
+      <p class="cap"><b>10.42.17.0/24</b><span>256 addresses</span></p>
+      <div id="space" aria-hidden="true"></div>
+      <p class="fine">Each square is one address. Some of them answer.</p>
+    </section>
+  </div>
+</main>
+
+<main id="game" class="screen" hidden>
+  <header class="topbar">
+    <b>Blueprint /24</b>
+    <span>you: 10.42.17.99 &middot; scope: 10.42.17.0/24 &middot; only nmap is installed</span>
+  </header>
+  <div class="stage" id="stage">
+    <section id="term" aria-label="Simulated terminal">
+      <div class="term-head"><span>operator-box</span><button type="button" id="clearBtn">clear screen</button></div>
+      <div id="screen" class="nocopy">
+        <div id="out"></div>
+        <form class="promptline" id="promptForm" autocomplete="off">
+          <span class="ps1" id="ps1">operator@box:~$</span>
+          <input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Terminal command">
+        </form>
+      </div>
+    </section>
+    <aside class="dock" id="dock" hidden>
+      <div class="dock-head"><h2 id="dockTitle"></h2><button type="button" id="dockClose">Close</button></div>
+      <div class="dock-body" id="dockBody"></div>
+    </aside>
+  </div>
+  <nav class="taskbar" aria-label="Tools">
+    <button type="button" class="tb" data-panel="nmap" aria-pressed="false">Nmap cheat sheet<small>scans and flags</small></button>
+    <button type="button" class="tb" data-panel="labels" aria-pressed="false">Device labels<small>what .1 .20 .30 mean</small></button>
+    <button type="button" class="tb" data-panel="blueprint" aria-pressed="false">Blueprint<small>fill in and submit</small></button>
+    <div class="tb-end"><span id="scanCount">0 scans run</span><button type="button" id="menuBtn">menu</button></div>
+  </nav>
+</main>
+
+<div id="win" hidden role="dialog" aria-label="Network mapped">
+  <div id="winGrid"></div>
+  <div class="win-in">
+    <h2>Network mapped.</h2>
+    <p class="sub">Six devices, every port, service, version and operating system. That is the whole blueprint, and you built it yourself.</p>
+    <svg id="topo" viewBox="0 0 640 300" role="img" aria-label="Network topology of the six devices"></svg>
+    <div class="defend nocopy" id="defend"></div>
+    <div class="win-actions">
+      <button type="button" class="btn ghost" id="winBack">Back to blueprint</button>
+      <button type="button" class="btn" id="winAgain">Play again</button>
+    </div>
+  </div>
+</div>
+<script>
+/* All hosts, vendors and names below are invented. The software names (OpenSSH, Apache, Samba...) are real because
+   reading real banners is the skill being practised. */
+const NET = '10.42.17.';
+const ME = 99;
+const SVC = {22:'ssh',23:'telnet',53:'domain',80:'http',111:'rpcbind',135:'msrpc',139:'netbios-ssn',443:'https',445:'microsoft-ds',
+  515:'printer',554:'rtsp',631:'ipp',2049:'nfs',3389:'ms-wbt-server',5000:'upnp',5432:'postgresql',8123:'polipo',9100:'jetdirect'};
+const FAST = new Set([22,23,53,80,111,135,139,443,445,554]);
+const HOSTS = {
+  1:{name:'gateway.lan',mac:'4C:1F:A2:07:91:D0',vendor:'Halden Networks',lat:'0.00092',fw:false,
+    ports:[[22,'ssh','Dropbear sshd 2020.81 (protocol 2.0)'],[53,'domain','dnsmasq 2.85'],[443,'https','lighttpd 1.4.59']],
+    udp:[[53,'domain','dnsmasq 2.85']],
+    os:{type:'router|WAP',run:'Linux 4.X|5.X',det:'Linux 4.9 - 5.4 (embedded)'},
+    scripts:{443:['|_http-title: Halden HX-4 Login','| ssl-cert: Subject: commonName=gateway.lan','|_Not valid after:  2034-01-01T00:00:00']}},
+  20:{name:'',mac:'A8:5E:11:C3:20:7B',vendor:'Vireo Computing',lat:'0.0021',fw:true,
+    ports:[[135,'msrpc','Microsoft Windows RPC'],[139,'netbios-ssn','Microsoft Windows netbios-ssn'],[445,'microsoft-ds',''],[3389,'ms-wbt-server','Microsoft Terminal Services']],
+    udp:[],
+    os:{type:'general purpose',run:'Microsoft Windows 11',det:'Microsoft Windows 11 21H2 - 22H2'},
+    scripts:{445:['| smb2-security-mode:','|   3.1.1:','|_    Message signing enabled but not required'],
+      3389:['| rdp-ntlm-info:','|   Target_Name: DEV-LAPTOP','|   Product_Version: 10.0.22621','|_  System_Time: 2026-11-13T10:34:12+00:00']}},
+  30:{name:'',mac:'52:54:00:8D:30:E1',vendor:'Cirrus Virtual',lat:'0.0014',fw:false,
+    ports:[[22,'ssh','OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)'],[80,'http','Apache httpd 2.4.57 ((Ubuntu))'],
+      [5432,'postgresql','PostgreSQL DB 14.9'],[8123,'http','Node.js Express framework']],
+    udp:[],
+    os:{type:'general purpose',run:'Linux 5.X',det:'Linux 5.15 - 5.19'},
+    scripts:{22:['| ssh-hostkey:','|   256 7d:21:e0:5a:b3:94:0c:1e:aa:68:f2:3b:49:d7:c5:01 (ECDSA)'],
+      80:['|_http-server-header: Apache/2.4.57 (Ubuntu)','|_http-title: Orbit Dashboard'],8123:['|_http-title: Orbit Internal API']}},
+  40:{name:'',mac:'7A:C0:44:19:40:3F',vendor:'Tessel Devices',lat:'0.0031',fw:false,
+    ports:[[111,'rpcbind','2-4 (RPC #100000)'],[139,'netbios-ssn','Samba smbd 4.6.2'],[445,'microsoft-ds','Samba smbd 4.6.2'],
+      [2049,'nfs','3-4 (RPC #100003)'],[5000,'http','nginx 1.18.0']],
+    udp:[[111,'rpcbind','2-4 (RPC #100000)']],
+    os:{type:'storage-misc',run:'Linux 4.X',det:'Linux 4.4 (embedded)'},
+    scripts:{445:['| smb-os-discovery:','|   OS: Unix (Samba 4.6.2)','|_  NetBIOS computer name: VAULT'],5000:['|_http-title: Vault Storage Login']}},
+  50:{name:'lobby-printer.lan',mac:'D0:7B:5C:50:AA:12',vendor:'Brightline',lat:'0.0047',fw:false,
+    ports:[[80,'http','Brightline JetPort embedded httpd'],[443,'https','Brightline JetPort embedded httpd'],[515,'printer',''],
+      [631,'ipp','Brightline IPP 2.0'],[9100,'jetdirect','Brightline JetPort']],
+    udp:[],
+    os:{type:'printer',run:'Brightline embedded',det:'Brightline embedded printer OS'},
+    scripts:{80:['|_http-title: Brightline LP-3200 Status']}},
+  60:{name:'porch-cam.lan',mac:'9C:3E:B0:60:5D:C4',vendor:'Tessel Devices',lat:'0.0062',fw:false,
+    ports:[[23,'telnet','BusyBox telnetd'],[80,'http','Tessel micro_httpd'],[554,'rtsp','Tessel RTSP 1.0']],
+    udp:[],
+    os:{type:'webcam',run:'Linux 3.X',det:'Linux 3.18 (embedded)'},
+    scripts:{80:['|_http-title: Tessel Cam 2 - Live view'],554:['| rtsp-methods:','|_  OPTIONS, DESCRIBE, SETUP, PLAY, TEARDOWN']}},
+  99:{name:'operator-box.lan',mac:'',vendor:'',lat:'0.00011',fw:false,ports:[],udp:[],os:{type:'general purpose',run:'Linux 6.X',det:'Linux 6.1 - 6.6'},scripts:{},self:true}
+};
+
+/* Answer key for the blueprint. Every inner array is an "any of these" group, and every group must match. */
+const KEY = {
+  1:{role:['router','gateway','firewall'],ports:[22,53,443],svc:[['ssh'],['domain','dns'],['https']],
+     ver:[['dropbear'],['2020.81'],['dnsmasq'],['2.85'],['lighttpd'],['1.4.59']],os:[['linux'],['4.9','5.4','4.x','5.x']]},
+  20:{role:['laptop','workstation','desktop','pc','computer'],ports:[135,139,445,3389],svc:[['msrpc','rpc'],['netbios'],['microsoft-ds','smb','cifs'],['ms-wbt-server','rdp','terminal']],
+     ver:[['microsoft','windows'],['terminal','rdp']],os:[['windows'],['11']]},
+  30:{role:['server','web','app'],ports:[22,80,5432,8123],svc:[['ssh'],['http'],['postgres']],
+     ver:[['openssh'],['8.9'],['apache'],['2.4.57'],['postgres'],['14.9'],['node','express']],os:[['linux'],['5.15','5.19','5.x']]},
+  40:{role:['nas','storage','file server','fileserver'],ports:[111,139,445,2049,5000],svc:[['rpcbind','rpc'],['netbios'],['microsoft-ds','smb','cifs'],['nfs'],['http','upnp']],
+     ver:[['samba'],['4.6'],['nginx'],['1.18']],os:[['linux'],['4.4','4.x']]},
+  50:{role:['printer'],ports:[80,443,515,631,9100],svc:[['http'],['https'],['printer','lpd'],['ipp'],['jetdirect','pdl']],
+     ver:[['brightline','jetport']],os:[['brightline','embedded','printer']]},
+  60:{role:['camera','cam','cctv','iot','webcam'],ports:[23,80,554],svc:[['telnet'],['http'],['rtsp']],
+     ver:[['busybox'],['tessel','micro_httpd']],os:[['linux'],['3.18','3.x']]}
+};
+
+const DEFEND = {
+  1:['Gateway','Keep the admin page and SSH off the WAN side, use SSH keys only, and update the firmware.'],
+  20:['Laptop','Block RDP and SMB at the host firewall. If RDP is needed, put it behind a VPN with NLA and MFA.'],
+  30:['App server','Bind PostgreSQL to localhost, firewall the internal API on 8123, and patch Apache.'],
+  40:['NAS','Disable SMBv1, limit NFS exports to named hosts, and keep the admin page on a management VLAN.'],
+  50:['Printer','Turn off unused protocols (LPD 515, raw 9100), change the admin password, and move printers to their own VLAN.'],
+  60:['Camera','Disable telnet, replace default credentials, and isolate cameras on an IoT VLAN with no internet path in.']
+};
+/* Simulated nmap. io = { line(html), wait(ms), stopped() } */
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+const sp=(c,t)=>`<span class="${c}">${esc(t)}</span>`;
+const SEE_H=sp('c-dim','See the output of nmap -h for a summary of options.');
+
+function parsePorts(spec){
+  if(spec==null) return null;
+  const set=new Set();
+  for(const part of String(spec).split(',')){
+    const p=part.replace(/^[TU]:/i,'');
+    let m;
+    if(/^\d+$/.test(p)){const n=+p;if(n<1||n>65535)return null;set.add(n)}
+    else if((m=p.match(/^(\d*)-(\d*)$/))){const a=m[1]?+m[1]:1,b=m[2]?+m[2]:65535;if(a>b||b>65535||a<1)return null;for(let i=a;i<=b;i++)set.add(i)}
+    else return null;
+  }
+  return set.size?set:null;
+}
+
+function expandTarget(t){
+  let m;
+  const oct=s=>/^\d+$/.test(s)&&+s<=255;
+  if((m=t.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)\/(\d+)$/))){
+    if(![m[1],m[2],m[3],m[4]].every(oct)) return null;
+    const bits=+m[5]; if(bits>32) return null;
+    if(bits<24) return {tooBig:true};
+    const n=2**(32-bits), last=+m[4], start=last-(last%n), base=`${m[1]}.${m[2]}.${m[3]}.`, out=[];
+    for(let i=0;i<n;i++) out.push(base+(start+i));
+    return out;
+  }
+  if((m=t.match(/^(\d+\.\d+\.\d+)\.(\*|[\d,-]+)$/))){
+    const base=m[1].split('.'); if(!base.every(oct)) return null;
+    const spec=m[2]; let nums=[];
+    if(spec==='*') for(let i=0;i<=255;i++) nums.push(i);
+    else for(const part of spec.split(',')){
+      let r;
+      if(/^\d+$/.test(part)) nums.push(+part);
+      else if((r=part.match(/^(\d+)-(\d+)$/))){for(let i=+r[1];i<=+r[2]&&i<=255;i++) nums.push(i)}
+      else return null;
+    }
+    if(nums.some(n=>n>255)) return null;
+    return nums.map(n=>m[1]+'.'+n);
+  }
+  return null;
+}
+const hostOf=ip=>{const m=ip.match(/^10\.42\.17\.(\d+)$/);return m?HOSTS[+m[1]]||null:null};
+const lbl=(ip,h)=>h&&h.name?`${h.name} (${ip})`:ip;
+const pad=(s,n)=>String(s).padEnd(n,' ');
+
+async function runNmap(args,root,io){
+  const L=io.line, W=io.wait;
+  const o={sn:false,sS:false,sT:false,sU:false,sV:false,sC:false,O:false,Pn:false,F:false,v:0,open:false,T:3,ports:null,top:0,targets:[]};
+  const bad=async m=>{await L(sp('c-err',m));await L(SEE_H)};
+  const TN={paranoid:0,sneaky:1,polite:2,normal:3,aggressive:4,insane:5};
+
+  for(let i=0;i<args.length;i++){
+    const a=args[i]; let m;
+    if(a==='-h'||a==='--help'){await usage(L);return}
+    if(a==='-V'||a==='--version'){await L('Nmap version 7.94 ( https://nmap.org ) [simulated]');return}
+    if(a==='-p-'){o.ports='all';continue}
+    if(a==='-p'||a==='--ports'){
+      if(i+1>=args.length) return bad("nmap: option '-p' requires an argument");
+      const s=parsePorts(args[++i]); if(!s) return bad('Your port specifications are illegal. Example of proper form: "-100,200-1024,T:3000-4000,U:60000-"');
+      o.ports=s;continue}
+    if(a[0]==='-'&&a[1]==='p'&&a.length>2){
+      const s=parsePorts(a.slice(2)); if(!s) return bad('Your port specifications are illegal. Example of proper form: "-100,200-1024,T:3000-4000,U:60000-"');
+      o.ports=s;continue}
+    if(a==='--top-ports'){const n=+args[++i]; if(!(n>0)) return bad('--top-ports needs a number greater than 0'); o.top=n;continue}
+    if(a==='-F'){o.F=true;continue}
+    if((m=a.match(/^-T([0-5])$/))){o.T=+m[1];continue}
+    if(a==='-T'){const w=TN[(args[++i]||'').toLowerCase()]; if(w==null) return bad('Unknown timing template'); o.T=w;continue}
+    if(/^-v+$/.test(a)){o.v=a.length-1;continue}
+    if(['-n','-R','--open','--reason','-r','-d','-Pn','-PN','-A','-O','-sn','-sP'].includes(a)||/^-P[ESAUYMOR]\d*(,\d+)*$/.test(a)){
+      if(a==='--open')o.open=true;
+      if(a==='-Pn'||a==='-PN')o.Pn=true;
+      if(a==='-A'){o.sV=true;o.sC=true;o.O=true}
+      if(a==='-O')o.O=true;
+      if(a==='-sn'||a==='-sP')o.sn=true;
+      continue}
+    if(/^-o[NXGAS]$/i.test(a)){
+      await L(sp('c-warn','nmap-sim: writing output to a file is switched off here. Read the results on screen and build the blueprint yourself.'));return}
+    if(a.startsWith('--script')){
+      await L(sp('c-warn','nmap-sim: custom NSE scripts are not available. Use -sC for the default scripts.'));return}
+    if(/^-s[STUVCn]+$/.test(a)){
+      for(const c of a.slice(2)){if(c==='S')o.sS=true;if(c==='T')o.sT=true;if(c==='U')o.sU=true;if(c==='V')o.sV=true;if(c==='C')o.sC=true;if(c==='n')o.sn=true}
+      continue}
+    if(a[0]==='-') return bad(`nmap: unrecognized option '${a}'`);
+    o.targets.push(a);
+  }
+
+  if(!root&&(o.sS||o.sU)){await L(sp('c-err','You requested a scan type which requires root privileges.'));await L(sp('c-err','QUITTING!'));await L(sp('c-dim','tip: put sudo in front of nmap'));return}
+  if(!root&&o.O){await L(sp('c-err','TCP/IP fingerprinting (for OS scan) requires root privileges.'));await L(sp('c-err','QUITTING!'));await L(sp('c-dim','tip: put sudo in front of nmap'));return}
+
+  const k=[3,2,1.4,1,.7,.45][o.T];
+  const syn=o.sU?'UDP':(o.sT||!root)&&!o.sS?'connect':'syn';
+  const stamp=new Date().toISOString().slice(0,16).replace('T',' ')+' GMT';
+  await L(`Starting Nmap 7.94 ( https://nmap.org ) at ${stamp}`);
+
+  /* expand targets */
+  const ips=[];
+  for(const t of o.targets){
+    const ex=expandTarget(t);
+    if(ex&&ex.tooBig){await L(sp('c-err',`nmap-sim: ${t} is too large. This simulator handles /24 and smaller.`));return}
+    if(!ex){await L(sp('c-warn',`Failed to resolve "${t}".`));continue}
+    for(const ip of ex) if(!ips.includes(ip)) ips.push(ip);
+  }
+  if(!ips.length){
+    await L(sp('c-warn','WARNING: No targets were specified, so 0 hosts scanned.'));
+    await L('Nmap done: 0 IP addresses (0 hosts up) scanned in 0.03 seconds');return}
+
+  /* host discovery only */
+  if(o.sn){
+    await W(450*k); let up=0;
+    for(const ip of ips){
+      if(io.stopped()) return;
+      const h=hostOf(ip);
+      if(h){up++;await L(`Nmap scan report for ${sp('c-hi',lbl(ip,h))}`);await L(`Host is up (${h.lat}s latency).`);
+        if(root&&h.mac) await L(`MAC Address: ${h.mac} (${h.vendor})`);
+        await L('');await W(70*k)}
+      else if(o.v) await L(sp('c-dim',`Nmap scan report for ${ip} [host down]`));
+    }
+    const t=(0.35+ips.length*.011+up*.02).toFixed(2);
+    await L(`Nmap done: ${ips.length} IP address${ips.length>1?'es':''} (${up} host${up===1?'':'s'} up) scanned in ${t} seconds`);return}
+
+  /* port scan */
+  const live=[]; const down=[];
+  for(const ip of ips){const h=hostOf(ip); if(h||o.Pn) live.push([ip,h]); else down.push(ip)}
+  if(o.Pn&&ips.length>16){await L(sp('c-err','nmap-sim: -Pn on a big range would take hours. Keep it to 16 addresses or fewer.'));return}
+  if(ips.length===1&&down.length){
+    await L(sp('c-warn','Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn'));
+    await L('Nmap done: 1 IP address (0 hosts up) scanned in 1.12 seconds');return}
+
+  const proto=o.sU?'udp':'tcp';
+  const scanned=p=>{
+    if(o.ports==='all')return true;
+    if(o.ports)return o.ports.has(p);
+    if(o.F||(o.top&&o.top<=100))return FAST.has(p);
+    if(o.top>=10000)return true;
+    return p!==8123;
+  };
+  const S=o.ports==='all'?65535:o.ports?o.ports.size:(o.F||(o.top&&o.top<=100))?100:o.top>=10000?o.top:1000;
+  const allPorts=S>=10000;
+  let totalMs=0, anyV=false, anyO=false;
+  if(o.v){await L(sp('c-dim',`Initiating ${syn==='syn'?'SYN Stealth':syn==='UDP'?'UDP':'Connect'} Scan at ${stamp.slice(11,16)}`))}
+
+  for(const [ip,h] of live){
+    if(io.stopped()) return;
+    const list=h?(o.sU?h.udp:h.ports):[];
+    const open=list.filter(r=>scanned(r[0]));
+    const ms=(380+(allPorts?1500:0)+(o.sV?550:0)+(o.sU?1100:0)+(o.O?450:0))*k;
+    await W(ms); totalMs+=ms;
+    if(o.v) for(const r of open) await L(sp('c-dim',`Discovered open port ${r[0]}/${proto} on ${ip}`));
+    await L(`Nmap scan report for ${sp('c-hi',lbl(ip,h))}`);
+    await L(h?`Host is up (${h.lat}s latency).`:'Host is up.');
+    const quiet=o.sU?'open|filtered':(h&&h.fw)||!h?'filtered':'closed';
+    const why=o.sU?'no-response':quiet==='filtered'?'no-response':syn==='connect'?'conn-refused':'reset';
+    if(S<=25){
+      const rows=[...new Set([...(o.ports&&o.ports!=='all'?o.ports:[]),...(o.F?[]:[])])].sort((a,b)=>a-b);
+      const head=`${pad('PORT',9)}${pad('STATE',7)}${pad('SERVICE',14)}${o.sV?'VERSION':''}`;
+      await L(sp('c-dim',head.trimEnd()));
+      for(const p of (rows.length?rows:open.map(r=>r[0]))){
+        const r=open.find(x=>x[0]===p);
+        if(r) await L(portRow(r,proto,o,'open'));
+        else if(!o.open) await L(sp('c-dim',pad(`${p}/${proto}`,9)+pad(quiet,7)+(SVC[p]||'unknown')));
+      }
+    } else if(!open.length){
+      if(quiet==='closed') await L(`All ${S} scanned ports on ${ip} are in ignored states.`);
+      else await L(`All ${S} scanned ports on ${ip} are in ignored states.`);
+      await L(`Not shown: ${S} ${quiet} ${proto} ports (${why})`);
+    } else {
+      await L(`Not shown: ${S-open.length} ${quiet} ${proto} ports (${why})`);
+      await L(sp('c-dim',(pad('PORT',9)+pad('STATE',7)+pad('SERVICE',14)+(o.sV?'VERSION':'')).trimEnd()));
+      for(const r of open){
+        await L(portRow(r,proto,o,'open'));
+        if(o.sC&&h.scripts[r[0]]) for(const s of h.scripts[r[0]]) await L(sp('c-dim',s));
+      }
+    }
+    if(S<=25&&o.sC&&h) for(const r of open) if(h.scripts[r[0]]) for(const s of h.scripts[r[0]]) await L(sp('c-dim',s));
+    if(root&&h&&h.mac) await L(`MAC Address: ${h.mac} (${h.vendor})`);
+    if(o.O&&h){anyO=true;
+      await L(`Device type: ${h.os.type}`);await L(`Running: ${h.os.run}`);await L(`OS details: ${h.os.det}`);await L(h.self?'Network Distance: 0 hops':'Network Distance: 1 hop')}
+    if(o.sV) anyV=true;
+    await L('');
+  }
+  if(anyV) await L(sp('c-dim','Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .'));
+  if(anyO) await L(sp('c-dim','OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .'));
+  const secs=(0.6+totalMs/1000*0.9+(allPorts?live.length*9:0)+(o.sU?live.length*14:0)).toFixed(2);
+  await L(`Nmap done: ${ips.length} IP address${ips.length>1?'es':''} (${live.length} host${live.length===1?'':'s'} up) scanned in ${secs} seconds`);
+}
+
+function portRow(r,proto,o,state){
+  const svc=o.sV?r[1]:(SVC[r[0]]||r[1]);
+  const ver=o.sV?r[2]:'';
+  return `${pad(`${r[0]}/${proto}`,9)}${sp('c-open',pad(state,7))}${pad(svc,14)}${esc(ver)}`.trimEnd();
+}
+
+async function usage(L){
+  for(const s of [
+    'Nmap 7.94 simulator. Usage: nmap [Scan Type(s)] [Options] {target specification}',
+    'TARGETS:  10.42.17.30   10.42.17.0/24   10.42.17.1-60',
+    'SCAN TYPES:  -sn ping sweep   -sT connect   -sS SYN (root)   -sU UDP (root)',
+    'DETECTION:   -sV versions   -O OS (root)   -sC default scripts   -A all of these',
+    'PORTS:       -p 22,80   -p-   -F fast   --top-ports N   --open',
+    'OTHER:       -Pn skip ping   -T0..-T5 timing   -v verbose',
+    'Tip: prefix with sudo for the root-only options.'
+  ]) await L(sp('c-dim',s));
+}
+const $=s=>document.querySelector(s);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- home: address-space sweep ---------------- */
+let sweepTimer=null;
+function homeSweep(){
+  const space=$('#space'); space.innerHTML='';
+  const cells=[]; for(let i=0;i<256;i++){const c=document.createElement('i');space.appendChild(c);cells.push(c)}
+  const live=[1,20,30,40,50,60,99];
+  if(reduce){live.forEach(i=>cells[i].classList.add('on'));return}
+  let i=0,prev=null;
+  clearInterval(sweepTimer);
+  sweepTimer=setInterval(()=>{
+    if(prev){prev.classList.remove('scan')}
+    if(i>=256){clearInterval(sweepTimer);return}
+    const c=cells[i]; if(live.includes(i)) c.classList.add('on'); else c.classList.add('scan');
+    prev=c; i++;
+  },14);
+}
+
+/* ---------------- terminal ---------------- */
+const out=$('#out'), screen=$('#screen'), cmd=$('#cmd'), form=$('#promptForm');
+let busy=false, abort=false, scans=0; const hist=[]; let hpos=0;
+function print(html){const d=document.createElement('div');d.innerHTML=html;out.appendChild(d);screen.scrollTop=screen.scrollHeight}
+const io={
+  async line(html){if(abort)return;print(html);await sleep(12)},
+  async wait(ms){const end=Date.now()+ms;while(Date.now()<end&&!abort)await sleep(40)},
+  stopped:()=>abort
+};
+function banner(){
+  out.innerHTML='';
+  print(sp('c-hi','Blueprint /24 nmap simulator'));
+  print(sp('c-dim','Scope: 10.42.17.0/24 (fictional). Only nmap is installed on this box.'));
+  print(sp('c-dim','Mission: find every device, then fill in the blueprint. Cheat sheets are in the taskbar below.'));
+  print(sp('c-dim','Start with: nmap -h'));
+  print('');
+}
+async function exec(raw){
+  const text=raw.trim();
+  print(`${sp('c-warn','operator@box:~$')} ${esc(raw)}`);
+  if(!text) return;
+  hist.push(text); hpos=hist.length;
+  if(/[|;&><`$(){}\\]/.test(text)){print(sp('c-warn','nmap-sim: pipes, redirects and shell tricks are switched off. One plain nmap command at a time.'));return}
+  const toks=text.replace(/["']/g,'').split(/\s+/); let root=false;
+  if(toks[0]==='sudo'){root=true;toks.shift()}
+  if(!toks.length||toks[0]!=='nmap'){
+    print(sp('c-err',`bash: ${esc(toks[0]||'sudo')}: command not found`));
+    print(sp('c-dim','This box only has nmap installed. Try: nmap -h'));return}
+  busy=true;abort=false;$('#game').classList.add('busy');cmd.disabled=true;
+  try{await runNmap(toks.slice(1),root,io)}catch(e){print(sp('c-err','nmap-sim: internal error'))}
+  if(abort) print(sp('c-warn','^C  scan interrupted'));
+  busy=false;cmd.disabled=false;$('#game').classList.remove('busy');
+  scans++;$('#scanCount').textContent=`${scans} scan${scans===1?'':'s'} run`;
+  print('');cmd.focus();
+}
+form.addEventListener('submit',e=>{e.preventDefault();if(busy)return;const v=cmd.value;cmd.value='';exec(v)});
+cmd.addEventListener('keydown',e=>{
+  if(e.key==='ArrowUp'&&hist.length){e.preventDefault();hpos=Math.max(0,hpos-1);cmd.value=hist[hpos]||''}
+  else if(e.key==='ArrowDown'&&hist.length){e.preventDefault();hpos=Math.min(hist.length,hpos+1);cmd.value=hist[hpos]||''}
+  else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='l'){e.preventDefault();out.innerHTML=''}
+  else if(e.ctrlKey&&e.key.toLowerCase()==='c'){e.preventDefault();cmd.value=''}
+});
+document.addEventListener('keydown',e=>{if(busy&&e.ctrlKey&&e.key.toLowerCase()==='c'){e.preventDefault();abort=true}});
+screen.addEventListener('click',()=>{if(!getSelection().toString()&&!cmd.disabled)cmd.focus()});
+$('#clearBtn').addEventListener('click',()=>{out.innerHTML='';cmd.focus()});
+
+/* ---------------- no copying out of the game ---------------- */
+['copy','cut','dragstart','contextmenu','selectstart'].forEach(ev=>document.addEventListener(ev,e=>{
+  const t=e.target.nodeType===1?e.target:e.target.parentElement;
+  if(t&&t.closest&&t.closest('#game,#win')&&!(t.tagName==='INPUT'&&ev==='selectstart'))e.preventDefault();
+}));
+['paste','drop'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.classList&&e.target.classList.contains('cell'))e.preventDefault()}));
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&['a','c','x'].includes(e.key.toLowerCase())&&e.target.tagName!=='INPUT')e.preventDefault();
+});
+
+/* ---------------- dock panels ---------------- */
+const SHEET=[
+ ['Step 1. Find live hosts',[
+  ['nmap -sn 10.42.17.0/24','Ping sweep of the whole subnet. Lists who answers and nothing else. Start here.'],
+  ['sudo nmap -sn 10.42.17.0/24','Same sweep as root. Also shows each device’s MAC address and vendor, which hints at what it is.']]],
+ ['Step 2. Find open ports',[
+  ['nmap 10.42.17.<n>','Default scan: the 1,000 most common TCP ports of one host.'],
+  ['nmap 10.42.17.1-60','Scan a range of addresses. Commas work too: 10.42.17.1,20,30'],
+  ['nmap -F 10.42.17.<n>','Fast scan. Top 100 ports only, so it can miss things.'],
+  ['nmap -p 22,80,443 10.42.17.<n>','Check only the ports you name.'],
+  ['nmap -p- 10.42.17.<n>','All 65,535 ports. Slow, but finds services hiding on odd ports.'],
+  ['nmap --open 10.42.17.<n>','Hide closed and filtered ports from the output.']]],
+ ['Step 3. Identify what is running',[
+  ['nmap -sV 10.42.17.<n>','Probe open ports for the real service and version. A plain scan only guesses the name from the port number.'],
+  ['sudo nmap -O 10.42.17.<n>','Guess the operating system. Needs root, so add sudo.'],
+  ['nmap -sC 10.42.17.<n>','Run the default scripts: page titles, certificates, SMB and RDP details.'],
+  ['sudo nmap -A 10.42.17.<n>','Aggressive. Runs -sV, -O and -sC together.']]],
+ ['Scan types',[
+  ['nmap -sT 10.42.17.<n>','Connect scan. Completes the TCP handshake. What you get without root.'],
+  ['sudo nmap -sS 10.42.17.<n>','SYN scan. Never completes the handshake. The default as root.'],
+  ['sudo nmap -sU 10.42.17.<n>','UDP scan. Slow. DNS and RPC live here. The blueprint only needs TCP ports.'],
+  ['nmap -Pn 10.42.17.<n>','Skip the ping step. For hosts that exist but do not answer pings.']]],
+ ['Speed and noise',[
+  ['nmap -T4 10.42.17.<n>','Timing from -T0 (slow and quiet) to -T5 (fast and loud). T3 is normal.'],
+  ['nmap -v 10.42.17.<n>','Verbose. Prints ports the moment they are found.']]]
+];
+const LABELS=[
+  ['.1','Gateway','The router. The first address in the subnet and the way out to the internet.'],
+  ['.2','Network gear (.2 to .19)','Switches and access points.'],
+  ['.20','Workstations (.20 to .29)','Laptops and desktops. Clues: RDP on 3389, SMB on 445, RPC on 135.'],
+  ['.30','Servers (.30 to .39)','Web, app and database hosts. Clues: SSH on 22, HTTP on 80, database ports like 5432.'],
+  ['.40','Storage (.40 to .49)','Network storage. Clues: SMB on 445, NFS on 2049, a web admin page on 5000.'],
+  ['.50','Printers (.50 to .59)','Clues: raw printing on 9100, IPP on 631, LPD on 515.'],
+  ['.60','Cameras and IoT (.60 to .69)','Clues: RTSP on 554, telnet on 23, a tiny web server.'],
+  ['.99','You','operator-box, the machine you are typing on. It is not part of the network you are mapping.']
+];
+const panels={}; let openPanel=null;
+const stage=$('#stage'), dock=$('#dock'); dock.classList.add('nocopy');
+
+function insertCmd(display){const t=display.split('<n>')[0];cmd.value=t;if(window.innerWidth>900)closeDock();cmd.focus()}
+function buildNmap(){
+  const w=document.createElement('div');
+  w.innerHTML='<p>Click any command to type it into the terminal, then finish the address and press Enter.</p>';
+  for(const [title,rows] of SHEET){
+    const h=document.createElement('h3');h.textContent=title;w.appendChild(h);
+    for(const [c,d] of rows){
+      const b=document.createElement('button');b.type='button';b.className='cmdrow';
+      b.innerHTML=`<code>${esc(c.replace('<n>','<n>'))}</code><span>${esc(d)}</span>`;
+      b.addEventListener('click',()=>insertCmd(c));w.appendChild(b);
+    }
+  }
+  const p=document.createElement('p');p.textContent='Saving output with -oN is switched off in this game. You build the blueprint by hand.';w.appendChild(p);
+  return w;
+}
+function buildLabels(){
+  const w=document.createElement('div');
+  w.innerHTML='<p>Network admins often give each kind of device its own block of addresses. Use it as a clue, then confirm with a scan.</p>';
+  for(const [o,t,d] of LABELS){
+    const r=document.createElement('div');r.className='lbl';
+    r.innerHTML=`<div class="oct">${esc(o)}</div><div><b>${esc(t)}</b><span>${esc(d)}</span></div>`;w.appendChild(r);
+  }
+  return w;
+}
+
+/* ---------------- blueprint + grading ---------------- */
+const COLS=['IP','Device','Open ports','Services','Versions','OS'];
+const WIDTHS=['9%','12%','15%','20%','26%','18%'];
+const norm=s=>s.toLowerCase().replace(/\s+/g,' ').trim();
+const has=(s,group)=>group.some(a=>s.includes(a));
+function ipNum(s){const t=norm(s).replace(/^10\.42\.17\./,'').replace(/^\./,'');return /^\d+$/.test(t)?+t:null}
+function buildBlueprint(){
+  const w=document.createElement('div');
+  w.innerHTML='<p>Type what you found for each device. Use as many rows as you need. Pasting is switched off.</p>';
+  const wrap=document.createElement('div');wrap.className='tablewrap';
+  let html='<table class="bp"><colgroup>'+WIDTHS.map(x=>`<col style="width:${x}">`).join('')+'</colgroup><thead><tr>'+COLS.map(c=>`<th scope="col">${c}</th>`).join('')+'</tr></thead><tbody>';
+  for(let r=0;r<8;r++) html+='<tr>'+COLS.map((c,i)=>`<td><input class="cell" id="bp-${r}-${i}" data-r="${r}" data-c="${i}" type="text" autocomplete="off" spellcheck="false" aria-label="Row ${r+1}, ${c}"></td>`).join('')+'</tr>';
+  html+='</tbody></table>';
+  wrap.innerHTML=html;w.appendChild(wrap);
+  const bar=document.createElement('div');bar.className='bpbar';
+  bar.innerHTML='<button type="button" class="btn" id="bpSubmit">Submit blueprint</button><p id="bpmsg" aria-live="polite"></p>';
+  w.appendChild(bar);
+  wrap.addEventListener('input',e=>{const td=e.target.closest('td');if(td)td.classList.remove('ok','bad')});
+  bar.querySelector('#bpSubmit').addEventListener('click',submitBlueprint);
+  return w;
+}
+function submitBlueprint(){
+  const msg=$('#bpmsg'); const seen=new Set(); let full=0, bad=0, filled=0, phantom=0;
+  document.querySelectorAll('#dockBody tbody tr').forEach(tr=>{
+    const tds=[...tr.children], vals=tds.map(td=>td.firstChild.value);
+    tds.forEach(td=>td.classList.remove('ok','bad'));
+    if(vals.every(v=>!v.trim())) return;
+    filled++;
+    const n=ipNum(vals[0]); const k=n!=null?KEY[n]:null;
+    if(!k||seen.has(n)){tds[0].classList.add('bad');bad++;phantom++;return}
+    seen.add(n);
+    const v=vals.map(norm);
+    const nums=new Set((v[2].match(/\d+/g)||[]).map(Number));
+    const res=[true,
+      k.role.some(a=>v[1].includes(a)),
+      nums.size===k.ports.length&&k.ports.every(p=>nums.has(p)),
+      k.svc.every(g=>has(v[3],g)),
+      k.ver.every(g=>has(v[4],g)),
+      k.os.every(g=>has(v[5],g))];
+    let rowBad=0;
+    res.forEach((ok,i)=>{tds[i].classList.add(ok?'ok':'bad');if(!ok)rowBad++});
+    bad+=rowBad; if(!rowBad)full++;
+  });
+  const total=Object.keys(KEY).length;
+  if(!filled){msg.textContent='The blueprint is empty. Run some scans and write down what you find.';return}
+  if(full===total&&!bad){msg.textContent='Every cell is correct.';celebrate();return}
+  let m=`${full} device${full===1?'':'s'} fully mapped.`;
+  if(bad) m+=` ${bad} cell${bad===1?'':'s'} in red ${bad===1?'needs':'need'} another look.`;
+  if(seen.size<total) m+=' At least one device is still missing.';
+  if(phantom) m+=' An IP in red is not a device on this network, or it is listed twice. Your own machine, .99, does not count.';
+  msg.textContent=m;
+}
+
+function renderDock(name){
+  const meta={nmap:['Nmap cheat sheet',buildNmap],labels:['Device labels',buildLabels],blueprint:['Blueprint',buildBlueprint]}[name];
+  if(!panels[name]) panels[name]=meta[1]();
+  $('#dockTitle').textContent=meta[0];
+  $('#dockBody').replaceChildren(panels[name]);
+}
+function setPressed(name){document.querySelectorAll('.tb[data-panel]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.panel===name)))}
+function openDock(name){
+  openPanel=name;renderDock(name);dock.hidden=false;
+  stage.classList.add('docked');stage.classList.toggle('wide',name==='blueprint');setPressed(name);
+}
+function closeDock(){openPanel=null;dock.hidden=true;stage.classList.remove('docked','wide');setPressed(null)}
+document.querySelectorAll('.tb[data-panel]').forEach(b=>b.addEventListener('click',()=>{b.dataset.panel===openPanel?closeDock():openDock(b.dataset.panel)}));
+$('#dockClose').addEventListener('click',closeDock);
+
+/* ---------------- victory ---------------- */
+function celebrate(){
+  const win=$('#win'); win.hidden=false; win.scrollTop=0;
+  const g=$('#winGrid'); g.innerHTML='';
+  for(let i=0;i<256;i++){const c=document.createElement('i');const dx=(i%16)-7.5,dy=Math.floor(i/16)-7.5;c.style.animationDelay=(Math.hypot(dx,dy)*0.07).toFixed(2)+'s';g.appendChild(c)}
+  const svg=$('#topo'); const ids=Object.keys(KEY).filter(k=>+k!==1);
+  const names={1:'gateway',20:'laptop',30:'server',40:'nas',50:'printer',60:'camera'};
+  let s='';
+  ids.forEach((id,i)=>{
+    const a=-Math.PI/2+i*(2*Math.PI/ids.length), x=320+Math.cos(a)*250, y=150+Math.sin(a)*100;
+    s+=`<line x1="320" y1="150" x2="${x.toFixed(0)}" y2="${y.toFixed(0)}" style="animation-delay:${(1.1+i*.25).toFixed(2)}s"/>`;
+  });
+  s+=`<g style="animation-delay:.9s"><circle cx="320" cy="150" r="13"/><text x="320" y="182" text-anchor="middle">.1 gateway</text></g>`;
+  ids.forEach((id,i)=>{
+    const a=-Math.PI/2+i*(2*Math.PI/ids.length), x=320+Math.cos(a)*250, y=150+Math.sin(a)*100;
+    s+=`<g style="animation-delay:${(1.5+i*.25).toFixed(2)}s"><circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="9"/><text x="${x.toFixed(0)}" y="${(y+(y<150?-16:26)).toFixed(0)}" text-anchor="middle">.${id} ${names[id]}</text></g>`;
+  });
+  svg.innerHTML=s;
+  let d='<h3>How to defend against this</h3><p>A sweep and a port scan from one machine look like a burst of connection attempts across many hosts and ports. Alert on that, and split the network into segments so one foothold cannot see everything.</p>';
+  for(const id of Object.keys(DEFEND)){const [t,x]=DEFEND[id];d+=`<div class="lbl"><div class="oct">.${id}</div><div><b>${esc(t)}</b><span>${esc(x)}</span></div></div>`}
+  $('#defend').innerHTML=d;
+}
+$('#winBack').addEventListener('click',()=>{$('#win').hidden=true});
+$('#winAgain').addEventListener('click',()=>{
+  $('#win').hidden=true;closeDock();
+  Object.keys(panels).forEach(k=>delete panels[k]);
+  scans=0;$('#scanCount').textContent='0 scans run';hist.length=0;banner();cmd.value='';cmd.focus();
+});
+
+/* ---------------- screens ---------------- */
+function showGame(){clearInterval(sweepTimer);$('#home').hidden=true;$('#game').hidden=false;if(!out.children.length)banner();cmd.focus()}
+function showHome(){$('#game').hidden=true;$('#home').hidden=false;homeSweep()}
+$('#startBtn').addEventListener('click',showGame);
+$('#menuBtn').addEventListener('click',showHome);
+homeSweep();
+
+</script>
+</body>
+</html>
